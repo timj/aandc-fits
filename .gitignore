@@ -4,5 +4,7 @@
 *.bbl
 *.blg
 *.dvi
+*.out
+*.spl
 acfits.pdf
 acfits.ps
