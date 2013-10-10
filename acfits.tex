@@ -714,7 +714,7 @@ IVOA provenance model as an example of usage?
 
 The FITS standard encourages people to store processing history
 information in the header using a pseudo-comment field named
-HISTORY. This works from the perspective of making the information
+\texttt{HISTORY}. This works from the perspective of making the information
 available to an interested human (assuming that each step in the data
 processing adds information to the end of the history section of the
 header) but the free-form nature of the entries makes it essentially
@@ -750,7 +750,7 @@ interest and examine it locally.
 
 
 Some might insist that this is an easily solved problem. Simply
-declare a keyword, like ``DQUALITY'', and allow it to take a boolean
+declare a keyword, like \texttt{DQUALITY}, and allow it to take a boolean
 value. That example is an exaggeration, to be sure, but it helps to
 illustrate that simplicity in this regard, is simplistic. Data quality
 cannot be judged on a single, or even a small set, of parameters. The
@@ -843,7 +843,7 @@ special conventions to achieve this. For example, in order to hold a
 keyword with either a `set' or `list' value, a common, non-standard,
 convention adopted is to create a set of keywords sharing the same
 base name followed by a integer value which may (or may not) indicate
-order of the values (such as ``ICMB001'', ``ICMB002'', and so on).
+order of the values (such as \texttt{ICMB001}, \texttt{ICMB002}, and so on).
 
 
 This limitation on the range of metadata value structures is not the
@@ -928,7 +928,7 @@ extension mechanism provides a scheme for having multiple images but
 in essentially a flat structure. If you have 12 images in the file
 there is no way of indicating that 3 of them are data, 3 are an error
 and 3 are a quality mask. Indeed, there is no way of specifying which
-triplets are related. You can use the EXTNAME header to indicate
+triplets are related. You can use the \texttt{EXTNAME} header to indicate
 relationships but this relies on convention and string parsing rather
 than being a standard part of the format.
 
