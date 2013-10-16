@@ -964,11 +964,61 @@ FITS should be able to declare the byte ordering of data by using a
 FITS keyword defined in the standard dictionary.
 
 
-\subsection{Inadequate support for large, distributed data}
+\subsection{Inadequate support for large or distributed data}
 
+At the time when FITS was developed, the primary media used for archiving and 
+transporting the data was a tape. Unlike a hard-drive tape is a serial access device.
+The concept of serial accessing the data was naturally adopted for FITS data model. 
+Although the tapes are still widely used for archiving data, such a mode is no longer 
+commonly available as the files are usually transferred to a hard-drive before being 
+accessed. What is more, such serial nature of FITS has become a significant bottleneck 
+when it comes to large data sets.
 
-Introduction to this section needed here…
+A range of new instruments, especially in radio astronomy (ASKAP, ALMA, MWA, LOFAR, eVLAand SKA) is producing (or will be producing) spectral-imaging data-cubes of unprecedentedvolumes in the order of hundreds of Petabytes. Individual data sets can be as large as tens of TBs.
+Servicing such data as images in FITS is going to encounter significant performance fallbacks due to 
+inability of FITS to provide an acceptable performance for the data-cubes 
+large than just a few GB. 
 
+\subsubsection{No support for maintaining the integrity of distributed data sets}
+
+One possible solution is to generate many small related datasets. However the problem 
+is that FITS doesn't have any mechanism to maintain the integrity of such a distributed 
+datasets on its own. Any integrity maintenance would be a proprietary solution that is likely 
+going to be incompatible with other systems when the data is moved around.
+
+\subsubsection{No support for parallel write/read operations on HPC platforms}
+
+Large datasets also require parallel read/write to be processed of parallel high performance
+computers. FITS can not support optimisation for parallel read/write operations. This has been
+the driving factor for LOFAR to invest a significant effort into development of a new format using 
+HDF5  \citep{2012ASPC..461..283A}.
+
+\subsubsection{No support for streaming imaging data}
+
+Servicing large imaginary datasets to the end user also requires significant 
+rethinking of the framework of large data sets. FITS can only support a cutout framework. 
+However, it's unimaginable that a cutout framework can be of a use for visual exploration 
+of multi PB imaging data.
+
+A reasonable framework should to support multiple representations of the same data 
+(e.g. multiple resolutions or fidelities), preferably from a single master file. It should also 
+be possible streaming the data progressively to the end-user displaying an image as soon 
+as the fist data becomes available.
+
+Contemporary approachers widely adopted in other areas using encoded data 
+(e.g. wavelet transforms) to achieve such functionality \cite{Taubman}. FITS is unable to support 
+a comprehensive framework for encoded data, what makes it far behind any modern imaginary format.
+
+\subsubsection{Insufficient support for compression}
+
+Compression is going to be compulsory for large dataset as data volumes 
+are directly translatable to dollars. For the projects like SKA with many EBs planned to be collected, 
+volumes of data will be translated into many millions of dollars.
+
+Currently \texttt{cfitio} library supports several types of image compression by convention. 
+Binary table extensions are used to contain the encoded data, though image access interface is used 
+to hide this peculiarity due to the limitations of FITS. Obviously interoperability is lost in this case as
+no other library can read such in image.
 
 \subsubsection{No support for capturing indeterminately sized data sets via streaming}
 
