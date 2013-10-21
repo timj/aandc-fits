@@ -244,9 +244,9 @@ observational data being analyzed only by the scientific team who
 proposed or collected it. The community routinely combines original
 observations, theoretical calculations, observations from others, and
 data from archives on the internet in order to obtain better and wider
-ranging scientific results. Many research projects now involve many
+ranging scientific results. A wide variety of research projects now involve many
 diverse data sets from a range of sources. Instruments in astronomy
-now produce many orders of magnitude larger datasets than were common
+now produce several orders of magnitude larger datasets than were common
 at the time FITS was born, in some cases requiring parallelized,
 distributed storage systems to provide adequate data rates
 \citep{2012ASPC..461..283A}.
@@ -276,18 +276,18 @@ Starlink Hierarchical Data System \citep[HDS;][]{1982QJRAS..23..485D},
 the eXtensible Data Format \citep[XDF;][]{2001ASPC..238..217S}, FITSML
 \citep{2001ASPC..238..487T} and HDX \citep{2003ASPC..295..221G}; and
 in the present and future
-\citep[e.g.][]{2011ASPC..442...53A,P91_adassxxiii}. There is a danger
+\citep[e.g. HDF5 ][]{2011ASPC..442...53A} and NDF \citep{P91_adassxxiii}).  
+There is a danger
 that the use of FITS will fall should it not adapt to these new
 challenges.
 
 
 It is our intended goal in this paper to highlight some selected,
-important, problems which exist in the FITS core standard today. It is
-not our intention to prescribe specific remedies to these issues;
-rather, we hope to call the attention of the FITS and greater
-astronomical computing communities to these issues in the hopes that
+important, problems which exist in the FITS core standard today. 
+By intent this paper does not prescribe specific solutions to these issues;
+rather, we hope to bring awareness of these issues to the FITS and greater
+astronomical computing communities in the hopes that
 it will spur action to resolve them.
-
 
 \section{Deficiencies of FITS for Modern Astronomical Research}
 
@@ -332,7 +332,9 @@ could utilize XML schema for validation. NDF was developed in the late
 1980s as a means of organizing the hierarchical structures that were
 available via the Starlink HDS format when it became apparent that
 arbitrary hierarchies could lead to chaos and lack of ability for
-applications to interoperate.
+applications to interoperate.  HDF5 was chosen to accommodate 
+LOFAR's exceptional high data dates, 6-dimensional data complexity, 
+distributed data processing and I/O parallelization needs.
 
 \textit{Could probably add a sentence about HDX here.}
 
@@ -647,7 +649,7 @@ projections can handle. There are some provisions for handling more
 arbitrary distortions, but they are either cumbersome or too
 simple. Perhaps the biggest limitation is that different
 transformations of coordinates cannot be combined in flexible
-ways. One is effectively limited to choosing only one of the solutions
+ways. The user is effectively limited to choosing only one of the solutions
 available.
 
 
@@ -662,12 +664,13 @@ most efficient representation as far as data storage is concerned.
 
 As an example, HST data requires multiple distortion components
 \citep[see e.g.][]{2013ASPC..475...49H}. Some are small but
-discontinuous. Other are linear but time varying. There is no FITS WCS
+discontinuous. Others are linear but time varying. There is no FITS WCS
 compatible solution that handles these needs well. [Other examples
 welcome].
 
 
-Another case with poor support is IFU data. Many of these data sets
+Another case with poor support is Integral Field Unit (IFU) data. 
+Many of these data sets
 have discontinuous WCS models. The only way to support these in FITS
 now is to explicitly map each pixel to the world coordinates. Besides
 being space inefficient, it is difficult to manipulate in any simple
@@ -679,10 +682,10 @@ WCS also restricts what can be done with such data during subsequent
 analysis. There are many potentially interesting transformations that
 would result in the final WCS being inexpressible using the
 restrictive FITS model. For instance, transforming an image of an
-elliptical galaxy into polar or elliptical coordinates. Another
-example may be attaching an alternate coordinate system to an image to
+elliptical galaxy into polar or elliptical coordinates is currently not possible. Another
+case which is unworkable is an alternate coordinate system to an image to
 represent the pixel coordinates of a second image covering the same
-part of the sky. These may not be common requirements, but they
+part of the sky.  These may not be common requirements, but they
 illustrate the wide range of transformation that should be possible
 with a flexible WCS system.
 
@@ -733,7 +736,8 @@ entries.
 
 A related issue is data provenance. For a given processed data product
 it is, in general, impossible to determine which data files
-contributed. A data consumer would like to be able to find out which
+contributed to the creation of that product. A data consumer 
+would like to be able to find out which
 raw data files were included and any relevant intermediate
 products. There is no metadata standard for specifying this
 information in output files and ideally this should again be supported
@@ -925,7 +929,7 @@ lists and objects.
 
 As data acquisition and data reduction systems have become more
 complex there has been a move to storing multiple image data
-components in extensions within a single FITS files. The FITS
+components in extensions within a single FITS file. The FITS
 extension mechanism provides a scheme for having multiple images but
 in essentially a flat structure. If you have 12 images in the file
 there is no way of indicating that 3 of them are data, 3 are an error
