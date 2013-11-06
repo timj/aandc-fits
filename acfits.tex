@@ -212,6 +212,7 @@ File formats
 \newcommand{\aaps}{A\&AS}
 \newcommand{\jrasc}{JRASC}
 \newcommand{\qjras}{QJRAS}
+\newcommand{\mnras}{MNRAS}
 
 %% main text
 \section{Introduction}
@@ -668,7 +669,11 @@ most efficient representation as far as data storage is concerned.
 As an example, HST data requires multiple distortion components
 \citep[see e.g.][]{2013ASPC..475...49H}. Some are small but
 discontinuous. Others are linear but time varying. There is no FITS WCS
-compatible solution that handles these needs well. [Other examples
+compatible solution that handles these needs well. As another example,
+SCUBA-2 raw data \citep[see e.g.][]{2013MNRAS.430.2513H} includes focal
+plane distortions which are combined with other transformations but
+must also support the dynamic insertion of other distortion models
+when an FTS \citep{2010SPIE.7741E..67G} is placed in the beam. [Other examples
 welcome].
 
 
