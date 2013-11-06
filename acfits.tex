@@ -861,6 +861,12 @@ convention adopted is to create a set of keywords sharing the same
 base name followed by a integer value which may (or may not) indicate
 order of the values (such as \texttt{ICMB001}, \texttt{ICMB002}, and so on).
 
+Hierarchical organization of keywords in headers has resulted in two
+proposed conventions. The most common is the HIERARCH convention
+mentioned previously, that co-opts comment headers to allow
+hierarchy. The other convention is the \emph{record-valued} system
+proposed in the FITS distortion paper \citep{FITSDistort} which
+adds special syntax to the content of strings.
 
 This limitation on the range of metadata value structures is not the
 only problem, even the expression single scalar values are
