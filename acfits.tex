@@ -754,6 +754,19 @@ information in output files and ideally this should again be supported
 by a programmatic interface to minimize the mental overhead in
 tracking ancestor data.
 
+At the JCMT Science Archive \citep{2008ASPC..394..135G} data are
+created with full provenance information using the native provenance
+tracking that is part of NDF \citep{2009ASPC..411..418J}. This
+provenance includes every ancestor along with history information that
+contributed to each ancestor. When these files are converted to FITS
+for ingestion into the JSA using the CAOM-2 data model
+\citep{2013ASPC..475..159R} the provenance is trimmed to include
+just the immediate parent files (using \texttt{PRVnnnnn} headers)
+and the observation identifiers of the root ancestor observations
+(using \texttt{OBSnnnnn} headers). The full richness of the provenance
+information is available in FITS binary tables but the lack of standard
+leaves this information hidden from applications other than the ones
+that created it originally.
 
 \subsubsection{Data Quality}
 
