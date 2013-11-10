@@ -1036,14 +1036,15 @@ HDF5  \citep{2012ASPC..461..283A}.
 \subsubsection{No support for streaming imaging data}
 
 Servicing large data sets to the end user also requires significant
-rethinking of the framework of large data sets. FITS can only support a cutout framework.
-However, it's unimaginable that a cutout framework can be of a use for visual exploration
-of multi PB imaging data.
+rethinking of the framework of large data sets. FITS can only support a
+cutout framework.  However, it is unimaginable that a cutout framework
+can be of use for visual exploration of multi PB imaging data.
 
-A reasonable framework should be to support multiple representations of the same data
-(e.g.\ multiple resolutions or fidelities), preferably from a single master file. It should also
-be possible to stream the data progressively to the end-user, displaying an image as soon
-as the first data becomes available.
+A reasonable framework should be able to support multiple representations
+of the same data (e.g.\ multiple resolutions or fidelities), preferably
+from a single master file. It should also be possible to stream the data
+progressively to the end-user, displaying an image as soon
+as the first data become available.
 
 Contemporary approaches widely adopted in other areas use encoded data
 (e.g. wavelet transforms) to achieve such functionality \citep{2003SPIE.5150..791T}. FITS is unable to support
