@@ -872,7 +872,29 @@ special conventions to achieve this. For example, in order to hold a
 keyword with either a `set' or `list' value, a common, non-standard,
 convention adopted is to create a set of keywords sharing the same
 base name followed by a integer value which may (or may not) indicate
-order of the values (such as \texttt{ICMB001}, \texttt{ICMB002}, and so on).
+order of the values (such as \texttt{ICMB001}, \texttt{ICMB002}, and
+so on). Another example is the IRAF \textit{multispec} format
+\citep[see][and references therein]{1993ASPC...52..467V} which uses
+this scheme to specify related world coordinate information. An
+example is shown in Fig.\ \ref{fig:multispec}.
+
+\begin{figure*}
+\begin{minipage}{\textwidth}
+\begin{center}
+\begin{verbatim}
+WAT0_001= 'system=multispec'
+WAT1_001= 'wtype=multispec label=Wavelength units=Angstroms'
+WAT2_001= 'wtype=multispec spec1 = "1 113 2 4955.4428886353510.055675655'
+WAT2_002= '83 256 0. 23.22 31.27 1. 0. 2 4 1. 256. 4963.0163112090 5.676'
+WAT2_003= '976664 -0.3191636898579552 -0.8169352858733255" spec2 ="2 112'
+WAT2_004= '9.09'' spec 3 = "3 111 2 5043.5"                             '
+\end{verbatim}
+\end{center}
+\caption{Example header from an IRAF \textit{multispec} data set
+  indicating the use of multi-line headers..}
+\label{fig:multispec}
+\end{minipage}
+\end{figure*}
 
 Hierarchical organization of keywords in headers has resulted in two
 proposed conventions. The most common is the HIERARCH convention
