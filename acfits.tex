@@ -641,7 +641,7 @@ class. For example, ``statistical'' errors may have assigned ``sigma''
 value.
 \end{itemize}
 
-\subsubsection{Limited WCS}
+\subsubsection{Limited WCS\label{sec:wcs}}
 
 
 The existing FITS WCS data models illustrate some of the limitations
@@ -880,7 +880,11 @@ order of the values (such as \texttt{ICMB001}, \texttt{ICMB002}, and
 so on). Another example is the IRAF \textit{multispec} format
 \citep[see][and references therein]{1993ASPC...52..467V} which uses
 this scheme to specify related world coordinate information. An
-example is shown in Fig.\ \ref{fig:multispec}.
+example of this is shown in Fig.\ \ref{fig:multispec}. The AST library
+\citep[][and see also \S\ref{sec:wcs}]{1998ASPC..145...41W} takes a
+similar approach in converting the WCS objects into FITS headers when
+the transformations are too complex to be represented by standard WCS
+headers (see Fig.\ \ref{fig:asthead}).
 
 \begin{figure*}
 \begin{minipage}{\textwidth}
@@ -897,6 +901,36 @@ WAT2_004= '9.09" spec 3 = "3 111 2 5043.5"                             '
 \caption{Example header from an IRAF \textit{multispec} data set
   indicating the use of multi-line headers..}
 \label{fig:multispec}
+\end{minipage}
+\end{figure*}
+
+\begin{figure*}
+\begin{minipage}{\textwidth}
+\begin{center}
+\begin{verbatim}
+PLRLG_A =     5.50788096462284 / Polar longitude (rad.s)
+ENDAST_K= 'SphMap  '           / End of object definition
+MAPB_A  = '        '           / Second component Mapping
+BEGAST_O= 'CmpMap  '           / Compound Mapping
+NIN_D   =                    3 / Number of input coordinates
+NOUT_B  =                    2 / Number of output coordinates
+INVERT_C=                    0 / Mapping not inverted
+ISA_I   = 'Mapping '           / Mapping between coordinate systems
+INVA_B  =                    1 / First Mapping used in inverse direction
+MAPA_C  = '        '           / First component Mapping
+BEGAST_P= 'MatrixMap'          / Matrix transformation
+NIN_E   =                    3 / Number of input coordinates
+INVERT_D=                    1 / Mapping inverted
+ISA_J   = 'Mapping '           / Mapping between coordinate systems
+M0_A    =    0.426766777415161 / Forward matrix value
+M1_A    =    0.699933471661958 / Forward matrix value
+M2_A    =    0.572680760059142 / Forward matrix value
+M3_A    =   -0.418237169285184 / Forward matrix value
+\end{verbatim}
+\end{center}
+\caption{Example header of a representation of an AST WCS object in
+  Native form.}
+\label{fig:asthead}
 \end{minipage}
 \end{figure*}
 
