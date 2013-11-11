@@ -284,14 +284,14 @@ Starlink Hierarchical Data System \citep[HDS;][]{1982QJRAS..23..485D},
 the eXtensible Data Format \citep[XDF;][]{2001ASPC..238..217S}, FITSML
 \citep{2001ASPC..238..487T} and HDX \citep{2003ASPC..295..221G}; and
 in the present and future
-\citep[e.g. HDF5 ][]{2011ASPC..442...53A} and NDF \citep{P91_adassxxiii}).  
+\citep[e.g. HDF5 ][]{2011ASPC..442...53A} and NDF \citep{P91_adassxxiii}).
 There is a danger
 that the use of FITS will fall should it not adapt to these new
 challenges.
 
 
 It is our intended goal in this paper to highlight some selected,
-important, problems which exist in the FITS core standard today. 
+important, problems which exist in the FITS core standard today.
 By intent this paper does not prescribe specific solutions to these issues;
 rather, we hope to bring awareness of these issues to the FITS and greater
 astronomical computing communities in the hopes that
@@ -340,8 +340,8 @@ could utilize XML schema for validation. NDF was developed in the late
 1980s as a means of organizing the hierarchical structures that were
 available via the Starlink HDS format when it became apparent that
 arbitrary hierarchies could lead to chaos and lack of ability for
-applications to interoperate.  HDF5 was chosen to accommodate 
-LOFAR's exceptional high data dates, 6-dimensional data complexity, 
+applications to interoperate.  HDF5 was chosen to accommodate
+LOFAR's exceptional high data dates, 6-dimensional data complexity,
 distributed data processing and I/O parallelization needs.
 
 \textit{Could probably add a sentence about HDX here.}
@@ -683,7 +683,7 @@ welcome].
 \textit{Do we want to comment on the WCSDEP convention proposed for
   concatenating WCS models? \url{http://tdc-www.harvard.edu/wcstools/wcsdep_20020906.pdf}}
 
-Another case with poor support is Integral Field Unit (IFU) data. 
+Another case with poor support is Integral Field Unit (IFU) data.
 Many of these data sets
 have discontinuous WCS models. The only way to support these in FITS
 now is to explicitly map each pixel to the world coordinates. Besides
@@ -750,7 +750,7 @@ entries.
 
 A related issue is data provenance. For a given processed data product
 it is, in general, impossible to determine which data files
-contributed to the creation of that product. A data consumer 
+contributed to the creation of that product. A data consumer
 would like to be able to find out which
 raw data files were included and any relevant intermediate
 products. There is no metadata standard for specifying this
