@@ -992,7 +992,7 @@ value data structures being the most significant. Certainly, as we
 have already noted, in many cases it is possible to create one or more
 conventions to expand the expression of the metadata but doing so will
 result in files which are unparsable by downstream software which
-don't implement these conventions. There is no apparent solution,
+do not implement these conventions. There is no apparent solution,
 using a FITS convention, than can solve the limitation on the
 restricted expression of keyword names.
 
@@ -1081,10 +1081,11 @@ an acceptable performance for data-cubes large than just a few gigabytes.
 
 \subsubsection{No support for maintaining the integrity of distributed data sets}
 
-One possible solution is to generate many small related datasets. However the problem
-is that FITS doesn't have any mechanism to maintain the integrity of such distributed
-datasets on its own. Any integrity maintenance would be a proprietary solution that is likely
-to be incompatible with other systems when the data are moved around.
+One possible solution is to generate many small related datasets. However
+the problem is that FITS does not have any mechanism to maintain the
+integrity of such distributed datasets on its own. Any integrity
+maintenance would be a proprietary solution that is likely to be
+incompatible with other systems when the data are moved around.
 
 \subsubsection{No support for parallel write/read operations on HPC platforms}
 
@@ -1190,7 +1191,7 @@ URI.
 
 
 The problems which we have described are real and significant, however
-we don't wish to recommend a particular solution here to any of
+we do not wish to recommend a particular solution here to any of
 these. Action to correct these issues should flow from constructive
 community discussion and offered solutions to these problems. Possible
 solutions may involve moving existing FITS conventions into the core
