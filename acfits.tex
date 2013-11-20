@@ -336,14 +336,14 @@ satisfy some of these requirements. The ADC's XDF, LOFAR's HDF5 data
 model \citep{2012ASPC..461..283A}, and Starlink's NDF
 \citep{1988STARB...2...11C,1993ASPC...52..229W,P91_adassxxiii} all
 serve as examples in this regard. XDF was created primarily to support
-the development of FITSML an XML version of the FITS data model which
+the development of FITSML -- an XML version of the FITS data model which
 could utilize XML schema for validation. NDF was developed in the late
 1980s as a means of organizing the hierarchical structures that were
 available via the Starlink HDS format when it became apparent that
 arbitrary hierarchies could lead to chaos and lack of ability for
-applications to interoperate.  HDF5 was chosen to accommodate
-LOFAR's exceptional high data dates, 6-dimensional data complexity,
-distributed data processing and I/O parallelization needs.
+applications to interoperate.  HDF5 was chosen to accommodate LOFAR's
+exceptional high data dates, 6-dimensional data complexity, distributed
+data processing and I/O parallelization needs.
 
 \textit{Could probably add a sentence about HDX here.}
 
@@ -449,8 +449,8 @@ avoided.
 
 Important questions such as ``are all of the data here?'', ``is the
 information in the file correct?'' (no bad values for metadata/data),
-``do the data conform to expected data model?'', and fundamentally ``what
-are these data you gave me about?'' are all, generally speaking,
+``do the data conform to the expected data model?'', and fundamentally
+``what are these data you gave me about?'' are all, generally speaking,
 questions of ``validation'' which are related to the data model(s)
 contained in any given file.
 
@@ -1047,7 +1047,7 @@ stored in order of decreasing significance (big endian format).
 Sometimes the byte order needs to be checked and swapped to the native
 byte order in sytems that use the little endian format when non-native
 data formats are not supported (as in implementations of FITS readers
-which utilize C , Cython, and so on). Programmers on little endian
+which utilize C, Cython, and so on). Programmers on little endian
 platforms who work with large data volumes may find this limitation
 results in a significant performance cost as marshalling data to and from
 the FITS big endian ordering will be required. This is a frequent problem
