@@ -84,6 +84,10 @@
 %% much more readable
 \usepackage{upquote}
 
+%% For draft use color package to indicate open questions that need
+%% clarification
+\usepackage{color}
+
 \begin{document}
 
 \begin{frontmatter}
@@ -346,7 +350,7 @@ applications to interoperate.  HDF5 was chosen to accommodate LOFAR's
 exceptional high data dates, 6-dimensional data complexity, distributed
 data processing and I/O parallelization needs.
 
-\textit{Could probably add a sentence about HDX here.}
+\textit{\color{red} Could probably add a sentence about HDX here.}
 
 \subsubsection{Lack of serialization/format versioning}
 
@@ -678,10 +682,10 @@ compatible solution that handles these needs well. As another example,
 SCUBA-2 raw data \citep[see e.g.][]{2013MNRAS.430.2513H} includes focal
 plane distortions which are combined with other transformations but
 must also support the dynamic insertion of other distortion models
-when an FTS \citep{2010SPIE.7741E..67G} is placed in the beam. [Other examples
-welcome].
+when an FTS \citep{2010SPIE.7741E..67G} is placed in the
+beam. {\color{red} [Other examples welcome]}.
 
-\textit{Do we want to comment on the WCSDEP convention proposed for
+\textit{\color{red} Do we want to comment on the WCSDEP convention proposed for
   concatenating WCS models? \url{http://tdc-www.harvard.edu/wcstools/wcsdep_20020906.pdf}}
 
 Another case with poor support is Integral Field Unit (IFU) data.
