@@ -441,16 +441,16 @@ orders.''
 
 
 Of course, objects in astronomy are more likely to involve things like
-observations, instruments, and actual astronomical objects such as
-stars. Likely properties one will encounter in a FITS file include
-things like observational parameters (start/end times), astronomical
-coordinates, name and properties of the observing instrumentation, and
-so forth. In FITS-speak, we can say that any FITS keyword outside
-those defined in the FITS standard is a data model parameter, and
-collections of related FITS keywords form a data model. Ideally a data
-model should be associated with a given, unique, namespace so that
-collisions in naming of the models and requisite parameters are
-avoided.
+observations, instruments, celestial coordinates and actual astronomical
+objects such as stars. Likely properties one will encounter in a FITS
+file include things like observational parameters (start/end times),
+astronomical coordinates, name and properties of the observing
+instrumentation, and so forth. In FITS-speak, we can say that any FITS
+keyword outside those defined in the FITS standard is a data model
+parameter, and collections of related FITS keywords form a data model.
+Ideally a data model should be associated with a given, unique,
+namespace so that collisions in naming of the models and requisite
+parameters are avoided.
 
 
 Important questions such as ``are all of the data here?'', ``is the
@@ -574,7 +574,7 @@ against adding support for illegal variants.
 
 \item Discouraging developers from making ad hoc tools to create files in
 the new format rather than adopting use of a well-tested library (such
-ad hoc tools are often the source of problem files)
+ad hoc tools are often the source of problem files).
 \end{itemize}
 
 \subsection{Missing critical data models}
