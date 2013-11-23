@@ -1050,22 +1050,24 @@ be extremely valuable to data and application interoperability.
 \subsubsection{No support for declaring byte order}
 
 
-The FITS standard  \citep{1981A&AS...44..363W} requires that the data are
-stored in order of decreasing significance (big endian format).
-Sometimes the byte order needs to be checked and swapped to the native
-byte order in sytems that use the little endian format when non-native
-data formats are not supported (as in implementations of FITS readers
-which utilize C, Cython, and so on). Programmers on little endian
-platforms who work with large data volumes may find this limitation
-results in a significant performance cost as marshalling data to and from
-the FITS big endian ordering will be required. This is a frequent problem
-for astronomical software. Little endianness is found on x86 and x86-64
-processors that are commonly used in Universities and research
-laboratories.
+The FITS standard  \citep{1981A&AS...44..363W} requires that a series of
+consecutive bytes in multi-byte data items are stored in order of decreasing
+significance (big endian format).  Sometimes the byte order needs to be
+checked and swapped to the native byte order in systems that use the little
+endian format when non-native data formats are not supported (as in
+implementations of FITS readers that do not use the \texttt{cfitsio} library
+and which utilize C routines to implement other scientific capabilities).
+Programmers on little endian platforms who work with large data volumes may
+find this limitation results in a significant performance cost as
+marshalling data to and from the FITS big endian ordering will be required.
+This is a frequent problem for astronomical software. Little endianness is
+found on x86 and x86-64 processors that are commonly used in Universities
+and research laboratories.
 
 
-FITS should be able to declare the byte ordering of data by using a
-FITS keyword defined in the standard dictionary.
+Other data formats used to store scientific binary data such as HDF5 or
+netCDF are able to declare the byte ordering by using a data type flag and
+the software libraries will perform the byte order conversion if required.
 
 
 \subsection{Inadequate support for large or distributed data}
