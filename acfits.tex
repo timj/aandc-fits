@@ -311,9 +311,9 @@ it will spur action to resolve them.
 
 As technologies and research techniques in astronomy have evolved FITS
 has not kept pace. As a result, gaps between FITS utility and the
-needs of research have opened up and widened over time. In this part
-of the paper, we detail many issues, or deficiencies of FITS, which we
-see in this regard.
+needs of the research community have opened up and widened over time. In
+this part of the paper, we detail many issues, or deficiencies of FITS,
+which we see in this regard.
 
 
 The deficiencies of FITS appear to fall into one of several
@@ -338,7 +338,7 @@ ability to declare which version of the FITS serialization is being
 used.
 
 
-It's not as if we have not needed these things until now. In fact,
+It is not as if we have not needed these things until now. In fact,
 parts of the astronomical community have designed data formats to
 satisfy some of these requirements. The ADC's XDF, LOFAR's HDF5 data
 model \citep{2012ASPC..461..283A}, and Starlink's NDF
@@ -373,10 +373,11 @@ or unreadable by standard FITS tape reading programs''
 (Pence, W, private communication).}.
 Certainly some in the community see
 this as a strength for the format as it appears to promote long term
-stability and archivability of FITS data \citep[][US Library
-of Congress\footnote{see \url{http://www.digitalpreservation.gov/formats/fdd/fdd000317.shtml}}]{2012EWASSAlle}.
-The assumption that the format will be static has
-consequences for its further development and use.
+stability and archivability of FITS data \citep[][US Library of
+Congress\footnote{see
+\url{http://www.digitalpreservation.gov/formats/fdd/fdd000317.shtml}}]{2012EWASSAlle}.
+Nonetheless, the assumption that the format will be static has consequences
+for its further development and use.
 
 
 First, and most clearly, omitting the ability to version the file
@@ -433,7 +434,7 @@ be lost.
 Related to, but separate from the lack of versioning of the
 serialization, is the lack of ability to declare the presence of data
 models and their associated semantic meaning.  By `data model' we
-adopt the first meaning available in the Wikipedia which is:
+adopt the first meaning available in the Wikipedia article which is:
 
 \begin{quote}
 ``a description of the objects represented by a computer system
@@ -512,7 +513,7 @@ The allowed character set for metadata and data in FITS is overly
 restrictive and is limiting its application. The restrictions between
 metadata and data do not differ significantly. For metadata, the
 keywords which occur in the FITS header, FITS only supports the lower
-7 bits of the US-ASCII encoding for keyword values and comments. For
+7 bits of the ASCII encoding for keyword values and comments. For
 data encoding, authors may again only use the lower 7 bits of ASCII
 for text (string) capture in either ASCII or binary FITS tables
 although the NULL character is allowed in certain cases in binary
@@ -774,18 +775,17 @@ IVOA provenance model as an example of usage?
 The FITS standard encourages people to store processing history
 information in the header using a pseudo-comment field named
 \texttt{HISTORY}. This works from the perspective of making the information
-available to an interested human (assuming that each step in the data
-processing adds information to the end of the history section of the
+available to a sufficiently interested human (assuming that each step in the
+data processing adds information to the end of the history section of the
 header) but the free-form nature of the entries makes it essentially
-impossible for a software system to understand what was done to the
-data. This may be possible within the constraints of a single data
-reduction environment but it is highly unlikely that the content of
-the HISTORY block can be understood by any other software. History
-needs to be treated as a first class citizen with a standardized way
-of registering important information such as the date, the software
-tool and any relevant arguments or switches. A library interface
-should also be encouraged to make it easy for people to add history
-entries.
+impossible for a software system to understand what was done to the data.
+This may be possible within the constraints of a single data reduction
+environment but it is highly unlikely that the content of the HISTORY block
+can be understood by any other software. History needs to be treated as a
+first class citizen with a standardized way of registering important
+information such as the date, the software tool and any relevant arguments
+or switches. A library interface should also be encouraged to make it easy
+for people to add history entries.
 
 
 A related issue is data provenance. For a given processed data product
@@ -906,7 +906,7 @@ sometimes contain information about units of the metadata value.
 
 
 Metadata may comprise a rich assortment of data structures and
-single-valued metadata are only the beginning. There is need to
+single-valued metadata are only the beginning. There is a need to
 capture sets, lists, vectors and objects within metadata (to name only
 the most basic of structures). Yet FITS cards, without additional
 conventions, are only capable of capturing single, scalar
@@ -1074,14 +1074,14 @@ the software libraries will perform the byte order conversion if required.
 \subsection{Inadequate support for large or distributed data}
 
 At the time when FITS was developed, the primary media used for
-archiving and transporting the data was a tape. Unlike a hard-drive
-tape is a serial access device.  The concept of serial accessing the
-data was naturally adopted for the FITS data model.  Although the tapes
-are still widely used for archiving data, such a mode is no longer
-commonly available as the files are usually transferred to a
-hard-drive before being accessed. What is more, such serial nature of
-FITS has become a significant bottleneck when it comes to large data
-sets.
+archiving and transporting the data was a tape. A magnetic tape is
+unlike a hard-drive in that it is a serial access device.  The concept
+of serial accessing the data was naturally adopted for the FITS data
+model.  Although the tapes are still widely used for archiving data,
+such a mode is no longer commonly available as the files are usually
+transferred to a hard-drive before being accessed. What is more, such
+serial nature of FITS has become a significant bottleneck when it comes
+to large data sets.
 
 A range of new instruments, especially in radio astronomy (ASKAP,
 ALMA, MWA, LOFAR, eVLA and SKA) is producing (or will be producing)
@@ -1127,8 +1127,9 @@ falling behind any modern imaging format \citep[see e.g.][]{2013arXiv1307.5123K}
 \subsubsection{Insufficient support for compression}
 
 Compression is going to be compulsory for large datasets as data volumes
-are directly translatable to dollars. For the projects like SKA with many exabytes planned to be collected,
-volumes of data will be translated into many millions of dollars.
+are directly translatable to dollars. For projects like SKA with many
+exabytes planned to be collected, volumes of data will be translated into
+many millions of dollars.
 
 Currently the \texttt{cfitsio} (ascl:1010.001) library supports
 several types of image compression by convention
