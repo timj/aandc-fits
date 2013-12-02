@@ -767,9 +767,6 @@ M3_A    =   -0.418237169285184 / Forward matrix value
 \subsubsection{History and Provenance}
 
 
-IVOA provenance model as an example of usage?
-
-
 The FITS standard encourages people to store processing history
 information in the header using a pseudo-comment field named
 \texttt{HISTORY}. This works from the perspective of making the information
@@ -786,15 +783,21 @@ or switches. A library interface should also be encouraged to make it easy
 for people to add history entries.
 
 
-A related issue is data provenance. For a given processed data product
-it is, in general, impossible to determine which data files
-contributed to the creation of that product. A data consumer
-would like to be able to find out which
-raw data files were included and any relevant intermediate
-products. There is no metadata standard for specifying this
-information in output files and ideally this should again be supported
-by a programmatic interface to minimize the mental overhead in
-tracking ancestor data.
+A related issue is data provenance; that is, sufficient records of how files 
+were created to permit their reproduction. For a given processed data product
+it is, for example, impossible to determine which data files
+contributed to the creation of that product. While there is no metadata standard 
+for specifying this
+information in output files, experimental systems have been developed which, when fully developed,
+aim to offer programmatic interfaces that will
+simplify recording provenance information. One such example is 
+Provenance Aware Service Oriented Architecture (Moreau et al. 2007), 
+an open source architecture already used in fields such as aerospace engineering. In brief,
+when applications are executed they produce documentation of the process recorded in a repository
+of provenance records that are persisted in a database. In astronomy, PASOA 
+was successfully demonstrated by integrating it into the Pegasus workflow management 
+system for running the Montage mosaic engine (Groth et al. 2009)
+
 
 At the JCMT Science Archive \citep[JSA;][]{2008ASPC..394..135G} data are
 created with full provenance information using the native provenance
@@ -809,6 +812,11 @@ and the observation identifiers of the root ancestor observations
 information is available in FITS binary tables but the lack of standard
 leaves this information hidden from applications other than the ones
 that created it originally.
+
+Finally, astronomy may benefit from methodologies used to develop provenance 
+systems custom to Earth Science and remote remote sensing
+(Tilmes and Flieg 2008; McCann and Gomes 2008). 
+
 
 \subsubsection{Data Quality}
 
