@@ -394,9 +394,9 @@ we must maintain slavish conformance to older format conventions, it
 means that we accrete over time more and more ``design rules'' (or
 limitations, if you will) which limit our ability to implement new and
 needed features. Consider the awkward way, for example, in which the
-HIERARCH convention was implemented \citep{2009Wic}.
+\texttt{HIERARCH} convention was implemented \citep{2009Wic}.
 In order to provide the needed functionality, the designers
-were forced into utilizing COMMENT keywords for non-comment
+were forced into utilizing \texttt{COMMENT} keywords for non-comment
 functionality. This behavior by the community will only increase,
 fragmenting the FITS format through inaction rather than coordinated
 design.
@@ -897,9 +897,9 @@ multiple related data structures in one FITS file, and ASCII tables
 \citep{1988A&AS...73..365H} were introduced. Binary tables followed in
 the next decade \citep{1995A&AS..113..159C}. Changes have also
 occurred in metadata capture. Over the intervening years the FITS
-community has added new metadata conventions such as HIERARCH
-\citep{2009Wic} and GROUPING \citep{2007Jen}, which have allowed for
-greater flexibility in capturing metadata.
+community has added new metadata conventions such as \texttt{HIERARCH}
+\citep{2009Wic} and \texttt{GROUPING} \citep{2007Jen}, which have
+allowed for greater flexibility in capturing metadata.
 
 
 This expansion is to be expected and is all to the good. Nevertheless,
@@ -957,7 +957,7 @@ WAT2_004= '9.09" spec 3 = "3 111 2 5043.5"                              '
 \end{figure*}
 
 Hierarchical organization of keywords in headers has resulted in two
-proposed conventions. The most common is the HIERARCH convention
+proposed conventions. The most common is the \texttt{HIERARCH} convention
 mentioned previously, that co-opts comment headers to allow
 hierarchy. The other convention is the \emph{record-valued} system
 proposed in the FITS distortion paper \citep{FITSDistort} which
@@ -971,7 +971,8 @@ constraints is that keyword values may be no longer than 68 chars. Of
 course, if you utilize all of the space for keyword values, then the
 comment, or keyword values longer than 68 characters will need another
 convention in order to capture it (such as creating a continuation
-line in the header using the CONTINUE convention\footnote{see \url{http://fits.gsfc.nasa.gov/registry/continue/continue.pdf}}).
+line in the header using the \texttt{CONTINUE} convention\footnote{see
+\url{http://fits.gsfc.nasa.gov/registry/continue/continue.pdf}}).
 
 
 Let us now consider the impact of keyword name constraints. Not only
@@ -989,13 +990,13 @@ metadata.
 
 \textit{\color{red} Is it worth mentioning here the knock-on effect that FITS 
 tables can only have up to 999 columns because of the need for keywords of the
-form TFORMnnn and the 8 character limit?}
+form \texttt{TFORMnnn} and the 8 character limit?}
 
 These restrictions on the FITS card have other impacts as well. They
 can and do limit the utility of FITS conventions which may be
 implemented. Take, for example, the previously mentioned issue with
-the HIERARCH convention and its use of COMMENT keywords for
-non-comment purposes.
+the \texttt{HIERARCH} convention and its use of \texttt{COMMENT}
+keywords for non-comment purposes.
 
 
 Finally, while being the least problematic of these issues, but still
