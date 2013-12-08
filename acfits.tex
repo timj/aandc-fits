@@ -779,12 +779,12 @@ data processing adds information to the end of the history section of the
 header) but the free-form nature of the entries makes it essentially
 impossible for a software system to understand what was done to the data.
 This may be possible within the constraints of a single data reduction
-environment but it is highly unlikely that the content of the HISTORY block
-can be understood by any other software. History needs to be treated as a
-first class citizen with a standardized way of registering important
-information such as the date, the software tool and any relevant arguments
-or switches. A library interface should also be encouraged to make it easy
-for people to add history entries.
+environment but it is highly unlikely that the content of the
+\texttt{HISTORY} block can be understood by any other software. History
+needs to be treated as a first class citizen with a standardized way of
+registering important information such as the date, the software tool and
+any relevant arguments or switches. A library interface should also be
+encouraged to make it easy for people to add history entries.
 
 
 A related issue is data provenance; that is, sufficient records of how files
@@ -795,12 +795,14 @@ for specifying this
 information in output files, experimental systems have been developed which, when fully developed,
 aim to offer programmatic interfaces that will
 simplify recording provenance information. One such example is
-Provenance Aware Service Oriented Architecture \citep{2008IPAWMoreau,2011743Moreau},
-an open source architecture already used in fields such as aerospace engineering. In brief,
-when applications are executed they produce documentation of the process recorded in a repository
-of provenance records that are persisted in a database. In astronomy, PASOA
-was successfully demonstrated by integrating it into the Pegasus workflow management
-system for running the Montage mosaic engine \citep{2009SCGroth}.
+Provenance Aware Service Oriented Architecture
+\citep[PASOA;][]{2008IPAWMoreau,2011743Moreau}, an open source architecture
+already used in fields such as aerospace engineering. In brief, when
+applications are executed they produce documentation of the process recorded
+in a repository of provenance records that are persisted in a database. In
+astronomy, PASOA was successfully demonstrated by integrating it into the
+Pegasus workflow management system for running the Montage mosaic engine
+\citep{2009SCGroth}.
 
 
 At the JCMT Science Archive \citep[JSA;][]{2008ASPC..394..135G} data are
