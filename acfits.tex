@@ -326,10 +326,12 @@ distributed data. We address each of these in turn below.
 
 \subsection{Poor support for information interchange}
 
-FITS originated as a delivery format for observatory data. It was the
-format of choice when transporting data between different data
-reduction environments such as IRAF (ascl:9911.002), Starlink
-(ascl:1110.012), AIPS (ascl:9911.003) and MIDAS (ascl:1302.017).
+FITS originated as a delivery format for observatory data. It was the format
+of choice when transporting data between different data reduction
+environments such as IRAF (\href{http://ascl.net/9911.002}{ascl:9911.002}),
+Starlink (\href{http://ascl.net/1110.012}{ascl:1110.012}), AIPS
+(\href{http://ascl.net/9911.003}{ascl:9911.003}) and MIDAS
+(\href{http://ascl.net/1302.017}{ascl:1302.017}).
 
 
 However, requirements for interchange have evolved. Effective
@@ -1074,14 +1076,14 @@ stored in order of decreasing significance (known as big endian format).
 Sometimes the byte order needs to be checked and swapped to the native byte
 order in systems that use the little endian format when non-native data
 formats are not supported.  This is the case in some implementations of FITS
-readers that do not use the \texttt{cfitsio} library (ascl:1010.001) and
-which utilize C routines to implement other scientific capabilities.
-Programmers on little endian platforms who work with large data volumes may
-find this limitation results in a significant performance cost as
-marshalling data to and from the FITS big endian ordering will be required.
-This is a frequent problem for astronomical software. Little endianness is
-found on x86 and x86-64 processors that are commonly used in Universities
-and research laboratories.
+readers that do not use the \texttt{cfitsio} library
+(\href{http://ascl.net/1010.001}{ascl:1010.001}) and which utilize C
+routines to implement other scientific capabilities.  Programmers on little
+endian platforms who work with large data volumes may find this limitation
+results in a significant performance cost as marshalling data to and from
+the FITS big endian ordering will be required.  This is a frequent problem
+for astronomical software. Little endianness is found on x86 and x86-64
+processors that are commonly used in Universities and research laboratories.
 
 
 Nonetheless, this design choice does not only constitute a problem in
@@ -1164,7 +1166,7 @@ many millions of dollars.
 
 Currently the \texttt{cfitsio} library supports several types of image
 compression by convention \citep[see
-e.g.][ascl:1010.002]{2000ASPC..216..551P,2007ASPC..376..483S,2009PASP..121..414P}.
+e.g.][\href{http://ascl.net/1010.002}{ascl:1010.002}]{2000ASPC..216..551P,2007ASPC..376..483S,2009PASP..121..414P}.
 Binary table extensions are used to contain the encoded data, though an
 image access interface is used to hide this peculiarity due to the
 limitations of FITS. Obviously interoperability is lost in this case as
