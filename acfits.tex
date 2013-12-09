@@ -1068,13 +1068,14 @@ be extremely valuable to data and application interoperability.
 \subsubsection{No support for declaring byte order}
 
 
-The FITS standard  \citep{1981A&AS...44..363W} requires that a series of
-consecutive bytes in multi-byte data items are stored in order of decreasing
-significance (big endian format).  Sometimes the byte order needs to be
-checked and swapped to the native byte order in systems that use the little
-endian format when non-native data formats are not supported (as in
-implementations of FITS readers that do not use the \texttt{cfitsio} library
-and which utilize C routines to implement other scientific capabilities).
+The original FITS standard specification \citep{1981A&AS...44..363W}
+requires that a series of consecutive bytes in multi-byte data items is
+stored in order of decreasing significance (known as big endian format).
+Sometimes the byte order needs to be checked and swapped to the native byte
+order in systems that use the little endian format when non-native data
+formats are not supported.  This is the case in some implementations of FITS
+readers that do not use the \texttt{cfitsio} library (ascl:1010.001) and
+which utilize C routines to implement other scientific capabilities.
 Programmers on little endian platforms who work with large data volumes may
 find this limitation results in a significant performance cost as
 marshalling data to and from the FITS big endian ordering will be required.
@@ -1083,9 +1084,22 @@ found on x86 and x86-64 processors that are commonly used in Universities
 and research laboratories.
 
 
+Nonetheless, this design choice does not only constitute a problem in
+certain cases where extra processing time is needed to perform the
+byte-swapping.  The freedom to specify the byte ordering of the data is
+desirable in other use-cases as well. Clearly, the ability to wrap existing
+data products into FITS files, without reprocessing it to the specified
+byte-order in the FITS standard, is one of the more important of them. From
+the perspective of an archivist with the responsibility of preserving the
+records of astronomical observations, the less the data is altered, the more
+efficient and reliable the archival data management will be.
+
+
 Other data formats used to store scientific binary data such as HDF5 or
 netCDF are able to declare the byte ordering by using a data type flag and
 the software libraries will perform the byte order conversion if required.
+Thus, we suggest that FITS should be able to declare the byte ordering of
+data by using a FITS keyword defined in the standard dictionary.
 
 
 \subsection{Inadequate support for large or distributed data}
@@ -1148,13 +1162,13 @@ are directly translatable to dollars. For projects like SKA with many
 exabytes planned to be collected, volumes of data will be translated into
 many millions of dollars.
 
-Currently the \texttt{cfitsio} (ascl:1010.001) library supports
-several types of image compression by convention
-\citep[see e.g.][ascl:1010.002]{2000ASPC..216..551P,2007ASPC..376..483S,2009PASP..121..414P}.  Binary table
-extensions are used to contain the encoded data, though an image
-access interface is used to hide this peculiarity due to the
-limitations of FITS. Obviously interoperability is lost in this case
-as no other library can read such an image without also adopting the
+Currently the \texttt{cfitsio} library supports several types of image
+compression by convention \citep[see
+e.g.][ascl:1010.002]{2000ASPC..216..551P,2007ASPC..376..483S,2009PASP..121..414P}.
+Binary table extensions are used to contain the encoded data, though an
+image access interface is used to hide this peculiarity due to the
+limitations of FITS. Obviously interoperability is lost in this case as
+no other library can read such an image without also adopting the
 convention.
 
 \subsubsection{No support for capturing indeterminately sized data sets via streaming}
