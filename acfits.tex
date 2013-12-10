@@ -1003,9 +1003,17 @@ file (and sometimes even if you are!) its easy to find that the
 cramped names of the keywords often leads to arcane and confusing
 metadata.
 
-\textit{\color{red} Is it worth mentioning here the knock-on effect that FITS 
+\textit{\color{red} Is it worth mentioning here the knock-on effect that FITS
 tables can only have up to 999 columns because of the need for keywords of the
 form \texttt{TFORMnnn} and the 8 character limit?}
+
+Due to the limited namespace of keywords, different conventions often
+reuse the same keywords for different purposes.  Compare, for example,
+the \texttt{PV} keywords in the products of the SCAMP tools
+\cite{SCAMP}, used for polynomial distortion coefficients, to the more
+common \texttt{PV} keywords used in the WCS convention for generic
+parameter values.  These two conventions, when used in the same file,
+cause ambiguity and incorrect representation of the data.
 
 These restrictions on the FITS card have other impacts as well. They
 can and do limit the utility of FITS conventions which may be
