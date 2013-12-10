@@ -690,15 +690,17 @@ transformations by stacking simpler atomic mappings -- is usually the
 most efficient representation as far as data storage is concerned.
 
 
-As an example, HST data requires multiple distortion components
-\citep[see e.g.][]{2013ASPC..475...49H}. Some are small but
-discontinuous. Others are linear but time varying. There is no FITS WCS
-compatible solution that handles these needs well. As another example,
-SCUBA-2 raw data \citep[see e.g.][]{2013MNRAS.430.2513H} includes focal
-plane distortions which are combined with other transformations but
-must also support the dynamic insertion of other distortion models
-when an FTS \citep{2010SPIE.7741E..67G} is placed in the
-beam. {\color{red} [Other examples welcome]}.
+As an example, imaging data taken by the Hubble Space Telescope require
+multiple distortion components \citep[see e.g.][]{2013ASPC..475...49H}.
+Some are small but discontinuous. Others are linear but time varying.
+There is no FITS WCS compatible solution that handles these needs well.
+As another example, SCUBA-2 raw data \citep[see
+e.g.][]{2013MNRAS.430.2513H} include focal plane distortions which are
+combined with other transformations but must also support the dynamic
+insertion of other distortion models when a Fourier transform
+spectrometer \citep{2010SPIE.7741E..67G} is placed in the beam.
+{\color{red} [Other examples welcome]}.
+
 
 \textit{\color{red} Do we want to comment on the WCSDEP convention proposed for
   concatenating WCS models? \url{http://tdc-www.harvard.edu/wcstools/wcsdep_20020906.pdf}}
