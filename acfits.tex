@@ -1079,14 +1079,15 @@ lists and objects.
 
 As data acquisition and data reduction systems have become more
 complex there has been a move to storing multiple image data
-components in extensions within a single FITS file. The FITS
-extension mechanism provides a scheme for having multiple images but
-in essentially a flat structure. If you have 12 images in the file
+components in extensions within a single FITS file. The FITS extension
+mechanism provides a scheme for having multiple images but, as noted
+in \citet{2003ASSL..285...71G}, in essentially a flat structure
+without hierarchy or inheritance. If you have 12 images in the file
 there is no way of indicating that 3 of them are data, 3 are an error
 and 3 are a quality mask. Indeed, there is no way of specifying which
-triplets are related. You can use the \texttt{EXTNAME} header to indicate
-relationships but this relies on convention and string parsing rather
-than being a standard part of the format.
+triplets are related. You can use the \texttt{EXTNAME} header to
+indicate relationships but this relies on convention and string
+parsing rather than being a standard part of the format.
 
 
 The conversion of NDF format files to FITS and back to NDF
