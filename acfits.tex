@@ -373,12 +373,50 @@ Starlink (\href{http://ascl.net/1110.012}{ascl:1110.012}), AIPS
 (\href{http://ascl.net/1302.017}{ascl:1302.017}).
 
 
-However, requirements for interchange have evolved. Effective
-interchange, as we shall illustrate, now includes things like the
-ability to declare models for use in higher level processing,
-validation of models within the file and, at the most basic level, the
-ability to declare which version of the FITS serialization is being
-used.
+In principle, FITS promotes interchange through its simple and easily
+understood format which groups metadata with data blocks. Metadata are 
+captured via key-value pairs which are in turn grouped into FITS headers. 
+The first header is denoted as the 'primary' header and subsequent headers 
+known as 'extensions'. Headers may or may not be then grouped with data blocks. 
+An example primary FITS header appears in figure \ref{fig:fitshead}. 
+
+
+\begin{figure*}
+\begin{minipage}{\textwidth}
+\begin{center}
+\begin{verbatim}
+SIMPLE  =                    T / Standard FITS format
+BITPIX  =                  -32 / 32 bit IEEE floating point numbers
+NAXIS   =                    3 / Number of axes
+NAXIS1  =                  800 /
+NAXIS2  =                  800 /
+NAXIS3  =                    4 /
+EXTEND  =                    T / There may be standard extensions
+ATODGAIN=             7.000000 / Analog to Digital Gain (Electrons/DN)
+RNOISE  =             1.010153 / Readout Noise (DN)
+EPOCH   =       49740.82869315 / exposure average time (Modified Julian Date)
+EXPTIME =          2500.000000 / exposure duration (seconds)--calculated
+EXP0    =          1300.000000 / weighted average initial exposure time
+RSDPFILL=                 -250 / bad data fill value for calibrated images
+SATURATE=                10237 / Data value at which saturation occurs
+TEMP    =                    0 / Temperature (0=cold, 1=warm)
+FILTNAM1= 'F555W             ' / first filter name
+HSTPHOT =                    T / Preprocessed by HSTphot/mask
+END
+\end{verbatim}
+\end{center}
+\caption{Representative simple primary header of a FITS file showing an assortment of FITS keywords and their associated values. Bytes which contain data may or may not follow the 'END' keyword of the header.}
+\label{fig:fitshead}
+\end{minipage}
+\end{figure*}
+
+
+This simple arrangement of information can satisfy many use cases for 
+transport, however, requirements for interchange have evolved. Effective 
+interchange, as we shall illustrate, now includes things like the ability to 
+declare models for use in higher level processing, validation of models within 
+the file and, at the most basic level, the ability to declare which version of 
+the FITS serialization is being used.
 
 
 It is not as if we have not needed these things until now. In fact,
@@ -402,23 +440,39 @@ data processing and I/O parallelization needs.
 \subsubsection{Lack of serialization/format versioning}
 
 
+There is no standard means which allows the FITS file to                
+communicate the formatting version it conforms to.  Consider the example primary header
+in figure \ref{fig:fitshead}, the only keyword which implies any type of 
+format is SIMPLE which is set to 'T', or true. The comment indicates that 
+the file conforms to ''Standard FITS format'', but what indeed is that 'Standard'? 
+We cannot know if the implied standard is actually 3.0 or some earlier (or later!)
+version.
+
+%{\color{red} We use ``once FITS, forever FITS'' here and later ``once
+%  FITS, always FITS''. \citet{2003ASSL..285...71G} uses ``always'' variant.}
+
 The designers and maintainers of FITS have espoused that a file is
 ``once FITS, forever FITS''
 \citep[see e.g.,][]{1988A&AS...73..359G,1993FITS1,2003ASSL..285...71G}.
-Certainly some in the community see
-this as a strength for the format as it appears to promote long term
-stability and archivability of FITS data \citep{2012EWASSAlle,2012LOC}.
-Nonetheless, the assumption that the format will be static has consequences
-for its further development and use.
+Certainly some in the community see this as a strength for the format 
+as it appears to promote long term stability and archivability of FITS 
+data \citep{2012EWASSAlle,2012LOC}. The assumption that FITS has not changed
+is however, false. Accounting may differ, but there have been at least 3 
+recognized named versions of FITS. These include the first, or 'basic' FITS 
+version \citep{1979ipia.coll..445W}, the NOST version of FITS 
+\citep{2001A&A...376..359H} and the current version 3.0 \citep{2010A&A...524A..42P}.  
+Indeed, for the extreme doubters, why do we name a version '3.0' if there 
+were not 2 earlier recognized versions? It is clear then that the format 
+has not been static, furthermore, but even if this were true, which it is 
+not, this assumption has consequences for its further development of FITS 
+and its use.
 
-{\color{red} We use ``once FITS, forever FITS'' here and later ``once
-  FITS, always FITS''. \citet{2003ASSL..285...71G} uses ``always'' variant.}
 
 First, and most clearly, omitting the ability to version the file
 means that currently no FITS reader knows what version of the format
 it is reading. The usual assumption is that the latest version (v3.0)
 is being read, however, there are still many data which predate this
-version of FITS serialization making this supposition often incorrect.
+version of FITS serialization making this supposition sometimes incorrect.
 
 
 The lack of versioning also limits the ability of our community to
