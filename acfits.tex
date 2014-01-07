@@ -463,16 +463,16 @@ version \citep{1979ipia.coll..445W}, the NOST version of FITS
 \citep{2001A&A...376..359H} and the current version 3.0 \citep{2010A&A...524A..42P}.  
 Indeed, for the extreme doubters, why do we name a version '3.0' if there 
 were not 2 earlier recognized versions? It is clear then that the format 
-has not been static, furthermore, but even if this were true, which it is 
-not, this assumption has consequences for its further development of FITS 
-and its use.
+has not been static.  Even so, the assumption that the FITS format is static 
+has negative consequences for its further development and its use.
 
 
-First, and most clearly, omitting the ability to version the file
-means that currently no FITS reader knows what version of the format
-it is reading. The usual assumption is that the latest version (v3.0)
-is being read, however, there are still many data which predate this
-version of FITS serialization making this supposition sometimes incorrect.
+The first impact is that by omitting the ability to version the file no 
+FITS reader knows what version of the format it is reading. The usual 
+presumption made by software developers is that the latest version (v3.0)
+is being read, however, there are still many data which predate
+this version of FITS serialization making this supposition sometimes
+incorrect.
 
 
 The lack of versioning also limits the ability of our community to
