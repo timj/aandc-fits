@@ -558,9 +558,10 @@ The fundamental question of ``what are these data you gave me about?''
 also be answered when we allow information in the file to be associated
 with one or more data models.
 It is important to note that these are all questions critical to consumers 
-of the file and by allowing the file to declare its association to one or
-more data models, we may answer all of these questions without having
-a human inspect the file.
+of the file.
+% and by allowing the file to declare its association to one or
+%more data models, we may answer all of these questions without having
+%a human inspect the file.
 
 
 There is already evidence that the FITS community values and needs shared 
@@ -576,12 +577,34 @@ keywords may be seen at the GSFC FITS site, see
 an act of declaring one or more data model(s). 
 
 
-It is clear that we have need of these things, yet, the only way in which we
-can currently determine that a file conforms to one or more of these
-models is for a human to communicate this to one another, for a human
-to inspect the file personally, or for special purpose software,
-targeted to particular data models/namespaces, to be written to detect
-the presence of the model(s) in the file.
+All of these data models also imply an associated ``namespace'' which is
+a means of declaring the origin of the data model so that we may
+disambiguate or associate declared properties in the file with other
+information external to the file. These are common problems to solve;
+even the 'simple' metadata in figure \ref{fig:fitshead} illustrates this.
+
+
+In the example FITS header the EPOCH keyword is a source of ambiguity.
+The comment indicates it is the epoch of the Modified Julian Date, however,
+in other files, EPOCH may be used to declare the epoch for a different
+time system (such as ICRS or FK5), and thus, not directly comparable to
+the information in the example.
+
+
+The use of the EXPTIME keyword presents an example of association.
+This keyword declares the exposure time, a common property in astronomical
+observations. Other FITS files may instead utilize a different keyword for the
+exact same meaning, for example, the keyword EXP\_TIME. At the NOAO archive
+{\color{red} (NOAO Archive reference here)} there are examples of both
+declarations of exposure time. One keyword is valid for some instruments, 
+and the other valid for other instruments {\color{red} (NOAO keyword 
+dictionary reference here)}.
+
+
+It is clear then that there is a need for namespaced data models,
+yet, the only way in which we can currently implement them is for a human
+to inspect the file, or to write special purpose software targeted to 
+particular namespaced data models.
 
 
 Given the data volumes that we have in astronomy, the later choice is
@@ -592,7 +615,8 @@ there are constantly new data models being created and
 modified. Keeping the code up to date will be problematic, at
 best. Furthermore, there is the possible complication of more than one
 data model being present. Without explicit signposts in the file, it
-is likely hopeless to disambiguate which data models are present.
+is likely hopeless to determine which data models are present and
+map information to appropriate meaning.
 
 
 A means to capture the data model/namespace information, in the file,
