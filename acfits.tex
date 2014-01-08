@@ -493,13 +493,13 @@ Both of these issues needlessly drive greater and greater complexity
 in implementation of FITS parsers. Furthermore, lack of versioning
 arguably works counter to the purpose of increased archivability of
 the files. Counter to the maxim ``once FITS, forever FITS'', FITS reader
-software are not able to read just any version of FITS. Certainly,
-were someone to utilize code developed in the early 1980s to read a
-FITS file containing a binary table, or a FITS file with extensions,
-it would fail because it would have no idea how to handle these data
-structures. Suitability for archiving not only means that software are
-backward compatible, but that older software can gracefully handle
-newer versions of the format.
+software are not able to appropriately handle just any version of FITS. 
+Certainly, were someone to utilize code developed in the early 1980s 
+to read a FITS file containing a binary table, or a FITS file with 
+extensions, it would fail because it would have no idea how to handle these 
+data structures. Suitability for archiving not only means that software are
+backward compatible, but that older software can gracefully handle newer 
+versions of the format.
 
 
 Versioning should be made part of the FITS standard in order to
