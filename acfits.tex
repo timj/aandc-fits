@@ -374,11 +374,12 @@ Starlink (\href{http://ascl.net/1110.012}{ascl:1110.012}), AIPS
 
 
 In principle, FITS promotes interchange through its simple and easily
-understood format which groups metadata with data blocks. Metadata are 
-captured via key-value pairs which are in turn grouped into FITS headers. 
-The first header is denoted as the 'primary' header and subsequent headers 
-known as 'extensions'. Headers may or may not be then grouped with data blocks. 
-An example primary FITS header appears in figure \ref{fig:fitshead}. 
+understood format which holds its information in various levels of groupings 
+of metadata and data blocks. Metadata are captured via key-value pairs which 
+are in turn grouped into FITS headers. The first header is denoted as the 
+'primary' header and subsequent headers known as 'extensions'. Headers may or 
+may not be then grouped with data blocks.  An example primary FITS header 
+appears in figure \ref{fig:fitshead}. 
 
 
 \begin{figure*}
@@ -444,7 +445,7 @@ There is no standard means which allows the FITS file to
 communicate the formatting version it conforms to.  Consider the example primary header
 in figure \ref{fig:fitshead}, the only keyword which implies any type of 
 format is SIMPLE which is set to 'T', or true. The comment indicates that 
-the file conforms to ''Standard FITS format'', but what indeed is that 'Standard'? 
+the file conforms to ``Standard FITS format'', but what indeed is that 'Standard'? 
 We cannot know if the implied standard is actually 3.0 or some earlier (or later!)
 version.
 
@@ -544,26 +545,38 @@ namespace so that collisions in naming of the models and requisite
 parameters are avoided.
 
 
-Important questions such as ``are all of the data here?'', ``is the
-information in the file correct?'' (no bad values for metadata/data),
-``do the data conform to the expected data model?'', and fundamentally
-``what are these data you gave me about?'' are all, generally speaking,
-questions of ``validation'' which are related to the data model(s)
-contained in any given file.
+Data models can provide a standard by which information (data and metadata)
+in the file may be validated and understood.  Questions such as
+``are all of the required metadata/data structures present in the file?''
+(ex. all of the needed keywords occur in the correct places in the file)
+and ``are there any non-normative values in the file?'' (all
+metadata/data values are within expected bounds) are both questions
+answered by ``validation'' (conformance of information in the file to one
+or more declared data models).
+The fundamental question of ``what are these data you gave me about?''
+(ex. lists of stars, tables of galaxies, images of dust clouds, etc) may
+also be answered when we allow information in the file to be associated
+with one or more data models.
+It is important to note that these are all questions critical to consumers 
+of the file and by allowing the file to declare its association to one or
+more data models, we may answer all of these questions without having
+a human inspect the file.
 
 
-To illustrate better how FITS fails in this regard, consider that the
-FITS community already has many shared, common data models. WCS and
-some other FITS conventions such as OIFITS
+There is already evidence that the FITS community values and needs shared 
+data models. There are many examples. WCS and some other FITS conventions 
+such as OIFITS
 \citep{2006SPIE.6268E.106T}, MBFITS \citep{2006A&A...454L..25M},
 PSRFITS \citep{2004PASA...21..302H},
 SDFITS \citep{2000ASPC..216..243G} and FITS-IDI \citep{2011AIPS114}
-declare data models. The declaration of keyword
+are data models. The declaration of keyword
 dictionaries\footnote{Some collected data dictionaries with FITS
 keywords may be seen at the GSFC FITS site, see
 \url{http://fits.gsfc.nasa.gov/fits\_dictionary.html}} is also essentially
-an act of declaring a namespace and related data model(s). So it is
-clear that we have need of these things, yet, the only way in which we
+an act of declaring one or more data model(s). 
+
+
+It is clear that we have need of these things, yet, the only way in which we
 can currently determine that a file conforms to one or more of these
 models is for a human to communicate this to one another, for a human
 to inspect the file personally, or for special purpose software,
