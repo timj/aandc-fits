@@ -541,7 +541,7 @@ instrumentation, and so forth. In FITS-speak, we can say that any FITS
 keyword outside those defined in the FITS standard is a data model
 parameter, and collections of related FITS keywords form a data model.
 Ideally a data model should be associated with a given, unique,
-namespace so that collisions in naming of the models and requisite
+``namespace'' so that collisions in naming of the models and requisite
 parameters are avoided.
 
 
@@ -579,26 +579,26 @@ an act of declaring one or more data model(s).
 
 All of these data models also imply an associated ``namespace'' which is
 a means of declaring the origin of the data model so that we may
-disambiguate or associate declared properties in the file with other
-information external to the file. These are common problems to solve;
-even the 'simple' metadata in figure \ref{fig:fitshead} illustrates this.
+disambiguate or associate declared properties between models. 
+These are common problems to solve and even the 'simple' metadata in 
+figure \ref{fig:fitshead} illustrates this.  Consider the TEMP keyword in
+the example. What is this the temperature of? TEMP is a likely keyword
+string to appear in other files, how do we know if the TEMP in the other
+files is the same one we see in the example? 
 
 
-In the example FITS header the EPOCH keyword is a source of ambiguity.
-The comment indicates it is the epoch of the Modified Julian Date, however,
-in other files, EPOCH may be used to declare the epoch for a different
-time system (such as ICRS or FK5), and thus, not directly comparable to
-the information in the example.
-
-
-The use of the EXPTIME keyword presents an example of association.
-This keyword declares the exposure time, a common property in astronomical
-observations. Other FITS files may instead utilize a different keyword for the
-exact same meaning, for example, the keyword EXP\_TIME. At the NOAO archive
-{\color{red} (NOAO Archive reference here)} there are examples of both
-declarations of exposure time. One keyword is valid for some instruments, 
-and the other valid for other instruments {\color{red} (NOAO keyword 
-dictionary reference here)}.
+The use of the EXPTIME 
+keyword presents a another example of the need for namespaces.
+In this case, we know clearly it is the exposure time of the detector 
+which is a common property in astronomical observations however there may 
+exist other files which contain this same property, but instead name it 
+EXP\_TIME\footnote{This is a real example. At NOAO we have some instrument 
+data models which use one term and vice versa.}. 
+How can the machine know 
+that these are the same properties? A machine readable mapping between
+the models could be set up. This mapping should be written in a common 
+shared format (for FITS files) and all downstream software would know
+that model1:EXPTIME property is the same as model2:EXP\_TIME.
 
 
 It is clear then that there is a need for namespaced data models,
