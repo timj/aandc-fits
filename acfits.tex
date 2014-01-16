@@ -377,7 +377,7 @@ In principle, FITS promotes interchange through its simple and easily
 understood format which holds its information in various levels of groupings 
 of metadata and data blocks. Metadata are captured via key-value pairs which 
 are in turn grouped into FITS headers. The first header is denoted as the 
-'primary' header and subsequent headers known as 'extensions'. Headers may or 
+`primary' header and subsequent headers known as `extensions'. Headers may or 
 may not be then grouped with data blocks.  An example primary FITS header 
 appears in figure \ref{fig:fitshead}. 
 
@@ -406,7 +406,7 @@ HSTPHOT =                    T / Preprocessed by HSTphot/mask
 END
 \end{verbatim}
 \end{center}
-\caption{Representative simple primary header of a FITS file showing an assortment of FITS keywords and their associated values. Bytes which contain data may or may not follow the 'END' keyword of the header.}
+\caption{Representative simple primary header of a FITS file showing an assortment of FITS keywords and their associated values. Bytes which contain data may or may not follow the `END' keyword of the header.}
 \label{fig:fitshead}
 \end{minipage}
 \end{figure*}
@@ -444,8 +444,8 @@ data processing and I/O parallelization needs.
 There is no standard means which allows the FITS file to                
 communicate the formatting version it conforms to.  Consider the example primary header
 in figure \ref{fig:fitshead}, the only keyword which implies any type of 
-format is SIMPLE which is set to 'T', or true. The comment indicates that 
-the file conforms to ``Standard FITS format'', but what indeed is that 'Standard'? 
+format is SIMPLE which is set to `T', or true. The comment indicates that 
+the file conforms to ``Standard FITS format'', but what indeed is that `Standard'? 
 We cannot know if the implied standard is actually 3.0 or some earlier (or later!)
 version.
 
@@ -456,10 +456,10 @@ Certainly some in the community see this as a strength for the format
 as it appears to promote long term stability and archivability of FITS 
 data \citep{2012EWASSAlle,2012LOC}. The assumption that FITS has not changed
 is however, false. Accounting may differ, but there have been at least 3 
-recognized named versions of FITS. These include the first, or 'basic' FITS 
+recognized named versions of FITS. These include the first, or `basic' FITS 
 version \citep{1979ipia.coll..445W}, the NOST version of FITS 
 \citep{2001A&A...376..359H} and the current version 3.0 \citep{2010A&A...524A..42P}.  
-Indeed, for the extreme doubters, why do we name a version '3.0' if there 
+Indeed, for the extreme doubters, why do we name a version `3.0' if there 
 were not 2 earlier recognized versions? It is clear then that the format 
 has not been static.  Even so, the assumption that the FITS format is static 
 has negative consequences for its further development and its use.
@@ -580,7 +580,7 @@ an act of declaring one or more data model(s).
 All of these data models also imply an associated ``namespace'' which is
 a means of declaring the origin of the data model so that we may
 disambiguate or associate declared properties between models. 
-These are common problems to solve and even the 'simple' metadata in 
+These are common problems to solve and even the `simple' metadata in 
 figure \ref{fig:fitshead} illustrates this.  Consider the TEMP keyword in
 the example. What is this the temperature of? TEMP is a likely keyword
 string to appear in other files, how do we know if the TEMP in the other
