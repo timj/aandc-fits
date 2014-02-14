@@ -392,12 +392,12 @@ Starlink (\href{http://ascl.net/1110.012}{ascl:1110.012}), AIPS
 
 
 In principle, FITS promotes interchange through its simple and easily
-understood format which holds its information in various levels of groupings 
-of metadata and data blocks. Metadata are captured via key-value pairs which 
-are in turn grouped into FITS headers. The first header is denoted as the 
-`primary' header and subsequent headers known as `extensions'. Headers may or 
-may not be then grouped with data blocks.  An example primary FITS header 
-appears in Fig.\ \ref{fig:fitshead}. 
+understood format which holds its information in various levels of groupings
+of metadata and data blocks. Metadata are captured via key-value pairs which
+are in turn grouped into FITS headers. The first header is denoted as the
+`primary' header and subsequent headers known as `extensions'. Headers may or
+may not be then grouped with data blocks.  An example primary FITS header
+appears in Fig.\ \ref{fig:fitshead}.
 
 
 \begin{figure*}
@@ -430,11 +430,11 @@ END
 \end{figure*}
 
 
-This simple arrangement of information can satisfy many use cases for 
-transport, however, requirements for interchange have evolved. Effective 
-interchange, as we shall illustrate, now includes things like the ability to 
-declare models for use in higher level processing, validation of models within 
-the file and, at the most basic level, the ability to declare which version of 
+This simple arrangement of information can satisfy many use cases for
+transport, however, requirements for interchange have evolved. Effective
+interchange, as we shall illustrate, now includes things like the ability to
+declare models for use in higher level processing, validation of models within
+the file and, at the most basic level, the ability to declare which version of
 the FITS serialization is being used.
 
 
@@ -459,32 +459,32 @@ data processing and I/O parallelization needs.
 \subsubsection{Lack of serialization/format versioning}
 
 
-There is no standard means which allows the FITS file to                
+There is no standard means which allows the FITS file to
 communicate the formatting version it conforms to.  Consider the example primary header
-in Fig.\ \ref{fig:fitshead}, the only keyword which implies any type of 
-format is SIMPLE which is set to `T', or true. The comment indicates that 
-the file conforms to ``Standard FITS format'', but what indeed is that `Standard'? 
+in Fig.\ \ref{fig:fitshead}, the only keyword which implies any type of
+format is SIMPLE which is set to `T', or true. The comment indicates that
+the file conforms to ``Standard FITS format'', but what indeed is that `Standard'?
 We cannot know if the implied standard is actually 3.0 or some earlier (or later!)
 version.
 
 
 The designers and maintainers of FITS have espoused that a file is
 ``once FITS, forever FITS'' \citep[see e.g.,][]{1988A&AS...73..359G,1993FITS1}.
-Certainly some in the community see this as a strength for the format 
-as it appears to promote long term stability and archivability of FITS 
+Certainly some in the community see this as a strength for the format
+as it appears to promote long term stability and archivability of FITS
 data \citep{2012EWASSAlle,2012LOC}. The assumption that FITS has not changed
 is however, false. Accounting may differ, but there have been at least three
-recognized named versions of FITS. These include the first, or `basic' FITS 
-version \citep{1979ipia.coll..445W}, the NOST version of FITS 
-\citep{2001A&A...376..359H} and the current version 3.0 \citep{2010A&A...524A..42P}.  
-Indeed, for the extreme doubters, why do we name a version `3.0' if there 
-were not two earlier recognized versions? It is clear then that the format 
-has not been static.  Even so, the assumption that the FITS format is static 
+recognized named versions of FITS. These include the first, or `basic' FITS
+version \citep{1979ipia.coll..445W}, the NOST version of FITS
+\citep{2001A&A...376..359H} and the current version 3.0 \citep{2010A&A...524A..42P}.
+Indeed, for the extreme doubters, why do we name a version `3.0' if there
+were not two earlier recognized versions? It is clear then that the format
+has not been static.  Even so, the assumption that the FITS format is static
 has negative consequences for its further development and its use.
 
 
-The first impact is that by omitting the ability to version the file no 
-FITS reader knows what version of the format it is reading. The usual 
+The first impact is that by omitting the ability to version the file no
+FITS reader knows what version of the format it is reading. The usual
 presumption made by software developers is that the latest version (v3.0)
 is being read, however, there are still many data which predate
 this version of FITS serialization making this supposition sometimes
@@ -509,12 +509,12 @@ Both of these issues needlessly drive greater and greater complexity
 in implementation of FITS parsers. Furthermore, lack of versioning
 arguably works counter to the purpose of increased archivability of
 the files. Counter to the maxim ``once FITS, forever FITS'', FITS reader
-software are not able to appropriately handle just any version of FITS. 
-Certainly, were someone to utilize code developed in the early 1980s 
-to read a FITS file containing a binary table, or a FITS file with 
-extensions, it would fail because it would have no idea how to handle these 
+software are not able to appropriately handle just any version of FITS.
+Certainly, were someone to utilize code developed in the early 1980s
+to read a FITS file containing a binary table, or a FITS file with
+extensions, it would fail because it would have no idea how to handle these
 data structures. Suitability for archiving not only means that software are
-backward compatible, but that older software can gracefully handle newer 
+backward compatible, but that older software can gracefully handle newer
 versions of the format.
 
 
@@ -538,7 +538,7 @@ be lost.
 Related to, but separate from the lack of versioning of the
 serialization, is the lack of ability to declare the presence of data
 models and their associated semantic meaning.  By `data model' we
-adopt the meaning ({\color{red} need a reference, used Wikipedia but 
+adopt the meaning ({\color{red} need a reference, used Wikipedia but
 some didnt like utilizing that source, other reference?}
 
 
@@ -575,15 +575,15 @@ The fundamental question of ``what are these data you gave me about?''
 (e.g.~lists of stars, tables of galaxies, images of dust clouds, etc) may
 also be answered when we allow information in the file to be associated
 with one or more data models.
-It is important to note that these are all questions critical to consumers 
+It is important to note that these are all questions critical to consumers
 of the file.
 % and by allowing the file to declare its association to one or
 %more data models, we may answer all of these questions without having
 %a human inspect the file.
 
 
-There is already evidence that the FITS community values and needs shared 
-data models. There are many examples. WCS and some other FITS conventions 
+There is already evidence that the FITS community values and needs shared
+data models. There are many examples. WCS and some other FITS conventions
 such as OIFITS
 \citep{2006SPIE.6268E.106T}, MBFITS \citep{2006A&A...454L..25M},
 PSRFITS \citep{2004PASA...21..302H},
@@ -592,36 +592,36 @@ are data models. The declaration of keyword
 dictionaries\footnote{Some collected data dictionaries with FITS
 keywords may be seen at the GSFC FITS site, see
 \url{http://fits.gsfc.nasa.gov/fits\_dictionary.html}} is also essentially
-an act of declaring one or more data model(s). 
+an act of declaring one or more data model(s).
 
 
 All of these data models also imply an associated ``namespace'' which is
 a means of declaring the origin of the data model so that we may
-disambiguate or associate declared properties between models. 
-These are common problems to solve and even the `simple' metadata in 
+disambiguate or associate declared properties between models.
+These are common problems to solve and even the `simple' metadata in
 Fig.\ \ref{fig:fitshead} illustrates this.  Consider the TEMP keyword in
 the example. What is this the temperature of? TEMP is a likely keyword
 string to appear in other files, how do we know if the TEMP in the other
-files is the same one we see in the example? 
+files is the same one we see in the example?
 
 
-The use of the EXPTIME 
+The use of the EXPTIME
 keyword presents a another example of the need for namespaces.
-In this case, we know clearly it is the exposure time of the detector 
-which is a common property in astronomical observations however there may 
-exist other files which contain this same property, but instead name it 
-EXP\_TIME\footnote{This is a real example. At NOAO we have some instrument 
-data models which use one term and vice versa.}. 
-How can the machine know 
+In this case, we know clearly it is the exposure time of the detector
+which is a common property in astronomical observations however there may
+exist other files which contain this same property, but instead name it
+EXP\_TIME\footnote{This is a real example. At NOAO we have some instrument
+data models which use one term and vice versa.}.
+How can the machine know
 that these are the same properties? A machine readable mapping between
-the models could be set up. This mapping should be written in a common 
+the models could be set up. This mapping should be written in a common
 shared format (for FITS files) and all downstream software would know
 that model1:EXPTIME property is the same as model2:EXP\_TIME.
 
 
 It is clear then that there is a need for namespaced data models,
 yet, the only way in which we can currently implement them is for a human
-to inspect the file, or to write special purpose software targeted to 
+to inspect the file, or to write special purpose software targeted to
 particular namespaced data models.
 
 
