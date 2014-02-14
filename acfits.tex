@@ -397,7 +397,7 @@ of metadata and data blocks. Metadata are captured via key-value pairs which
 are in turn grouped into FITS headers. The first header is denoted as the
 `primary' header and subsequent headers known as `extensions'. Headers may or
 may not be then grouped with data blocks.  An example primary FITS header
-appears in Fig.\ \ref{fig:fitshead}.
+appears in Fig.~\ref{fig:fitshead}.
 
 
 \begin{figure*}
@@ -461,7 +461,7 @@ data processing and I/O parallelization needs.
 
 There is no standard means which allows the FITS file to
 communicate the formatting version it conforms to.  Consider the example primary header
-in Fig.\ \ref{fig:fitshead}, the only keyword which implies any type of
+in Fig.~\ref{fig:fitshead}, the only keyword which implies any type of
 format is SIMPLE which is set to `T', or true. The comment indicates that
 the file conforms to ``Standard FITS format'', but what indeed is that `Standard'?
 We cannot know if the implied standard is actually 3.0 or some earlier (or later!)
@@ -599,7 +599,7 @@ All of these data models also imply an associated ``namespace'' which is
 a means of declaring the origin of the data model so that we may
 disambiguate or associate declared properties between models.
 These are common problems to solve and even the `simple' metadata in
-Fig.\ \ref{fig:fitshead} illustrates this.  Consider the TEMP keyword in
+Fig.~\ref{fig:fitshead} illustrates this.  Consider the TEMP keyword in
 the example. What is this the temperature of? TEMP is a likely keyword
 string to appear in other files, how do we know if the TEMP in the other
 files is the same one we see in the example?
@@ -884,7 +884,7 @@ files in other ways (or in separate files). For example, the AST
 library \citep{1998ASPC..145...41W,2012ASPC..461..825B} is not subject
 to these limitations, but is forced to use non-standard FITS
 representations when representing data in its own native FITS
-encoding (see Fig.\ \ref{fig:asthead}).
+encoding (see Fig.~\ref{fig:asthead}).
 
 \begin{figure*}
 \begin{minipage}{\textwidth}
@@ -1081,11 +1081,11 @@ order of the values (such as \texttt{ICMB001}, \texttt{ICMB002}, and
 so on). Another example is the IRAF \textit{multispec} format
 \citep[see][and references therein]{1993ASPC...52..467V} which uses
 this scheme to specify related world coordinate information. An
-example of this is shown in Fig.\ \ref{fig:multispec}. The AST library
+example of this is shown in Fig.~\ref{fig:multispec}. The AST library
 \citep[][and see also \S\ref{sec:wcs}]{1998ASPC..145...41W} takes a
 similar approach in converting the WCS objects into FITS headers when
 the transformations are too complex to be represented by standard WCS
-headers (see Fig.\ \ref{fig:asthead}).
+headers (see Fig.~\ref{fig:asthead}).
 
 \begin{figure*}
 \begin{minipage}{\textwidth}
