@@ -326,7 +326,7 @@ formats, both in the past, such as the Starlink Hierarchical Data System
 \citep[HDS;][]{1982QJRAS..23..485D}, the eXtensible Data Format
 \citep[XDF;][]{2001ASPC..238..217S}, FITSML \citep{2001ASPC..238..487T}
 and HDX \citep{2003ASPC..295..221G}; and in the present and future
-(e.g. HDF5 \citep{2011ASPC..442...53A} and NDF
+(e.g.~HDF5 \citep{2011ASPC..442...53A} and NDF
 \citep{P91_adassxxiii}). There are other popular file formats amongst the
 radio and (sub-)millimeter astronomy community such as the Continuum and
 Line Analysis Single-dish Software (CLASS) data format associated with
@@ -473,12 +473,12 @@ The designers and maintainers of FITS have espoused that a file is
 Certainly some in the community see this as a strength for the format 
 as it appears to promote long term stability and archivability of FITS 
 data \citep{2012EWASSAlle,2012LOC}. The assumption that FITS has not changed
-is however, false. Accounting may differ, but there have been at least 3 
+is however, false. Accounting may differ, but there have been at least three
 recognized named versions of FITS. These include the first, or `basic' FITS 
 version \citep{1979ipia.coll..445W}, the NOST version of FITS 
 \citep{2001A&A...376..359H} and the current version 3.0 \citep{2010A&A...524A..42P}.  
 Indeed, for the extreme doubters, why do we name a version `3.0' if there 
-were not 2 earlier recognized versions? It is clear then that the format 
+were not two earlier recognized versions? It is clear then that the format 
 has not been static.  Even so, the assumption that the FITS format is static 
 has negative consequences for its further development and its use.
 
@@ -566,13 +566,13 @@ parameters are avoided.
 Data models can provide a standard by which information (data and metadata)
 in the file may be validated and understood.  Questions such as
 ``are all of the required metadata/data structures present in the file?''
-(ex. all of the needed keywords occur in the correct places in the file)
+(e.g.~all of the needed keywords occur in the correct places in the file)
 and ``are there any non-normative values in the file?'' (all
 metadata/data values are within expected bounds) are both questions
 answered by ``validation'' (conformance of information in the file to one
 or more declared data models).
 The fundamental question of ``what are these data you gave me about?''
-(ex. lists of stars, tables of galaxies, images of dust clouds, etc) may
+(e.g.~lists of stars, tables of galaxies, images of dust clouds, etc) may
 also be answered when we allow information in the file to be associated
 with one or more data models.
 It is important to note that these are all questions critical to consumers 
@@ -733,7 +733,7 @@ ad hoc tools are often the source of problem files).
 
 It is not the case that FITS is missing all needed data models. In
 terms of structures which represent basic organizations of the
-information used in astronomy FITS includes such things like ``table'',
+information used in astronomy, FITS includes such things like ``table'',
 ``image'' or ``data cube''. These items are really simple representations
 of the data at a primitive level, and are certainly needed for basic
 access to the information within the file.
@@ -779,7 +779,7 @@ the error
 models implemented in other data formats like NDF
 \citep[although see for example][]{1991StarB...8...19M}, and software
 efforts underway in scientific programming communities such as AstroPy
-\citep{2013A&A...558A..33A}. Each of these have valuable insight into
+\citep{2013A&A...558A..33A}. Each of these has valuable insight into
 the requirements.
 
 
@@ -930,7 +930,7 @@ impossible for a software system to understand what was done to the data.
 This may be possible within the constraints of a single data reduction
 environment but it is highly unlikely that the content of the
 \texttt{HISTORY} block can be understood by any other software. History
-needs to be treated as a first class citizen with a standardized way of
+needs to be treated as a first-class citizen with a standardized way of
 registering important information such as the date, the software tool and
 any relevant arguments or switches. A library interface should also be
 encouraged to make it easy for people to add history entries.
@@ -992,7 +992,7 @@ data which are adequate for one type of use, may be wholly inadequate
 in another usage context. Consider that engineering data generally are
 unsuitable for science and vice versa. Many science data may be
 unsuitable for other types of science (for example, studies of sky
-background vs pointed source science).
+background vs.\ pointed source science).
 
 
 A data quality model then, should be an ensemble of common statistical
@@ -1162,7 +1162,7 @@ practical impact. Consider that this formatting requirement negatively
 impacts many FITS files today which have significant metadata. It
 often results in odd sections of the FITS file containing large blocks
 of white space. Certainly, in FITS files which have very large images
-(10 Mb or more) this is not a particularly pressing
+(10 MB or more) this is not a particularly pressing
 problem. However, for FITS files which have small amounts of data (or
 are oriented primarily to metadata transport or capture) this is
 simply wasteful.
@@ -1204,8 +1204,8 @@ components in extensions within a single FITS file. The FITS extension
 mechanism provides a scheme for having multiple images but, as noted
 in \citet{2003ASSL..285...71G}, in essentially a flat structure
 without hierarchy or inheritance. If you have 12 images in the file
-there is no way of indicating that 3 of them are data, 3 are an error
-and 3 are a quality mask. Indeed, there is no way of specifying which
+there is no way of indicating that three of them are data, three are an error
+and three are a quality mask. Indeed, there is no way of specifying which
 triplets are related. You can use the \texttt{EXTNAME} header to
 indicate relationships but this relies on convention and string
 parsing rather than being a standard part of the format.
@@ -1237,7 +1237,7 @@ endian platforms who work with large data volumes may find this limitation
 results in a significant performance cost as marshalling data to and from
 the FITS big endian ordering will be required.  This is a frequent problem
 for astronomical software. Little endianness is found on x86 and x86-64
-processors that are commonly used in Universities and research laboratories.
+processors that are commonly used in universities and research laboratories.
 
 
 Nonetheless, this design choice does not only constitute a problem in
@@ -1264,7 +1264,7 @@ At the time when FITS was developed, the primary media used for
 archiving and transporting the data was a tape. A magnetic tape is
 unlike a hard-drive in that it is a serial access device.  The concept
 of serial accessing the data was naturally adopted for the FITS data
-model.  Although the tapes are still widely used for archiving data,
+model.  Although tapes are still widely used for archiving data,
 such a mode is no longer commonly available as the files are usually
 transferred to a hard-drive before being accessed. What is more, such
 serial nature of FITS has become a significant bottleneck when it comes
@@ -1276,7 +1276,7 @@ spectral-imaging data-cubes of unprecedented volumes in the order of
 hundreds of petabytes. Individual data sets can be as large as tens of
 terabytes.  Servicing such data as images in FITS is going to encounter
 significant performance fallbacks due to inability of FITS to provide
-an acceptable performance for data-cubes large than just a few gigabytes.
+acceptable performance for data-cubes large than just a few gigabytes.
 
 \subsubsection{No support for maintaining the integrity of distributed data sets}
 
@@ -1301,13 +1301,13 @@ cutout framework.  However, it is unimaginable that a cutout framework
 can be of use for visual exploration of multi-petabyte imaging data.
 
 A reasonable framework should be able to support multiple representations
-of the same data (e.g.\ multiple resolutions or fidelities), preferably
+of the same data (e.g.~multiple resolutions or fidelities), preferably
 from a single master file. It should also be possible to stream the data
 progressively to the end-user, displaying an image as soon
 as the first data become available.
 
 Contemporary approaches widely adopted in other areas use encoded data
-(e.g.\ wavelet transforms) to achieve such functionality \citep{2003SPIE.5150..791T}. FITS is unable to support
+(e.g.~wavelet transforms) to achieve such functionality \citep{2003SPIE.5150..791T}. FITS is unable to support
 a comprehensive framework for encoded data, which has led to it
 falling behind any modern imaging format \citep[see e.g.,][]{2013arXiv1307.5123K}.
 
