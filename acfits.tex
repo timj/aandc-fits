@@ -367,7 +367,6 @@ it will spur action to resolve them.
 
 \section{Deficiencies of FITS for Modern Astronomical Research}
 
-
 As technologies and research techniques in astronomy have evolved, FITS
 has not kept pace. As a result, gaps between FITS utility and the
 needs of the research community have opened up and widened over time. In
@@ -377,11 +376,13 @@ which we see in this regard.
 
 The deficiencies of FITS can be categorized into several groups.
 These may be summarized as poor support for information
-interchange, missing critical data models, inflexibility in
-representing both metadata and data and poor support for large and/or
-distributed data. We address each of these in turn below.
+interchange (section \ref{section_poor_exchange}), 
+missing critical data models (section \ref{section_crit_data_models}), inflexibility in
+representing both metadata (section \ref{section_inflex_represent}) and data and inadequate 
+support for large and/or distributed data (section \ref{section_poor_large_data_support}). We address each of these below.
 
 \subsection{Poor support for information interchange}
+\label{section_poor_exchange}
 
 FITS originated as a delivery format for observatory data. It was the format
 of choice when transporting data between different data reduction
@@ -729,6 +730,7 @@ ad hoc tools are often the source of problem files).
 \end{itemize}
 
 \subsection{Missing critical data models}
+\label{section_crit_data_models}
 
 
 It is not the case that FITS is missing all needed data models. In
@@ -1036,6 +1038,7 @@ should be considered by the FITS community.
 
 
 \subsection{Inflexibility in organizing and representing metadata and data}
+\label{section_inflex_represent}
 
 
 What may be construed to be ``FITS data'' has changed significantly
@@ -1259,6 +1262,8 @@ data by using a FITS keyword defined in the standard dictionary.
 
 
 \subsection{Inadequate support for large or distributed data}
+\label{section_poor_large_data_support}
+
 
 At the time when FITS was developed, the primary media used for
 archiving and transporting the data was a tape. A magnetic tape is
