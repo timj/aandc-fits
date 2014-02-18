@@ -566,22 +566,22 @@ parameters are avoided.
 
 
 Data models can provide a standard by which information (data and metadata)
-in the file may be validated and understood.  Questions such as
-``are all of the required metadata/data structures present in the file?''
-(e.g.~all of the needed keywords occur in the correct places in the file)
-and ``are there any non-normative values in the file?'' (all
-metadata/data values are within expected bounds) are both questions
-answered by ``validation'' (conformance of information in the file to one
-or more declared data models).
-The fundamental question of ``what are these data you gave me about?''
-(e.g.~lists of stars, tables of galaxies, images of dust clouds, etc) may
-also be answered when we allow information in the file to be associated
-with one or more data models.
-It is important to note that these are all questions critical to consumers
-of the file.
-% and by allowing the file to declare its association to one or
-%more data models, we may answer all of these questions without having
-%a human inspect the file.
+in the file may be semantically and syntactically validated and hence
+fully utilized by software programs. Questions such as ``are all of the
+required metadata/data structures present in the file?'' (e.g.~all of
+the needed keywords occur in the correct places in the file) and ``are
+there any non-normative values in the file?'' (all metadata/data values
+are within expected bounds) are both questions answered by syntactic
+``validation'', the conformance of information in the file to one or more
+declared data models.  The question of ``how do these data (inter)relate 
+with other data'' (e.g.~can stars in the file be associated in some manner 
+with galaxies in another file/extension?) is one of semantic validation. 
+By confirming that the file is 'valid' in both senses, we may link the 
+data model to the information in the file, and hence answer the fundemental 
+question ``what does this data you gave me represent?'' (e.g.~lists 
+of stars, tables of galaxies, images of dust clouds, etc).
+It is important to note that all of these questions are critical to
+consumers of the file.
 
 
 There is already evidence that the FITS community values and needs shared
