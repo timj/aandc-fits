@@ -302,6 +302,7 @@ distributed storage systems to provide adequate data rates
 
 
 Astronomers have increasingly come to rely on others to write software
+programs
 to help process and analyze their data. Common libraries, analysis
 environments, pipeline processed data, applications and services
 provided by third parties form a crucial foundation for many
@@ -509,13 +510,13 @@ design.
 Both of these issues needlessly drive greater and greater complexity
 in implementation of FITS parsers. Furthermore, lack of versioning
 arguably works counter to the purpose of increased archivability of
-the files. Counter to the maxim ``once FITS, forever FITS'', FITS reader
-software are not able to appropriately handle just any version of FITS.
+the files. Counter to the maxim ``once FITS, forever FITS'', FITS readers
+are not able to appropriately handle just any version of FITS.
 Certainly, were someone to utilize code developed in the early 1980s
 to read a FITS file containing a binary table, or a FITS file with
 extensions, it would fail because it would have no idea how to handle these
-data structures. Suitability for archiving not only means that software are
-backward compatible, but that older software can gracefully handle newer
+data structures. Suitability for archiving not only means that readers are
+backward compatible, but that older readers can gracefully handle newer
 versions of the format.
 
 
@@ -616,19 +617,19 @@ data models which use one term and vice versa.}.
 How can the machine know
 that these are the same properties? A machine readable mapping between
 the models could be set up. This mapping should be written in a common
-shared format (for FITS files) and all downstream software would know
+shared format (for FITS files) and all downstream software programs would know
 that model1:EXPTIME property is the same as model2:EXP\_TIME.
 
 
 It is clear then that there is a need for namespaced data models,
 yet, the only way in which we can currently implement them is for a human
-to inspect the file, or to write special purpose software targeted to
+to inspect the file, or to write special purpose software programs targeted to
 particular namespaced data models.
 
 
 Given the data volumes that we have in astronomy, the later choice is
 clearly in the direction we should go, but is not practical in the
-general case. The writing of generalized software to detect any data
+general case. The writing of generalized software programs to detect any data
 models present in a given FITS file is currently a hopeless act as
 there are constantly new data models being created and
 modified. Keeping the code up to date will be problematic, at
@@ -640,7 +641,7 @@ map information to appropriate meaning.
 
 A means to capture the data model/namespace information, in the file,
 should be found so that validation can be possible without human
-inspection or specifically written software (similar, perhaps, in the
+inspection or specifically written software programs (similar, perhaps, in the
 way that JSON or XML formats have schema). This approach has
 additional benefits downstream. First, it will help to avoid
 misinterpretation because it is better for the creator of the data
@@ -697,7 +698,7 @@ Although not explicitly part of the official FITS standard, the
 community has, in effect, accepted many variants from the standard as
 being acceptable through their wide use. In practical terms this means
 general FITS libraries must support these variants, significantly
-complicating the software, and introducing inconsistencies between
+complicating the code, and introducing inconsistencies between
 libraries in which particular variants are not uniformly
 supported. This is partly due to the lack of good validating tools
 early on, but also due to a unwillingness to enforce the standard. As
@@ -931,7 +932,7 @@ header) but the free-form nature of the entries makes it essentially
 impossible for a software system to understand what was done to the data.
 This may be possible within the constraints of a single data reduction
 environment but it is highly unlikely that the content of the
-\texttt{HISTORY} block can be understood by any other software. History
+\texttt{HISTORY} block can be understood by any other software packages. History
 needs to be treated as a first-class citizen with a standardized way of
 registering important information such as the date, the software tool and
 any relevant arguments or switches. A library interface should also be
@@ -1176,7 +1177,7 @@ problems caused by the limitations on allowed FITS keyword names and
 value data structures being the most significant. Certainly, as we
 have already noted, in many cases it is possible to create one or more
 conventions to expand the expression of the metadata but doing so will
-result in files which are unparsable by downstream software which
+result in files which are unparsable by downstream readers which
 do not implement these conventions. There is no apparent solution,
 using a FITS convention, than can solve the limitation on the
 restricted expression of keyword names.
@@ -1185,7 +1186,7 @@ restricted expression of keyword names.
 All of these metadata limitations are contrary to both the
 ``interchange'' and ``archivability'' use cases for FITS. If the FITS
 standard is followed with additional conventions we still need
-specialized software and/or a human to successfully parse the content
+specialized readers and/or a human to successfully parse the content
 of the metadata present. If the FITS standard is rigorously followed
 sans conventions, then the author is severely limited in the metadata
 they may express.
@@ -1239,7 +1240,7 @@ routines to implement other scientific capabilities.  Programmers on little
 endian platforms who work with large data volumes may find this limitation
 results in a significant performance cost as marshalling data to and from
 the FITS big endian ordering will be required.  This is a frequent problem
-for astronomical software. Little endianness is found on x86 and x86-64
+for astronomical programs. Little endianness is found on x86 and x86-64
 processors that are commonly used in universities and research laboratories.
 
 
