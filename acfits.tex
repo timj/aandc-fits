@@ -614,18 +614,24 @@ In this case, we know clearly it is the exposure time of the detector
 which is a common property in astronomical observations however there may
 exist other files which contain this same property, but instead name it
 EXP\_TIME\footnote{This is a real example. At NOAO we have some instrument
-data models which use one term and vice versa.}.
-How can the machine know
-that these are the same properties? A machine readable mapping between
-the models could be set up. This mapping should be written in a common
-shared format (for FITS files) and all downstream software programs would know
-that model1:EXPTIME property is the same as model2:EXP\_TIME.
+data models which use one term and vice versa.}. 
+To make matters worse, does EXP\_TIME mean the start of the exposure, or 
+does it mark its mid-point?. What about EXPTIME?
+As you can see, its non-trivial matter for the machine to deterime whether 
+these are the same properties. 
 
 
-It is clear then that there is a need for namespaced data models,
+Namespacing provides a common means to reconcile these issues. Essentially,
+namespacing means tagging the data model and its elements with a unique 
+identifier.  A machine readable mapping may then be set up so that downstream 
+software programs would know that model1:EXPTIME property is the same as 
+model2:EXP\_TIME.
+
+
+It is clear then that there is a pressing need for namespaced data models,
 yet, the only way in which we can currently implement them is for a human
 to inspect the file, or to write special purpose software programs targeted to
-particular namespaced data models.
+particular data models.
 
 
 Given the data volumes that we have in astronomy, the later choice is
