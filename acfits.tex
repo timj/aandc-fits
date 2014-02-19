@@ -326,8 +326,8 @@ have caused members of the community to seek more capable storage
 formats, both in the past, such as the Starlink Hierarchical Data System
 \citep[HDS;][]{1982QJRAS..23..485D}, the eXtensible Data Format
 \citep[XDF;][]{2001ASPC..238..217S}, FITSML \citep{2001ASPC..238..487T}
-and HDX \citep{2003ASPC..295..221G}; and in the present and future
-(e.g.~HDF5 \citep{2011ASPC..442...53A} and NDF
+and HDX \citep{2003ASPC..295..221G}; and in the present and future,
+\citep[e.g., HDF5][]{2011ASPC..442...53A} and NDF
 \citep{2014Jenness}). There are other popular file formats amongst the
 radio and (sub-)millimeter astronomy community such as the Continuum and
 Line Analysis Single-dish Software (CLASS) data format associated with
@@ -573,17 +573,17 @@ parameters are avoided.
 Data models can provide a standard by which information (data and metadata)
 in the file may be semantically and syntactically validated in software.
 Questions such as ``are all of the required metadata/data structures present 
-in the file?'' (e.g.~all of
+in the file?'' (e.g., all of
 the needed keywords occur in the correct places in the file) and ``are
 there any non-normative values in the file?'' (all metadata/data values
 are within expected bounds) are both questions answered by syntactic
 ``validation'', the conformance of information in the file to one or more
 declared data models.  The question of ``how do these data (inter)relate 
-with other data'' (e.g.~can named structures in the file be associated 
+with other data'' (e.g., can named structures in the file be associated 
 in some manner with others in another file/extension?) is one of semantic 
 validation. By confirming that the file is 'valid' in both senses, we may 
 link the data model to the information in the file, and hence answer the 
-fundamental question ``what does this data you gave me represent?'' (e.g.~lists 
+fundamental question ``what does this data you gave me represent?'' (e.g., lists 
 of stars, tables of galaxies, images of dust clouds, etc).
 It is important to note that all of these questions are critical to
 consumers of the file.
@@ -1328,13 +1328,13 @@ cutout framework.  However, it is unimaginable that a cutout framework
 can be of use for visual exploration of multi-petabyte imaging data.
 
 A reasonable framework should be able to support multiple representations
-of the same data (e.g.~multiple resolutions or fidelities), preferably
+of the same data (e.g., multiple resolutions or fidelities), preferably
 from a single master file. It should also be possible to stream the data
 progressively to the end-user, displaying an image as soon
 as the first data become available.
 
 Contemporary approaches widely adopted in other areas use encoded data
-(e.g.~wavelet transforms) to achieve such functionality \citep{2003SPIE.5150..791T}. FITS is unable to support
+(e.g., wavelet transforms) to achieve such functionality \citep{2003SPIE.5150..791T}. FITS is unable to support
 a comprehensive framework for encoded data, which has led to it
 falling behind any modern imaging format \citep[see e.g.,][]{2013arXiv1307.5123K}.
 
