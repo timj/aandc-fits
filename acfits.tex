@@ -851,11 +851,12 @@ analyse the total transformation into its component parts thus making
 understanding and manipulation of the total transformation harder. The
 alternative approach -- a ``toolkit''-style system that creates complex
 transformations by stacking simpler atomic mappings -- is usually the
-most efficient representation as far as data storage is concerned.
+most efficient representation as far as data storage is concerned
+(for example AST, see below).
 
 
-As an example, imaging data taken by the Hubble Space Telescope require
-multiple distortion components \citep[see e.g.,][]{2013ASPC..475...49H}.
+To illustrate the problem consider the imaging data taken by the 
+Hubble Space Telescope which require multiple distortion components \citep[see e.g.,][]{2013ASPC..475...49H}.
 Some are small but discontinuous. Others are linear but time varying.
 There is no FITS WCS compatible solution that handles these needs well.
 As another example, SCUBA-2 raw data \citep[see
