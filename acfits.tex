@@ -907,9 +907,10 @@ The reality is that to solve these problems, many software systems
 have chosen alternate solutions and save their WCS information in FITS
 files in other ways (or in separate files). For example, the AST
 library \citep{1998ASPC..145...41W,2012ASPC..461..825B} is not subject
-to these limitations, but is forced to use non-standard FITS
-representations when representing data in its own native FITS
-encoding (see Fig.~\ref{fig:asthead}).
+to these limitations, but 
+is forced to use non-standard FITS keywords when serializing mappings 
+to FITS files (see Fig.~\ref{fig:asthead}).
+
 
 \begin{figure*}
 \begin{minipage}{\textwidth}
