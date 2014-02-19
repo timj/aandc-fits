@@ -604,59 +604,60 @@ an act of declaring one or more data model(s).
 
 All of these data models also imply an associated ``namespace'' which is
 a means of declaring the origin of the data model so that we may
-disambiguate or associate declared properties between models.
-These are common problems to solve and even the `simple' metadata in
-Fig.~\ref{fig:fitshead} illustrates this.  Consider the TEMP keyword in
-the example. Without reading the comment associated with it, we cannot
-know if this is this a temperature or perhaps some type of temporary
-file or resource or something else. If it is a temperature then what is this 
-the temperature of? What do the values '0' and '1' mean? Are these the only
-valid values for this keyword?  TEMP is a likely keyword string to appear 
-in other files, how do we know if the TEMP in the other files is the same 
-one we see in the example? 
+disambiguate and/or associate declared properties between models.
+There are common problems which namespaced models help to solve and even 
+the `simple' metadata in Fig.~\ref{fig:fitshead} illustrates this.  
 
 
-As you can see, its non-trivial matter for the machine to determine whether 
-these are the same properties. 
-This problem is not isolated to a solitary bit of rogue metadata. We can 
-apply these same arguments to most of the keywords in the example header.
+Consider the TEMP keyword in the example. Without reading the comment 
+associated with it, we cannot know if this is this a temperature or perhaps 
+some type of temporary file or resource or something else. If it is a 
+temperature then what is this the temperature of? What do the values '0' 
+and '1' mean? Are these the only valid values for this keyword?  TEMP is 
+a likely keyword string to appear in other files, how do we know if the 
+TEMP in the other files is the same one we see in the example? 
 
 
-Namespacing provides a common means to reconcile these issues. Essentially,
-namespacing means tagging the data model and its elements with a unique 
-identifier.  A machine readable mapping may then be set up so that downstream 
-software programs would know that model1:EXPTIME property is the same as 
-model2:EXP\_TIME.
+As you can see, its non-trivial matter for the machine to determine whether
+these are the same properties and to know other important details for using
+this information. This problem is not isolated to a solitary bit
+of rogue metadata. We can ask similar questions about most of the keywords
+in the example header. Namespaced data models help address these issues. With
+an appropriate namespace mechanism in place, it is possible to create a 
+machine readable mapping between the data models so that any software program 
+can determine whether model1:TEMP is the same (or different) property as 
+model2:TEMP. A good namespacing mechanism will also provide the 
+software program with the means to look up the model definition (perhaps from 
+a remote location), so that it may know the appropriate syntactic and semantic 
+validation rules for the information at hand. This will allow the program to 
+answer the remainder of our posed questions above.
 
 
 It is clear then that there is a pressing need for namespaced data models,
 yet, the only way in which we can currently implement them is for a human
 to inspect the file, or to write special purpose software programs targeted to
-particular data models.
+particular data models. Given the data volumes that we have in astronomy, the
+later choice is clearly in the direction we should go, but is not practical
+in the general case. The writing of generalized software programs to detect
+any data models present in a given FITS file is currently a hopeless act as
+there are constantly new data models being created and modified. Keeping the
+code up to date will be problematic, at best. Furthermore, there is the
+possible complication of more than one data model being present. Without
+explicit signposts in the file, it is likely hopeless to determine which data
+models are present and map information to appropriate meaning.
 
 
-Given the data volumes that we have in astronomy, the later choice is
-clearly in the direction we should go, but is not practical in the
-general case. The writing of generalized software programs to detect any data
-models present in a given FITS file is currently a hopeless act as
-there are constantly new data models being created and
-modified. Keeping the code up to date will be problematic, at
-best. Furthermore, there is the possible complication of more than one
-data model being present. Without explicit signposts in the file, it
-is likely hopeless to determine which data models are present and
-map information to appropriate meaning.
-
-
-A means to capture the data model/namespace information, in the file,
-should be found so that validation can be possible without human
-inspection or specifically written software programs (similar, perhaps, in the
-way that JSON or XML formats have schema). This approach has
-additional benefits downstream. First, it will help to avoid
-misinterpretation because it is better for the creator of the data
-and/or data model to provide the machine readable information rather
+A means to capture and associate the data model/namespace information with 
+the contents of the FITS file, in a machine readable manner, should be found 
+so that validation can be possible without human inspection or specifically
+written software programs (similar, perhaps, in the way that JSON or XML
+formats have schema). This approach has additional benefits downstream. First,
+it will help to avoid misinterpretation because it is better for the creator
+of the data and/or data model to provide the machine readable information rather
 than a downstream programmer. Second, there is a saving in effort
 in that the model is done once and need not be repeated by numerous
 downstream programmers.
+
 
 \subsubsection{No support for alternative encodings}
 
