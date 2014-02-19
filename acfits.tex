@@ -377,9 +377,9 @@ which we see in this regard.
 
 The deficiencies of FITS can be categorized into several groups.
 These may be summarized as poor support for information
-interchange (section \ref{section_poor_exchange}), 
+interchange (section \ref{section_poor_exchange}),
 missing critical data models (section \ref{section_crit_data_models}), inflexibility in
-representing both metadata (section \ref{section_inflex_represent}) and data and inadequate 
+representing both metadata (section \ref{section_inflex_represent}) and data and inadequate
 support for large and/or distributed data (section \ref{section_poor_large_data_support}). We address each of these below.
 
 \subsection{Poor support for information interchange}
@@ -572,18 +572,18 @@ parameters are avoided.
 
 Data models can provide a standard by which information (data and metadata)
 in the file may be semantically and syntactically validated in software.
-Questions such as ``are all of the required metadata/data structures present 
+Questions such as ``are all of the required metadata/data structures present
 in the file?'' (e.g., all of
 the needed keywords occur in the correct places in the file) and ``are
 there any non-normative values in the file?'' (all metadata/data values
 are within expected bounds) are both questions answered by syntactic
 ``validation'', the conformance of information in the file to one or more
-declared data models.  The question of ``how do these data (inter)relate 
-with other data'' (e.g., can named structures in the file be associated 
-in some manner with others in another file/extension?) is one of semantic 
-validation. By confirming that the file is 'valid' in both senses, we may 
-link the data model to the information in the file, and hence answer the 
-fundamental question ``what does this data you gave me represent?'' (e.g., lists 
+declared data models.  The question of ``how do these data (inter)relate
+with other data'' (e.g., can named structures in the file be associated
+in some manner with others in another file/extension?) is one of semantic
+validation. By confirming that the file is 'valid' in both senses, we may
+link the data model to the information in the file, and hence answer the
+fundamental question ``what does this data you gave me represent?'' (e.g., lists
 of stars, tables of galaxies, images of dust clouds, etc).
 It is important to note that all of these questions are critical to
 consumers of the file.
@@ -605,17 +605,17 @@ an act of declaring one or more data model(s).
 All of these data models also imply an associated ``namespace'' which is
 a means of declaring the origin of the data model so that we may
 disambiguate and/or associate declared properties between models.
-There are common problems which namespaced models help to solve and even 
-the `simple' metadata in Fig.~\ref{fig:fitshead} illustrates this.  
+There are common problems which namespaced models help to solve and even
+the `simple' metadata in Fig.~\ref{fig:fitshead} illustrates this.
 
 
-Consider the TEMP keyword in the example. Without reading the comment 
-associated with it, we cannot know if this is this a temperature or perhaps 
-some type of temporary file or resource or something else. If it is a 
-temperature then what is this the temperature of? What do the values '0' 
-and '1' mean? Are these the only valid values for this keyword?  TEMP is 
-a likely keyword string to appear in other files, how do we know if the 
-TEMP in the other files is the same one we see in the example? 
+Consider the TEMP keyword in the example. Without reading the comment
+associated with it, we cannot know if this is this a temperature or perhaps
+some type of temporary file or resource or something else. If it is a
+temperature then what is this the temperature of? What do the values '0'
+and '1' mean? Are these the only valid values for this keyword?  TEMP is
+a likely keyword string to appear in other files, how do we know if the
+TEMP in the other files is the same one we see in the example?
 
 
 As you can see, its non-trivial matter for the machine to determine whether
@@ -623,13 +623,13 @@ these are the same properties and to know other important details for using
 this information. This problem is not isolated to a solitary bit
 of rogue metadata. We can ask similar questions about most of the keywords
 in the example header. Namespaced data models help address these issues. With
-an appropriate namespace mechanism in place, it is possible to create a 
-machine readable mapping between the data models so that any software program 
-can determine whether model1:TEMP is the same (or different) property as 
-model2:TEMP. A good namespacing mechanism will also provide the 
-software program with the means to look up the model definition (perhaps from 
-a remote location), so that it may know the appropriate syntactic and semantic 
-validation rules for the information at hand. This will allow the program to 
+an appropriate namespace mechanism in place, it is possible to create a
+machine readable mapping between the data models so that any software program
+can determine whether model1:TEMP is the same (or different) property as
+model2:TEMP. A good namespacing mechanism will also provide the
+software program with the means to look up the model definition (perhaps from
+a remote location), so that it may know the appropriate syntactic and semantic
+validation rules for the information at hand. This will allow the program to
 answer the remainder of our posed questions above.
 
 
@@ -638,24 +638,24 @@ yet, the only way in which we can currently implement them is for a human
 to inspect the file, or to write special purpose software programs targeted to
 particular data models. Given the data volumes that we have in astronomy, the
 later choice is clearly in the direction we should go, but is not practical
-in the general case. 
+in the general case.
 
 
-The writing of generalized software programs to detect any data models 
+The writing of generalized software programs to detect any data models
 present in a given FITS file is currently a hopeless act for many reasons.
-First and foremost, we must recognize that there are constantly new data models 
-being created and modified. Some of these are documented in a human readable 
-fashion but there are many more models which do not even meet this standard. 
-Worse, due in part to the lack of good validation tools, the community has 
+First and foremost, we must recognize that there are constantly new data models
+being created and modified. Some of these are documented in a human readable
+fashion but there are many more models which do not even meet this standard.
+Worse, due in part to the lack of good validation tools, the community has
 accepted many informal variants of existing models (both documented and otherwise).
-Finally, there is the possible complication of more than one data model being 
-fully, or partially, present within a file. Without explicit signposts for 
-the software to use, it is likely impossible to determine which data models 
+Finally, there is the possible complication of more than one data model being
+fully, or partially, present within a file. Without explicit signposts for
+the software to use, it is likely impossible to determine which data models
 are present and map information to appropriate meaning.
 
 
-A means to capture and associate the data model/namespace information with 
-the contents of the FITS file, in a machine readable manner, should be found 
+A means to capture and associate the data model/namespace information with
+the contents of the FITS file, in a machine readable manner, should be found
 so that validation can be possible without human inspection or specifically
 written software programs (similar, perhaps, in the way that JSON or XML
 formats have schema). This approach has additional benefits downstream. First,
@@ -664,8 +664,8 @@ of the data and/or data model to provide the machine readable information rather
 than a downstream programmer. Second, there is a saving in effort
 in that the model is done once and need not be repeated by numerous
 downstream programmers. Finally, good validation tools will allow the community
-to better detect informal variant models and reject them, promoting good 
-practice. 
+to better detect informal variant models and reject them, promoting good
+practice.
 
 
 \subsubsection{No support for alternative encodings}
@@ -695,7 +695,7 @@ The current restrictive character set is an
 anachronism, particularly considering that the most common language on the planet,
 Chinese, cannot be used easily in a FITS file. Forcing information
 into English can easily result in loss of valuable meaning, unnecessarily
-limit the audience who may use the file, or force the author to use some other 
+limit the audience who may use the file, or force the author to use some other
 format to store their data.
 
 
@@ -718,7 +718,7 @@ community has, in effect, accepted many variants from the standard as
 being acceptable through their wide use. In practical terms this means
 general FITS libraries must support these variants, significantly
 complicating the code, and introducing inconsistencies between
-libraries in which particular variants are supported fully, partially 
+libraries in which particular variants are supported fully, partially
 or not at all.
 
 This is partly due to the lack of good validating tools
@@ -726,7 +726,7 @@ early on, but also due to a unwillingness to enforce the standard. As
 an example, the newer VOTable format \citep{2004tivo.conf..118O} had a
 clearer specification, and much better tools available for validation,
 yet a significant fraction of existing VOTables being provided do not
-adhere strictly to the standard. 
+adhere strictly to the standard.
 
 At least some of the interoperability problems are of the community's own making, and however the community resolves the problems discussed in this article, it seems clear that a more rigorous approach to validation, and a minimal tolerance of non-standard files, will be necessary."
 
