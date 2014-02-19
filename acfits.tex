@@ -448,7 +448,7 @@ model \citep{2012ASPC..461..283A}, and Starlink's NDF
 \citep{1988STARB...2...11C,1993ASPC...52..229W,P91_adassxxiii} all
 serve as examples in this regard. XDF was created primarily to support
 the development of FITSML -- an XML version of the FITS data model which
-could utilize XML schema for validation. NDF was developed in the late
+could use XML schema for validation. NDF was developed in the late
 1980s as a means of organizing the hierarchical structures that were
 available via the Starlink HDS format when it became apparent that
 arbitrary hierarchies could lead to chaos and lack of ability for
@@ -517,7 +517,7 @@ in implementation of FITS parsers. Furthermore, lack of versioning
 arguably works counter to the purpose of increased archivability of
 the files. Counter to the maxim ``once FITS, forever FITS'', FITS readers
 are not able to appropriately handle just any version of FITS.
-Certainly, were someone to utilize code developed in the early 1980s
+Certainly, were someone to use code developed in the early 1980s
 to read a FITS file containing a binary table, or a FITS file with
 extensions, it would fail because it would have no idea how to handle these
 data structures. Suitability for archiving not only means that readers are
@@ -571,9 +571,9 @@ parameters are avoided.
 
 
 Data models can provide a standard by which information (data and metadata)
-in the file may be semantically and syntactically validated and hence
-fully utilized by software programs. Questions such as ``are all of the
-required metadata/data structures present in the file?'' (e.g.~all of
+in the file may be semantically and syntactically validated in software.
+Questions such as ``are all of the required metadata/data structures present 
+in the file?'' (e.g.~all of
 the needed keywords occur in the correct places in the file) and ``are
 there any non-normative values in the file?'' (all metadata/data values
 are within expected bounds) are both questions answered by syntactic
@@ -684,7 +684,7 @@ data which are not exclusively originating in English-speaking countries.
 
 The current restrictive character set is an
 anachronism, particularly considering that the most common language on the planet,
-Chinese, cannot be utilized easily in a FITS file. Forcing information
+Chinese, cannot be used easily in a FITS file. Forcing information
 into English can easily result in loss of valuable meaning, unnecessarily
 limit the audience who may use the file, or force the author to use some other 
 format to store their data.
@@ -693,7 +693,7 @@ format to store their data.
 It is clear to us that support for alternative encodings is needed.
 Simple issues which revolve around the value of keywords like the
 expression of a person's name (with accents, for example), or the
-ability to utilize special scientific and mathematical symbols (like the
+ability to use special scientific and mathematical symbols (like the
 \r{a}ngstr\"{o}m symbol \r{A} or the degree symbol \degree) should be
 handled. Tabular text values should similarly be allowed alternative
 encodings for the same reasons.  Furthermore, while not as critical, the
@@ -1131,7 +1131,7 @@ only problem, even the expression single scalar values are
 constrained. Consider that FITS cards are limited to 80 characters and FITS
 keyword names may be no longer than 8 characters. The result of these
 constraints is that keyword values may be no longer than 68 characters. Of
-course, if you utilize all of the space for keyword values, then the
+course, if you use all of the space for keyword values, then the
 comment, or keyword values longer than 68 characters will need another
 convention in order to capture it (such as creating a continuation
 line in the header using the \texttt{CONTINUE} convention
@@ -1245,7 +1245,7 @@ Sometimes the byte order needs to be checked and swapped to the native byte
 order in systems that use the little endian format when non-native data
 formats are not supported.  This is the case in some implementations of FITS
 readers that do not use the \texttt{cfitsio} library
-(\href{http://ascl.net/1010.001}{ascl:1010.001}) and which utilize C
+(\href{http://ascl.net/1010.001}{ascl:1010.001}) and which use C
 routines to implement other scientific capabilities.  Programmers on little
 endian platforms who work with large data volumes may find this limitation
 results in a significant performance cost as marshalling data to and from
