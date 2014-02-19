@@ -638,13 +638,20 @@ yet, the only way in which we can currently implement them is for a human
 to inspect the file, or to write special purpose software programs targeted to
 particular data models. Given the data volumes that we have in astronomy, the
 later choice is clearly in the direction we should go, but is not practical
-in the general case. The writing of generalized software programs to detect
-any data models present in a given FITS file is currently a hopeless act as
-there are constantly new data models being created and modified. Keeping the
-code up to date will be problematic, at best. Furthermore, there is the
-possible complication of more than one data model being present. Without
-explicit signposts in the file, it is likely hopeless to determine which data
-models are present and map information to appropriate meaning.
+in the general case. 
+
+
+The writing of generalized software programs to detect any data models 
+present in a given FITS file is currently a hopeless act for many reasons.
+First and foremost, we must recognize that there are constantly new data models 
+being created and modified. Some of these are documented in a human readable 
+fashion but there are many more models which do not even meet this standard. 
+Worse, due in part to the lack of good validation tools, the community has 
+accepted many informal variants of existing models (both documented and otherwise).
+Finally, there is the possible complication of more than one data model being 
+fully, or partially, present within a file. Without explicit signposts for 
+the software to use, it is likely impossible to determine which data models 
+are present and map information to appropriate meaning.
 
 
 A means to capture and associate the data model/namespace information with 
@@ -656,7 +663,9 @@ it will help to avoid misinterpretation because it is better for the creator
 of the data and/or data model to provide the machine readable information rather
 than a downstream programmer. Second, there is a saving in effort
 in that the model is done once and need not be repeated by numerous
-downstream programmers.
+downstream programmers. Finally, good validation tools will allow the community
+to better detect informal variant models and reject them, promoting good 
+practice. 
 
 
 \subsubsection{No support for alternative encodings}
@@ -709,21 +718,22 @@ community has, in effect, accepted many variants from the standard as
 being acceptable through their wide use. In practical terms this means
 general FITS libraries must support these variants, significantly
 complicating the code, and introducing inconsistencies between
-libraries in which particular variants are not uniformly
-supported. This is partly due to the lack of good validating tools
+libraries in which particular variants are supported fully, partially 
+or not at all.
+
+This is partly due to the lack of good validating tools
 early on, but also due to a unwillingness to enforce the standard. As
 an example, the newer VOTable format \citep{2004tivo.conf..118O} had a
 clearer specification, and much better tools available for validation,
 yet a significant fraction of existing VOTables being provided do not
-adhere strictly to the standard. This issue will not be solved with a
-new format unless the community takes the standard more seriously than
-it has in the past.
+adhere strictly to the standard. 
 
+At least some of the interoperability problems are of the community's own making, and however the community resolves the problems discussed in this article, it seems clear that a more rigorous approach to validation, and a minimal tolerance of non-standard files, will be necessary."
 
-{\color{red} (Can the preceding sentence and the following be formulated
-without reference to a ``new format''? The aim of this paper is to
-highlight problems with FITS, not to formulate requirements for a format
-to come.)}
+%This issue will not be solved with a
+%new format unless the community takes the standard more seriously than
+%it has in the past.
+
 
 Preventing this from happening with a new format will be aided significantly if:
 
@@ -739,6 +749,7 @@ against adding support for illegal variants.
 the new format rather than adopting use of a well-tested library (such
 ad hoc tools are often the source of problem files).
 \end{itemize}
+
 
 \subsection{Missing critical data models}
 \label{section_crit_data_models}
