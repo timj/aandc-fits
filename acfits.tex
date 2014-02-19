@@ -607,23 +607,19 @@ a means of declaring the origin of the data model so that we may
 disambiguate or associate declared properties between models.
 These are common problems to solve and even the `simple' metadata in
 Fig.~\ref{fig:fitshead} illustrates this.  Consider the TEMP keyword in
-the example. Is this a temperature or does in imply some type of temporary
-file or resource? If it is a temperature then what is this the temperature 
-of? TEMP is a likely keyword string to appear in other files, how do we 
-know if the TEMP in the other files is the same one we see in the example?
+the example. Without reading the comment associated with it, we cannot
+know if this is this a temperature or perhaps some type of temporary
+file or resource or something else. If it is a temperature then what is this 
+the temperature of? What do the values '0' and '1' mean? Are these the only
+valid values for this keyword?  TEMP is a likely keyword string to appear 
+in other files, how do we know if the TEMP in the other files is the same 
+one we see in the example? 
 
 
-The use of the EXPTIME
-keyword presents a another example of the need for namespaces.
-In this case, we know clearly it is the exposure time of the detector
-which is a common property in astronomical observations however there may
-exist other files which contain this same property, but instead name it
-EXP\_TIME\footnote{This is a real example. At NOAO we have some instrument
-data models which use one term and vice versa.}. 
-To make matters worse, does EXP\_TIME mean the start of the exposure, or 
-does it mark its mid-point?. What about EXPTIME?
-As you can see, its non-trivial matter for the machine to deterime whether 
+As you can see, its non-trivial matter for the machine to determine whether 
 these are the same properties. 
+This problem is not isolated to a solitary bit of rogue metadata. We can 
+apply these same arguments to most of the keywords in the example header.
 
 
 Namespacing provides a common means to reconcile these issues. Essentially,
