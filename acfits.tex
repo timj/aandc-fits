@@ -452,9 +452,14 @@ could utilize XML schema for validation. NDF was developed in the late
 1980s as a means of organizing the hierarchical structures that were
 available via the Starlink HDS format when it became apparent that
 arbitrary hierarchies could lead to chaos and lack of ability for
-applications to interoperate \citep{2014Jenness}.  HDX was developed
-as a way of combining FITS and NDF into a single unified data model in
-XML. HDF5 was chosen to accommodate LOFAR's
+applications to interoperate \citep{2014Jenness}.
+HDX \citep{2003ASPC..295..221G} was developed around 2002 as a flexible
+way of layering high-level data structures, presented as a virtual XML
+DOM, atop otherwise unstructured external data stores; this was in
+turn used to develop Starlink's NDX framework, which (amongst other
+things) allowed FITS files to be viewed and manipulated using the
+concepts of the NDF format.
+HDF5 was chosen to accommodate LOFAR's
 exceptional high data rates, 6-dimensional data complexity, distributed
 data processing and I/O parallelization needs.
 
