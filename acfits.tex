@@ -710,47 +710,6 @@ FITS community should also consider the utility of allowing FITS
 keywords themselves to be expressed in a broader range of characters.
 
 
-\subsubsection{Informal variants}
-
-
-Although not explicitly part of the official FITS standard, the
-community has, in effect, accepted many variants from the standard as
-being acceptable through their wide use. In practical terms this means
-general FITS libraries must support these variants, significantly
-complicating the code, and introducing inconsistencies between
-libraries in which particular variants are supported fully, partially
-or not at all.
-
-This is partly due to the lack of good validating tools
-early on, but also due to a unwillingness to enforce the standard. As
-an example, the newer VOTable format \citep{2004tivo.conf..118O} had a
-clearer specification, and much better tools available for validation,
-yet a significant fraction of existing VOTables being provided do not
-adhere strictly to the standard.
-
-At least some of the interoperability problems are of the community's own making, and however the community resolves the problems discussed in this article, it seems clear that a more rigorous approach to validation, and a minimal tolerance of non-standard files, will be necessary."
-
-%This issue will not be solved with a
-%new format unless the community takes the standard more seriously than
-%it has in the past.
-
-
-Preventing this from happening with a new format will be aided significantly if:
-
-\begin{itemize}
-\item A strict validation tool is provided from the very beginning so that
-those making files have an easy-to-use tool that indicates what
-problems exist with the files they are creating.
-
-\item Those that write libraries to support a new format take a hard line
-against adding support for illegal variants.
-
-\item Discouraging developers from making ad hoc tools to create files in
-the new format rather than adopting use of a well-tested library (such
-ad hoc tools are often the source of problem files).
-\end{itemize}
-
-
 \subsection{Missing critical data models}
 \label{section_crit_data_models}
 
