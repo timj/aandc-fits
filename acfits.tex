@@ -1052,23 +1052,24 @@ comment. All FITS cards must contain the keyword name and keyword
 value pair while comments in cards are optional. Comments may
 sometimes contain information about units of the metadata value.
 
-
 Metadata may comprise a rich assortment of data structures and
 single-valued metadata are only the beginning. There is a need to
 capture sets, lists, vectors and objects within metadata (to name only
 the most basic of structures). Yet FITS cards, without additional
-conventions, are only capable of capturing single, scalar
-keyword-value pairings. The expression of non-scalar, multi-valued
-keywords is difficult in FITS and data model designers often resort to
-special conventions to achieve this. For example, in order to hold a
-keyword with either a `set' or `list' value, a common, non-standard,
-convention adopted is to create a set of keywords sharing the same
-base name followed by a integer value which may (or may not) indicate
-order of the values (such as \texttt{ICMB001}, \texttt{ICMB002}, and
-so on). Another example is the IRAF \textit{multispec} format
+conventions, are only capable of capturing single, scalar keyword-value 
+pairings. 
+
+The expression of non-scalar, multi-valued keywords is difficult in 
+FITS and data model designers often resort to special conventions to 
+achieve this. For example, in order to hold a keyword with either a 
+`set' or `list' value, a common, non-standard, convention adopted is 
+to create a set of keywords sharing the same base name followed by a 
+integer value which may (or may not) indicate order of the values 
+(such as \texttt{ICMB001}, \texttt{ICMB002}, and so on). Another example 
+is the IRAF \textit{multispec} format
 \citep[see][and references therein]{1993ASPC...52..467V} which uses
-this scheme to specify related world coordinate information. An
-example of this is shown in Fig.~\ref{fig:multispec}. The AST library
+this scheme to specify related world coordinate information (see 
+Fig.~\ref{fig:multispec} for an example).  The AST library
 \citep[][and see also \S\ref{sec:wcs}]{1998ASPC..145...41W} takes a
 similar approach in converting the WCS objects into FITS headers when
 the transformations are too complex to be represented by standard WCS
@@ -1092,23 +1093,23 @@ WAT2_004= '9.09" spec 3 = "3 111 2 5043.5"                              '
 \end{minipage}
 \end{figure*}
 
-Hierarchical organization of keywords in headers has resulted in two
-proposed conventions. The most common is the \texttt{HIERARCH} convention
-mentioned previously, that co-opts comment headers to allow
-hierarchy. The other convention is the \emph{record-valued} system
-proposed in the FITS distortion paper \citep{FITSDistort} which
-adds special syntax to the content of strings.
+All of this is not to say that there are not restrictions on the expression
+of scalar values in headers. Consider that FITS cards are limited to 80 
+characters and FITS keyword names may be no longer than 8 characters. The 
+result of these constraints is that keyword values may be no longer than 
+68 characters. Of course, if you use all of the space for keyword values, 
+then the comment, or keyword values longer than 68 characters will need 
+another convention in order to capture it (such as creating a continuation
+line in the header using the \texttt{CONTINUE} convention \citep{2007Continue}.
 
-This limitation on the range of metadata value structures is not the
-only problem, even the expression single scalar values are
-constrained. Consider that FITS cards are limited to 80 characters and FITS
-keyword names may be no longer than 8 characters. The result of these
-constraints is that keyword values may be no longer than 68 characters. Of
-course, if you use all of the space for keyword values, then the
-comment, or keyword values longer than 68 characters will need another
-convention in order to capture it (such as creating a continuation
-line in the header using the \texttt{CONTINUE} convention
-\citep{2007Continue}.
+The use of conventions is also how support may be added for more
+advanced metadata structures, such as hierarchies. There are at 
+least two proposed conventions which attempt to add this feature to FITS.
+The most common is the \texttt{HIERARCH} convention mentioned previously, 
+that co-opts \texttt{COMMENT} keywords to realize the hierarchy. The other 
+convention is the \emph{record-valued} system proposed in the FITS 
+distortion paper \citep{FITSDistort} which adds special syntax to the 
+content of strings. 
 
 Let us now consider the impact of keyword name constraints. Not only
 are keyword names limited to a small set of characters but keyword
@@ -1127,19 +1128,17 @@ metadata.
 tables can only have up to 999 columns because of the need for keywords of the
 form \texttt{TFORMnnn} and the 8 character limit?}
 
-Due to the limited namespace of keywords, different conventions often
-reuse the same keywords for different purposes.  Compare, for example,
-the \texttt{PV} keywords in the products of the SCAMP tools
-\citep{2006ASPC..351..112B}, used for polynomial distortion coefficients, to the more
-common \texttt{PV} keywords used in the WCS convention for generic
-parameter values.  These two conventions, when used in the same file,
+These restrictions on the FITS card have impact on conventions with
+resulting limits on the utility of any implementation. Due to the limited 
+namespace and size of the keywords, different conventions often reuse 
+the same keywords for different purposes. For example, the previously 
+mentioned issue with the \texttt{HIERARCH} convention and its use of 
+\texttt{COMMENT} keywords for non-comment purposes. As another example, 
+compare the use of \texttt{PV} keywords in the products of the SCAMP tools
+\citep{2006ASPC..351..112B}, used for polynomial distortion coefficients, 
+to the more common \texttt{PV} keywords used in the WCS convention for generic
+parameter values. These two conventions, when used in the same file,
 cause ambiguity and incorrect representation of the data.
-
-These restrictions on the FITS card have other impacts as well. They
-can and do limit the utility of FITS conventions which may be
-implemented. Take, for example, the previously mentioned issue with
-the \texttt{HIERARCH} convention and its use of \texttt{COMMENT}
-keywords for non-comment purposes.
 
 
 Finally, while being the least problematic of these issues, but still
