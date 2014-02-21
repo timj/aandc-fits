@@ -521,20 +521,6 @@ evidence such as the presence of certain keywords, date of the file
 creation and so on.
 
 
-Versioning should be made part of the FITS standard in order to
-address these problems. We cannot simply solve the lack of versioning
-by adding a convention; conventions are not required to be implemented
-and this is fundamental metadata about the serialization of FITS
-itself. Furthermore, without the enforcement of being part of the
-standard, versioning is unlikely to be implemented where it is needed
-most, in the generation of new FITS files. Since any group can define
-and use their own conventions to store real, meaningful data, it is
-almost certain that since these conventions are not defined as part of
-the file format (or even in a central location), at some time in the
-future these definitions, along with the usefulness of the data, will
-be lost.
-
-
 \subsubsection{Inadequate declaration and validation of content meaning}
 
 
@@ -650,20 +636,6 @@ the software to use, it is likely impossible to determine which data models
 are present and map information to appropriate meaning.
 
 
-A means to capture and associate the data model/namespace information with
-the contents of the FITS file, in a machine readable manner, should be found
-so that validation can be possible without human inspection or specifically
-written software programs (similar, perhaps, in the way that JSON or XML
-formats have schema). This approach has additional benefits downstream. First,
-it will help to avoid misinterpretation because it is better for the creator
-of the data and/or data model to provide the machine readable information rather
-than a downstream programmer. Second, there is a saving in effort
-in that the model is done once and need not be repeated by numerous
-downstream programmers. Finally, good validation tools will allow the community
-to better detect informal variant models and reject them, promoting good
-practice.
-
-
 \subsubsection{No support for alternative encodings}
 
 
@@ -693,17 +665,6 @@ Chinese, cannot be used easily in a FITS file. Forcing information
 into English can easily result in loss of valuable meaning, unnecessarily
 limit the audience who may use the file, or force the author to use some other
 format to store their data.
-
-
-It is clear to us that support for alternative encodings is needed.
-Simple issues which revolve around the value of keywords like the
-expression of a person's name (with accents, for example), or the
-ability to use special scientific and mathematical symbols (like the
-\r{a}ngstr\"{o}m symbol \r{A} or the degree symbol \degree) should be
-handled. Tabular text values should similarly be allowed alternative
-encodings for the same reasons.  Furthermore, while not as critical, the
-FITS community should also consider the utility of allowing FITS
-keywords themselves to be expressed in a broader range of characters.
 
 
 \subsection{Missing critical data models}
@@ -1150,33 +1111,6 @@ are oriented primarily to metadata transport or capture) this is
 simply wasteful.
 
 
-The issues with metadata expression are serious for FITS with the
-problems caused by the limitations on allowed FITS keyword names and
-value data structures being the most significant. Certainly, as we
-have already noted, in many cases it is possible to create one or more
-conventions to expand the expression of the metadata but doing so will
-result in files which are unparsable by downstream readers which
-do not implement these conventions. There is no apparent solution,
-using a FITS convention, than can solve the limitation on the
-restricted expression of keyword names.
-
-
-All of these metadata limitations are contrary to both the
-``interchange'' and ``archivability'' use cases for FITS. If the FITS
-standard is followed with additional conventions we still need
-specialized readers and/or a human to successfully parse the content
-of the metadata present. If the FITS standard is rigorously followed
-sans conventions, then the author is severely limited in the metadata
-they may express.
-
-
-Keyword names and values must be allowed to be longer, and an expanded
-character set would be useful as well. FITS metadata should be able to
-express, as part of the FITS standard, many more data structures as
-metadata. These include, but are not limited to things such as sets,
-lists and objects.
-
-
 \subsubsection{Awkwardness in representing the associations present in both data and metadata}
 
 
@@ -1232,13 +1166,6 @@ byte-order in the FITS standard, is important. From
 the perspective of an archivist with the responsibility of preserving the
 records of astronomical observations, the less the data are altered, the
 more efficient and reliable the archival data management will be.
-
-
-Other data formats used to store scientific binary data such as HDF5 or
-netCDF are able to declare the byte ordering by using a data type flag and
-the software libraries will perform the byte order conversion if required.
-Thus, we suggest that FITS should be able to declare the byte ordering of
-data by using a FITS keyword defined in the standard dictionary.
 
 
 \subsection{Inadequate support for large or distributed data}
@@ -1374,8 +1301,232 @@ directing the machine on how to access the resource specified by the
 URI.
 
 
+\section{Discussion -- Lessons Learned}
+
+What then are the lessions we might draw from the deficiencies
+we have identified with FITS? Are there any deeper issues and 
+commonalities which thread throughout these problems? In fact,
+there are serveral.
+
+
+\subsection{Lesson 1. The format should be versioned}
+
+The first lesson that we may draw is that the format needs to be
+versioned. Without versioning, it becomes a significantly harder
+task to write parsers for the format, requiring the software
+developer to encompass as many design rules as possible in order
+to robustly handle format instances. As the format evolves and
+accretes new design rules, it only becomes harder to write the
+next parser and, as bad, older parsers of the format may fail quietly.
+
+In contrast, when versioning is present, implementers of parsers
+are able to target a sub-set of the format design, and declare
+that within the software so that, should it inadvertently be used
+on a version it doesn't understand, it may fail gracefully and
+in a planned manner.
+
+Because it is so important to understanding the design of
+the format versioning metadata should be part of the standard.
+The choice to implement this as an optional add-on data model
+(such as a FITS convention) is to be avoided. This is because,
+without the enforcement of being part of the standard, versioning
+is unlikely to be implemented where it is needed most, in the
+generation of new instances.
+
+
+\subsection{Lesson 2. The format should be self-describing}
+
+The next lesson that we may draw is that the format needs to be 
+self-describing in a machine readable manner. By this we mean 
+
+\begin{quote}
+a self-describing format is one where the formatted instance
+is capable of conveying and validating the semantic information 
+it holds
+\end{quote}
+
+where the formatted ``instance'' may be a file, or a collection 
+of related files or perhaps something more exotic (see below). 
+
+As we have already seen, FITS lacks semantic validation and its
+syntactic validation is very limited, achieved only by the creation
+hard-coded rules in software utilities such as fitsverify
+{\color{red} ref needed here}. Furthermore, the limitation on
+keyword length to 8 characters all but guarantees that semantic
+information within the header is obfuscated. As we have shown,
+this in part contributes to the problem of being able to detect,
+and implement, multiple data models within a single FITS file
+and can lead to the inadvertent creation of informal (and
+undetectable) variants. Furthermore, without this validation,
+archiving and interchange of information in the format suffers.
+It is harder as any software system involved in the interchange
+is unable to adequately detect, and handle, invalid files fed to
+it.
+
+The declaration of validation rules should be flexible. In FITS,
+where syntactic rules are hard-coded, it is not possible to
+declare syntactic rules which check the range or data type of
+metadata fields\footnote{beyond the few canonical keywords
+which are part of the FITS standard such as \texttt{GCOUNT}}
+without re-coding the utility.
+Ideally, the data format should not rely on hard-coding these rules
+in software. Rather, a means to capture and associate the data
+model/namespace information with the contents of the formatted
+instance, in a machine readable manner, should be found so that
+validation can be possible without human inspection or specifically
+written software programs (similar, perhaps, in the way that JSON
+or XML formats have schema).
+
+
+This approach has additional benefits downstream. First, it will help 
+to avoid misinterpretation because it is better for the creator
+of the data and/or data model to provide the machine readable information rather
+than a downstream programmer. Second, there is a saving in effort
+in that the model is done once and need not be repeated by numerous
+downstream programmers. Finally, good validation tools will allow the community
+to better detect informal variant models and reject them, promoting good
+practice.
+
+
+\subsection{Lesson 3. The format should support scientific metadata}
+
+{\color{red} Notes..
+
+Core to this lesson is the need to support the development of tools
+which can do scientific archiving and analysis of the data.
+
+Keyword names and values must be allowed to be longer, and an expanded character set would be useful as well. 
+
+FITS metadata should be able to
+express, as part of the FITS standard, many more data structures as
+metadata. These include, but are not limited to things such as sets,
+lists and objects.
+
+
+The issues with metadata expression are serious for FITS with the
+problems caused by the limitations on allowed FITS keyword names and
+value data structures being the most significant. Certainly, as we
+have already noted, in many cases it is possible to create one or more
+conventions to expand the expression of the metadata but doing so will
+result in files which are unparsable by downstream readers which
+do not implement these conventions. There is no apparent solution,
+using a FITS convention, than can solve the limitation on the
+restricted expression of keyword names.
+
+
+All of these metadata limitations are contrary to both the
+``interchange'' and ``archivability'' use cases for FITS. If the FITS
+standard is followed with additional conventions we still need
+specialized readers and/or a human to successfully parse the content
+of the metadata present. If the FITS standard is rigorously followed
+sans conventions, then the author is severely limited in the metadata
+they may express.
+
+
+Models realted to this:
+* Provenance Model
+* Units associated with all metadata 
+* Statistical error model may be implemented 
+* Model of higher level scientific objects such as measurement?
+* Data quality description then possible
+* WCS improvements possible
+
+The third lesson is that flexibility of expression in the metadata
+is critical. As we have seen, the inflexibility in metadata capture
+is responsible for problems with...
+
+realizing important data models (WCS, ??),
+
+capturing important complex concepts (e.g. allows richer data models)
+
+Flexibility in capture of the data is important too. This means
+data models need
+
+
+ flexibility of expression in the metadata
+is critical. As we have seen, the inflexibility in metadata capture
+is responsible for problems with...
+
+The format should simple "get out of the way" of the data model. In practice
+this means having very few hardcoded rules within the format itself such
+as the 2880 byte record. Schema should be capable of describing data and
+metadata blocks instead, and the format flexible enough to handle any model.
+
+* Objects, hierarchies and non-scalar values easily captured
+* realizing important data models (WCS, ??),
+* capturing important complex concepts (e.g. allows richer data models)
+* Data capture flexible too (go beyond 2D image, data cube and table models)
+
+Flexibility in capture of the data is important too. This means
+data models need
+
+
+
+By that we mean the ability to add new data models, not only in terms
+of the metadata, but also the data itself, and an associated API. 
+
+(Much like XML has an extensible DOM and SAX parsing APIs). FITS does
+not have a blessed parsing API in this manner although CFITSIO is more 
+or less the defacto API for FITS (it is reused in other software like 
+Perl CFITSIO library). 
+
+The API should allow implementors to declare the features it supports, 
+such as file, streaming parallel IO and distributed files.
+
+Data models including more than new keywords, we need to handle different
+data blocks. The format probably is better served by having a uniform
+shared API rather than format itself (HDF does this inadvertantly?)
+
+}
+
+
+\subsection{Lesson 4. The format should support new storage and transport needs}
+
+{\color{red} Notes..
+
+Finally, a modern astronomical data format needs to be ready for
+the next generation of astronomical data. This means handling 
+large, distributed datasets, and an expanded range of data models...
+
+* Streaming
+* Database
+* Parallel IO
+* Distributed datasets
+* Non-file approach
+* Byte order description
+
+Again, description of format as API is needed.
+ 
+
+It is clear to us that support for alternative encodings is needed.
+Simple issues which revolve around the value of keywords like the
+expression of a person's name (with accents, for example), or the
+ability to use special scientific and mathematical symbols (like the
+\r{a}ngstr\"{o}m symbol \r{A} or the degree symbol \degree) should be
+handled. Tabular text values should similarly be allowed alternative
+encodings for the same reasons.  Furthermore, while not as critical, the
+FITS community should also consider the utility of allowing FITS
+keywords themselves to be expressed in a broader range of characters.
+
+Other data formats used to store scientific binary data such as HDF5 or
+netCDF are able to declare the byte ordering by using a data type flag and
+the software libraries will perform the byte order conversion if required.
+Thus, we suggest that FITS should be able to declare the byte ordering of
+data by using a FITS keyword defined in the standard dictionary.
+}
+
+
 \section{Summary -- Significant problems exist in the FITS standard}
 
+
+{\color{red}
+Our analysis here is limited by its focus upon FITS.
+To get the best picture of what a future astronomy format will look like
+In this document, we have made occaisonal reference to other 
+data formats in use in Astronomy. 
+A fuller analysis of problems should be done in comparison to 
+other data formats used in Astronomy.
+}
 
 The problems which we have described are real and significant, however
 we do not wish to recommend a particular solution here to any of
