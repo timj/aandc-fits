@@ -1367,8 +1367,8 @@ The declaration of validation rules should be flexible. In FITS,
 where syntactic rules are hard-coded, it is not possible to
 declare syntactic rules which check the range or data type of
 metadata fields\footnote{beyond the few canonical keywords
-which are part of the FITS standard such as \texttt{GCOUNT}}
-without re-coding the utility.
+which are part of the FITS standard such as \texttt{GCOUNT} 
+or \texttt{PCOUNT}} without re-coding the utility.
 Ideally, the data format should not rely on hard-coding these rules
 in software. Rather, a means to capture and associate the data
 model/namespace information with the contents of the formatted
@@ -1452,6 +1452,7 @@ this means having very few hardcoded rules within the format itself such
 as the 2880 byte record. Schema should be capable of describing data and
 metadata blocks instead, and the format flexible enough to handle any model.
 
+TOPICS to touch on
 * Objects, hierarchies and non-scalar values easily captured
 * realizing important data models (WCS, ??),
 * capturing important complex concepts (e.g. allows richer data models)
@@ -1488,6 +1489,7 @@ Finally, a modern astronomical data format needs to be ready for
 the next generation of astronomical data. This means handling 
 large, distributed datasets, and an expanded range of data models...
 
+TOPICS to touch on
 * Streaming
 * Database
 * Parallel IO
@@ -1522,10 +1524,9 @@ data by using a FITS keyword defined in the standard dictionary.
 {\color{red}
 Our analysis here is limited by its focus upon FITS.
 To get the best picture of what a future astronomy format will look like
-In this document, we have made occaisonal reference to other 
-data formats in use in Astronomy. 
-A fuller analysis of problems should be done in comparison to 
-other data formats used in Astronomy.
+a study including other formats in use today should be undertaken.
+This in fact, is being done now, and 2 other papers in this series will
+provide analysis of JPEG2000 and NDF formats (REFERENCES here).
 }
 
 The problems which we have described are real and significant, however
