@@ -1322,10 +1322,10 @@ URI.
 
 \section{Discussion -- Lessons Learned}
 
-What then are the lessions we might draw from the deficiencies
+What then are the lessons we might draw from the deficiencies
 we have identified with FITS? Are there any deeper issues and 
 commonalities which thread throughout these problems? In fact,
-there are serveral.
+there are several.
 
 
 \subsection{Lesson 1. The format should be versioned}
@@ -1442,7 +1442,7 @@ sans conventions, then the author is severely limited in the metadata
 they may express.
 
 
-Models realted to this:
+Models related to this:
 * Provenance Model
 * Units associated with all metadata 
 * Statistical error model may be implemented 
@@ -1462,7 +1462,7 @@ Flexibility in capture of the data is important too. This means
 data models need
 
 
- flexibility of expression in the metadata
+flexibility of expression in the metadata
 is critical. As we have seen, the inflexibility in metadata capture
 is responsible for problems with...
 
@@ -1472,9 +1472,13 @@ as the 2880 byte record. Schema should be capable of describing data and
 metadata blocks instead, and the format flexible enough to handle any model.
 
 TOPICS to touch on
+
 * Objects, hierarchies and non-scalar values easily captured
+
 * realizing important data models (WCS, ??),
+
 * capturing important complex concepts (e.g. allows richer data models)
+
 * Data capture flexible too (go beyond 2D image, data cube and table models)
 
 Flexibility in capture of the data is important too. This means
@@ -1495,7 +1499,7 @@ such as file, streaming parallel IO and distributed files.
 
 Data models including more than new keywords, we need to handle different
 data blocks. The format probably is better served by having a uniform
-shared API rather than format itself (HDF does this inadvertantly?)
+shared API rather than format itself (HDF does this inadvertently?)
 
 }
 
