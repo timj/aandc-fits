@@ -367,6 +367,7 @@ astronomical computing communities in the hopes that
 it will spur action to resolve them.
 
 \section{Deficiencies of FITS for Modern Astronomical Research}
+\label{section_deficiencies}
 
 As technologies and research techniques in astronomy have evolved, FITS
 has not kept pace. As a result, gaps between FITS utility and the
@@ -462,6 +463,7 @@ concepts of the NDF format.
 HDF5 was chosen to accommodate LOFAR's
 exceptional high data rates, 6-dimensional data complexity, distributed
 data processing and I/O parallelization needs.
+
 
 \subsubsection{Lack of serialization/format versioning}
 
@@ -1002,6 +1004,7 @@ information are still insufficient relative to actual need.
 
 
 \subsubsection{Constrained metadata representation}
+\label{subsection_information_representation}
 
 
 The basic element of metadata capture in a FITS file is the FITS
@@ -1404,121 +1407,26 @@ to better detect informal variant models and reject them, promoting good
 practice.
 
 
-\subsection{Lesson 3. The format should support scientific metadata}
+\subsection{Lesson 3. The serialization should not limit expression of desired data models}
 
-{\color{red} Notes..
-
-Core to this lesson is the need to support the development of tools
-which can do scientific archiving and analysis of the data.
-
-Keyword names and values must be allowed to be longer, and an expanded character set would be useful as well. 
-
-FITS metadata should be able to
-express, as part of the FITS standard, many more data structures as
-metadata. These include, but are not limited to things such as sets,
-lists and objects.
+{\color{red} \textit{Need to verify this statement:} FITS was originally designed around capture and transport of a single
+data model, that being the two dimensional image.} In this regard FITS has 
+performed reasonably well, however, as we have seen, over the intervening 
+years, more and more demands on the type of data (models) it may hold
+have been made, and all of this having been done without adjustment
+to formatting limitations as have been enumerated in 
+section~\ref{subsection_information_representation}.
 
 
-The issues with metadata expression are serious for FITS with the
-problems caused by the limitations on allowed FITS keyword names and
-value data structures being the most significant. Certainly, as we
-have already noted, in many cases it is possible to create one or more
-conventions to expand the expression of the metadata but doing so will
-result in files which are unparsable by downstream readers which
-do not implement these conventions. There is no apparent solution,
-using a FITS convention, than can solve the limitation on the
-restricted expression of keyword names.
+Holding the line on format serialization changes via the 
+``Once FITS, Always FITS'' maxim has been harmful. Specifically, we mean 
+the lack of support within the format for basic data structures beyond 
+scalar values and the severe formatting restrictions on FITS cards. As 
+we have shown, these limitations result in significant problems in 
+realizing existing data models, such as the WCS, and make it difficult 
+to create new common models of high value, such as for scientific errors, 
+units and provenance/history. 
 
-
-All of these metadata limitations are contrary to both the
-``interchange'' and ``archivability'' use cases for FITS. If the FITS
-standard is followed with additional conventions we still need
-specialized readers and/or a human to successfully parse the content
-of the metadata present. If the FITS standard is rigorously followed
-sans conventions, then the author is severely limited in the metadata
-they may express.
-
-
-Models related to this:
-* Provenance Model
-* Units associated with all metadata 
-* Statistical error model may be implemented 
-* Model of higher level scientific objects such as measurement?
-* Data quality description then possible
-* WCS improvements possible
-
-The third lesson is that flexibility of expression in the metadata
-is critical. As we have seen, the inflexibility in metadata capture
-is responsible for problems with...
-
-realizing important data models (WCS, ??),
-
-capturing important complex concepts (e.g. allows richer data models)
-
-Flexibility in capture of the data is important too. This means
-data models need
-
-
-flexibility of expression in the metadata
-is critical. As we have seen, the inflexibility in metadata capture
-is responsible for problems with...
-
-The format should simple "get out of the way" of the data model. In practice
-this means having very few hardcoded rules within the format itself such
-as the 2880 byte record. Schema should be capable of describing data and
-metadata blocks instead, and the format flexible enough to handle any model.
-
-TOPICS to touch on
-
-* Objects, hierarchies and non-scalar values easily captured
-
-* realizing important data models (WCS, ??),
-
-* capturing important complex concepts (e.g. allows richer data models)
-
-* Data capture flexible too (go beyond 2D image, data cube and table models)
-
-Flexibility in capture of the data is important too. This means
-data models need
-
-
-
-By that we mean the ability to add new data models, not only in terms
-of the metadata, but also the data itself, and an associated API. 
-
-(Much like XML has an extensible DOM and SAX parsing APIs). FITS does
-not have a blessed parsing API in this manner although CFITSIO is more
-or less the defacto API for FITS (it is reused in other software like
-Perl's CFITSIO and Python's fitsio libraries).
-
-The API should allow implementors to declare the features it supports, 
-such as file, streaming parallel IO and distributed files.
-
-Data models including more than new keywords, we need to handle different
-data blocks. The format probably is better served by having a uniform
-shared API rather than format itself (HDF does this inadvertently?)
-
-}
-
-
-\subsection{Lesson 4. The format should support new storage and transport needs}
-
-{\color{red} Notes..
-
-Finally, a modern astronomical data format needs to be ready for
-the next generation of astronomical data. This means handling 
-large, distributed datasets, and an expanded range of data models...
-
-TOPICS to touch on
-* Streaming
-* Database
-* Parallel IO
-* Distributed datasets
-* Non-file approach
-* Byte order description
-
-Again, description of format as API is needed.
- 
 
 It is clear to us that support for alternative encodings is needed.
 Simple issues which revolve around the value of keywords like the
@@ -1527,15 +1435,85 @@ ability to use special scientific and mathematical symbols (like the
 \r{a}ngstr\"{o}m symbol \r{A} or the degree symbol \degree) should be
 handled. Tabular text values should similarly be allowed alternative
 encodings for the same reasons.  Furthermore, while not as critical, the
-FITS community should also consider the utility of allowing FITS
-keywords themselves to be expressed in a broader range of characters.
+format should also allow keywords themselves to be expressed in a broader 
+range of characters.
 
+
+As we have already noted, in many cases it is possible to create one or 
+more conventions to expand the expression of the metadata but doing so will
+result in files which are unparsable by downstream readers which
+do not implement these conventions. In addition, there is no apparent 
+solution, using a FITS convention, than can solve the limitation on the
+restricted expression of keyword names nor can one utilize conventions
+to describe how to serialize \textit{data}.
+
+
+We feel that the format should simply "get out of the way" of the 
+data model. In practice this means having very few hard-coded rules 
+within the format itself such as the 2880 byte record. Schema should 
+be capable of describing \textit{data and metadata} blocks instead, and the 
+format serialization flexible enough to handle most data models.
+A successful data format design will require an through analysis of 
+data model requirements, but we can anticipate a minimum of desired 
+changes which include:
+
+\begin{itemize}
+
+\item Specification of data model in machine readable document (e.g. schema)
+
+\item Keyword names and values must be allowed to be longer
+
+\item An expanded character set (for both metadata and data) 
+
+\item The format should be able to be express, as part of its standard, 
+many basic structures in metadata. These include things such as non-scalar 
+values, sets, lists, and objects.
+
+\item Data modeling should be able to specify the capture ``data'' too. This
+certainly means specifying byte order, but should go beyond that so that a
+data model might encapsulate information in more advanced structures than FITS
+current basic 2D image, data cube and table models. 
+
+\item Data modeling should allow use and extension of other data models
+
+\end{itemize}
+
+
+\subsection{Lesson 4. The format should support new storage and transport needs}
+
+
+As we have illustrated in section~\ref{section_poor_large_data_support} there 
+are a number of new use cases for the storage and distribution (transport) 
+of FITS data. These use cases, which range from supporting large data access, 
+transport and storage to representation of information held in ``non-file''  
+instances (such as a database) are unachievable in FITS currently. The root
+reason is that for data modeling in FITS, as pointed out previously, it is 
+impossible to model new data structures (as opposed to models which just need
+metadata modeling).
+
+{\color{red}
 Other data formats used to store scientific binary data such as HDF5 or
 netCDF are able to declare the byte ordering by using a data type flag and
 the software libraries will perform the byte order conversion if required.
 Thus, we suggest that FITS should be able to declare the byte ordering of
 data by using a FITS keyword defined in the standard dictionary.
 }
+
+
+If the capability to model the layout and lower-level access of the data 
+held within the format existed, then it would devolve to a straightforward 
+exercise to specify this information so as to optimize for desired transport
+and storage use cases.  
+
+Furthermore, consideration should be given to creation of a common API
+for accessing instances of the format. Given anticipated flexibility in
+serialization of the data, optimal access could and should also be varied. 
+Consider that XML, for example, as at least 2 standard API for access its 
+data, one which is object-oriented (the Domain Object Model, or DOM) and 
+the other which is oriented towards streaming access (Simple Api for XML,
+or SAX). There should be an overarching data model for all API, which 
+should allow implementors to declare the features it supports, such as 
+file, streaming parallel IO and distributed files.
 
 
 \section{Summary -- Significant problems exist in the FITS standard}
