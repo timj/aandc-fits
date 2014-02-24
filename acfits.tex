@@ -600,7 +600,7 @@ a likely keyword string to appear in other files, how do we know if the
 TEMP in the other files is the same one we see in the example?
 
 
-As you can see, its non-trivial matter for the machine to determine whether
+Clearly, it is a non-trivial matter for the machine to determine whether
 these are the same properties and to know other important details for using
 this information. This problem is not isolated to a solitary bit
 of rogue metadata. We can ask similar questions about most of the keywords
@@ -964,22 +964,19 @@ or to communicate places where the distinction does or does not
 matter.
 
 There is also a provenance issue to defining new units, since -- to
-pick an example of a unit of `Jupiter core mass', two different
-groups may prefer different values for the mass, and indeed may not
-regard it as simply an abbreviation for a certain number of
-kilogrammes, but as a scaling mass whose value is to be fixed by a
+pick the example of the unit of `Jupiter core mass' -- two different
+groups may prefer different values for the mass, or in contrast may
+regard it, not as simply an abbreviation for a certain number of
+kilogrammes, but instead as a scaling mass whose value is to be fixed by a
 separate, subsequent, calibration.
-
-{\color{red} This para is dangerously close to suggesting fix..may need 
-to reword and shift some content to the discussion...
 
 The purely syntactical issues surrounding unit strings are to some
 extent being addressed by the IVOA's `VOUnits' work \citep{VOUnits}, but the higher
 level questions -- of communicating and defining new units, of
 indicating documentation, and of converting between them in a
-scientifically meaningful manner -- are out of scope for that work and
-should be considered by the FITS community.
-}
+scientifically meaningful manner -- are out of scope for that work by
+design, since experience has shown them to be more contentious than
+one might expect.  These questions should perhaps be taken up by the FITS community.
 
 
 \subsection{Inflexibility in organizing and representing metadata and data}
