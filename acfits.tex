@@ -379,12 +379,14 @@ this part of the paper, we detail many issues, or deficiencies of FITS,
 which we see in this regard.
 
 
-The deficiencies of FITS can be categorized into several groups.
-These may be summarized as poor support for information
-interchange (section~\ref{section_poor_exchange}),
-missing critical data models (section~\ref{section_crit_data_models}), inflexibility in
-representing both metadata (section~\ref{section_inflex_represent}) and data and inadequate
-support for large and/or distributed data (section~\ref{section_poor_large_data_support}). We address each of these below.
+The deficiencies of FITS can be categorized into several groups.  These
+may be summarized as poor support for information interchange
+(section~\ref{section_poor_exchange}), missing critical data models
+(section~\ref{section_crit_data_models}), inflexibility in representing
+both metadata and data (section~\ref{section_inflex_represent}) and
+inadequate support for large and/or distributed data
+(section~\ref{section_poor_large_data_support}). We address each of
+these below.
 
 \subsection{Poor support for information interchange}
 \label{section_poor_exchange}
@@ -452,7 +454,7 @@ model \citep{2012ASPC..461..283A}, and Starlink's NDF
 \citep{1988STARB...2...11C,1993ASPC...52..229W,P91_adassxxiii} all
 serve as examples in this regard. XDF was created primarily to support
 the development of FITSML -- an XML version of the FITS data model which
-could use XML schema for validation. NDF was developed in the late
+could use an XML schema for validation. NDF was developed in the late
 1980s as a means of organizing the hierarchical structures that were
 available via the Starlink HDS format when it became apparent that
 arbitrary hierarchies could lead to chaos and lack of ability for
@@ -926,10 +928,10 @@ systems custom to Earth Science and remote remote sensing
 
 
 One of the more pressing needs in our era of shared and distributed
-data is the need to know which data are ``good'' or, put another way, of
-sufficient quality. We are long past the era when the data volume was
-so small that it is practical to download all of the possible data of
-interest and examine it locally.
+data is the need to know which data are ``good'' or, to put it another
+way, of sufficient quality. We are long past the era when the data
+volume was so small that it is practical to download all of the possible
+data of interest and examine it locally.
 
 
 Some might insist that this is an easily solved problem. Simply
@@ -1514,7 +1516,7 @@ for accessing instances of the format. Given anticipated flexibility in
 serialization of the data, optimal access could and should also be varied. 
 Consider that XML, for example, as at least 2 standard API for access its 
 data, one which is object-oriented (the Domain Object Model, or DOM) and 
-the other which is oriented towards streaming access (Simple Api for XML,
+the other which is oriented towards streaming access (Simple API for XML,
 or SAX). There should be an overarching data model for all API, which 
 should allow implementors to declare the features it supports, such as 
 file, streaming parallel IO and distributed files.
