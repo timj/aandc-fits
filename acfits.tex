@@ -874,8 +874,9 @@ M2_A    =    0.572680760059142 / Forward matrix value
 M3_A    =   -0.418237169285184 / Forward matrix value
 \end{verbatim}
 \end{center}
-\caption{Example header of a representation of an AST WCS object in
-  Native form.}
+\caption{Example header of a representation of an AST WCS object in a
+  FITS header  when the mapping is too complex to be represented using the FITS-WCS
+  standard.}
 \label{fig:asthead}
 \end{minipage}
 \end{figure*}
@@ -1068,7 +1069,8 @@ WAT2_004= '9.09" spec 3 = "3 111 2 5043.5"                              '
 \end{verbatim}
 \end{center}
 \caption{Example header from an IRAF \textit{multispec} data set
-  indicating the use of multi-line headers..}
+  indicating the use of multi-line headers that differs from the
+  \texttt{CONTINUE} convention.}
 \label{fig:multispec}
 \end{minipage}
 \end{figure*}
