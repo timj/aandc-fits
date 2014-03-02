@@ -412,7 +412,6 @@ appears in Fig.~\ref{fig:fitshead}.
 
 \begin{figure*}
 \begin{minipage}{\textwidth}
-\begin{center}
 \begin{verbatim}
 SIMPLE  =                    T / Standard FITS format
 BITPIX  =                  -32 / 32 bit IEEE floating point numbers
@@ -433,7 +432,6 @@ FILTNAM1= 'F555W             ' / first filter name
 HSTPHOT =                    T / Preprocessed by HSTphot/mask
 END
 \end{verbatim}
-\end{center}
 \caption{Representative simple primary header of a FITS file showing an assortment of FITS keywords and their associated values. Bytes which contain data may or may not follow the `END' keyword of the header.}
 \label{fig:fitshead}
 \end{minipage}
@@ -852,7 +850,6 @@ to FITS files (see Fig.~\ref{fig:asthead}).
 
 \begin{figure*}
 \begin{minipage}{\textwidth}
-\begin{center}
 \begin{verbatim}
 PLRLG_A =     5.50788096462284 / Polar longitude (rad.s)
 ENDAST_K= 'SphMap  '           / End of object definition
@@ -873,10 +870,9 @@ M1_A    =    0.699933471661958 / Forward matrix value
 M2_A    =    0.572680760059142 / Forward matrix value
 M3_A    =   -0.418237169285184 / Forward matrix value
 \end{verbatim}
-\end{center}
 \caption{Example header of a representation of an AST WCS object in a
-  FITS header  when the mapping is too complex to be represented using the FITS-WCS
-  standard.}
+  FITS header  when the mapping is too complex to be represented using the
+  FITS-WCS standard.}
 \label{fig:asthead}
 \end{minipage}
 \end{figure*}
@@ -1058,7 +1054,6 @@ headers (see Fig.~\ref{fig:asthead}).
 
 \begin{figure*}
 \begin{minipage}{\textwidth}
-\begin{center}
 \begin{verbatim}
 WAT0_001= 'system=multispec'
 WAT1_001= 'wtype=multispec label=Wavelength units=Angstroms'
@@ -1067,7 +1062,6 @@ WAT2_002= '83 256 0. 23.22 31.27 1. 0. 2 4 1. 256. 4963.0163112090 5.676'
 WAT2_003= '976664 -0.3191636898579552 -0.8169352858733255" spec2 ="2 112'
 WAT2_004= '9.09" spec 3 = "3 111 2 5043.5"                              '
 \end{verbatim}
-\end{center}
 \caption{Example header from an IRAF \textit{multispec} data set
   indicating the use of multi-line headers that differs from the
   \texttt{CONTINUE} convention.}
