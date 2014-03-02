@@ -645,48 +645,6 @@ the software to use, it is likely impossible to determine which data models
 are present and map information to appropriate meaning.
 
 
-\subsubsection{No support for alternative encodings}
-\label{section_char_encoding}
-
-The allowed character set for metadata and data in FITS is overly
-restrictive and is limiting its application. The restrictions between
-metadata and data do not differ significantly. For metadata, the
-keywords which occur in the FITS header, FITS only supports the 7-bit
-ASCII encoding for keyword values and comments. For data encoding,
-authors may again only use 7-bit ASCII for text (string) capture in
-either ASCII or binary FITS tables although the NULL character is
-allowed in certain cases in binary tables.
-
-
-The world of astronomy has evolved beyond capturing of scientific
-information in 7-bit ASCII encoding. The FITS community has grown.
-Many data are captured by instruments designed, built and run by
-investigators based in non-English speaking countries and astronomical
-research has grown significantly elsewhere in the world. Whether as
-original observational data products, reduced data, information from new
-services or in capturing theoretical data, FITS is now required to hold
-data which are not exclusively originating in English-speaking countries.
-
-
-The current restrictive character set is an
-anachronism, particularly considering that the most common language on the planet,
-Chinese, cannot be used easily in a FITS file. Forcing information
-into English can easily result in loss of valuable meaning, unnecessarily
-limit the audience who may use the file, or force the author to use some other
-format to store their data.
-
-
-It is clear that support for alternative encodings is needed.
-Simple issues which revolve around the value of keywords like the
-expression of a person's name (with accents, for example), or the
-ability to use special scientific and mathematical symbols (like the
-\r{a}ngstr\"{o}m symbol \r{A} or the degree symbol \degree) should be
-handled. Tabular text values should similarly be allowed alternative
-encodings for the same reasons.  Furthermore, while not as critical, the
-format should also allow keywords themselves to be expressed in a broader
-range of characters.
-
-
 \subsection{Missing critical data models}
 \label{section_crit_data_models}
 
@@ -1190,6 +1148,48 @@ byte-order in the FITS standard, is important. From
 the perspective of an archivist with the responsibility of preserving the
 records of astronomical observations, the less the data are altered, the
 more efficient and reliable the archival data management will be.
+
+
+\subsubsection{No support for alternative encodings}
+\label{section_char_encoding}
+
+The allowed character set for metadata and data in FITS is overly
+restrictive and is limiting its application. The restrictions between
+metadata and data do not differ significantly. For metadata, the
+keywords which occur in the FITS header, FITS only supports the 7-bit
+ASCII encoding for keyword values and comments. For data encoding,
+authors may again only use 7-bit ASCII for text (string) capture in
+either ASCII or binary FITS tables although the NULL character is
+allowed in certain cases in binary tables.
+
+
+The world of astronomy has evolved beyond capturing of scientific
+information in 7-bit ASCII encoding. The FITS community has grown.
+Many data are captured by instruments designed, built and run by
+investigators based in non-English speaking countries and astronomical
+research has grown significantly elsewhere in the world. Whether as
+original observational data products, reduced data, information from new
+services or in capturing theoretical data, FITS is now required to hold
+data which are not exclusively originating in English-speaking countries.
+
+
+The current restrictive character set is an
+anachronism, particularly considering that the most common language on the planet,
+Chinese, cannot be used easily in a FITS file. Forcing information
+into English can easily result in loss of valuable meaning, unnecessarily
+limit the audience who may use the file, or force the author to use some other
+format to store their data.
+
+
+It is clear that support for alternative encodings is needed.
+Simple issues which revolve around the value of keywords like the
+expression of a person's name (with accents, for example), or the
+ability to use special scientific and mathematical symbols (like the
+\r{a}ngstr\"{o}m symbol \r{A} or the degree symbol \degree) should be
+handled. Tabular text values should similarly be allowed alternative
+encodings for the same reasons.  Furthermore, while not as critical, the
+format should also allow keywords themselves to be expressed in a broader
+range of characters.
 
 
 \subsection{Inadequate support for large or distributed data}
