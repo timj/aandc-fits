@@ -1467,16 +1467,82 @@ restricted expression of keyword names nor can one utilize conventions
 to describe how to serialize \textit{data}.
 
 
+The data format should do as little to impede the expression of data 
+models.  In practice this means having very few hard-coded rules
+within the format itself such as the 2880 byte record or 80 byte card.
+Schema should be capable of describing the layout of \textit{data and metadata}
+ and the format serialization should be flexible enough to handle 
+desired data models and associations between them.
+
+
+{\color{red}
+Consideration should be given to creation of a common API
+for accessing instances of the format. Given anticipated flexibility in
+serialization of the data, optimal access could and should also be varied.
+Consider that XML, for example, has at least two standard API for access its
+data, one which is object-oriented (the Domain Object Model, or DOM) and
+the other which is oriented towards streaming access (Simple API for XML,
+or SAX). 
+
+There should be an overarching data model for all readers, which
+should allow implementors to declare the features it supports, such as
+file, streaming parallel IO and distributed file support.
+}
+
+
 \section{Summary -- Significant problems exist in the FITS standard}
 
 
-The problems which we have described are real and significant,
-and we have tried to draw conclusions about their origin.
+The problems which we have described in this paper are significant
+and we have tried to provide an analysis of their deeper origin.
+From our investigation, it is clear that FITS suffers from a lack of 
+evolution. Original design decisions, such as the header byte layout
+and fixed character encoding made a certain sense at the time FITS 
+was founded. The later enshrinement of the FITS maxim, which has
+been utilized to effectively freeze the format, was a mistake in our 
+opinion.  Adherence to the maxim, and lack of any means to version
+the format in a machine readable manner, has stiffled needed change of
+FITS, and we can broadly list a number of root problems in the format, 
+some of which are long-standing, that cause problems for both providers
+and consumers of astronomical data today. 
 
-We do not wish to recommend a particular solution here to any 
-particular problem.
-Instead we hope that action to correct deficiencies should flow from 
-constructive community discussion and offered solutions to these problems. 
+{\color{red}
+These include:
+\begin{itemize}
+
+\item FITS serialization is not versioned in a standard machine readable manner. 
+
+\item FITS cannot specify data model designs in a machine readable document.
+
+\item FITS keyword names and values are too short.
+
+\item FITS needs an expanded character set (for both metadata and data).
+
+\item The FITS format is unable to be express, as part of its standard,
+many basic structures in metadata. These include things such as non-scalar
+values, sets, lists, and objects.
+
+\item FITS data modeling is unable to specify the capture ``data''.
+There is no provision to allow a user to create a new data model in more 
+advanced structures than the FITS basic 2D image, data cube and table models.
+
+\item FITS lacks a machine readable mechanism for re-using and extending data models 
+(FITS conventions are inadequate in this regard). 
+
+\item FITS lacks a standard mechanism for associating data models with one another.
+
+%\item FITS needs a standard API for reading files.
+
+\end{itemize}
+}
+ 
+
+We do not wish to recommend any particular corrective action to any particular 
+problem. We hope that action to correct deficiencies will flow from 
+constructive community discussion which will include the analysis of 
+other useful format solutions\footnote{Such as may be found in the two other 
+papers in this series which examine the JPEG2000 and NDF formats \citep{2014Jenness}} 
+and offered solutions to these problems. 
 Possible solutions may involve moving existing FITS conventions into the core
 standard, modification of the FITS standard to remove limitations or
 possibly transferring the FITS data model over into a new
@@ -1490,61 +1556,6 @@ continue to make their own ad-hoc solutions. Data formats will become
 increasingly fragmented and we will no longer enjoy the easy
 interoperability that FITS has provided for many years.
 
-{\color{red}
-
-We feel that the format should simply ``get out of the way'' of the
-data model. In practice this means having very few hard-coded rules
-within the format itself such as the 2880 byte record or 80 byte card.
-Schema should be capable of describing the layout of \textit{data and metadata}
-instead, and the format serialization flexible enough to handle
-desired data models and associations between them.
-
-A successful data format design will require an through analysis of
-data model requirements, but we can anticipate a minimum of desired
-changes which include:
-
-Our analysis here is limited by its focus upon FITS.
-To get the best picture of what a future astronomy format will look like
-a study including other formats in use today should be undertaken.
-This in fact, is being done now, and two other papers in this series will
-provide analysis of JPEG2000 and NDF formats \citep{2014Jenness}
-\ldots
-
-
-\begin{itemize}
-
-\item Specification of data model in machine readable document (e.g. schema)
-
-\item Keyword names and values must be allowed to be longer
-
-\item An expanded character set (for both metadata and data)
-
-\item The format should be able to be express, as part of its standard,
-many basic structures in metadata. These include things such as non-scalar
-values, sets, lists, and objects.
-
-\item Data modeling should be able to specify the capture ``data'' too. This
-certainly means specifying byte order, but should go beyond that so that a
-data model might encapsulate information in more advanced structures than FITS
-current basic 2D image, data cube and table models.
-
-\item Data modeling should allow use and extension of other data models
-
-\item Data models should be able to reference to (associate with) 
-other data models via standard within the format 
-
-\end{itemize}
-
-Finally, we feel consideration should be given to creation of a common API
-for accessing instances of the format. Given anticipated flexibility in
-serialization of the data, optimal access could and should also be varied.
-Consider that XML, for example, as at least 2 standard API for access its
-data, one which is object-oriented (the Domain Object Model, or DOM) and
-the other which is oriented towards streaming access (Simple API for XML,
-or SAX). There should be an overarching data model for all API, which
-should allow implementors to declare the features it supports, such as
-file, streaming parallel IO and distributed files.
-}
 
 
 \section{Acknowledgments}
