@@ -1439,9 +1439,9 @@ This class causes difficulties in realizing the WCS model, for example.
 
 
 The other class of problem is that some needed machinery for data modeling
-within the FITS standard itself is missing beyond the aforementioned need
-to declare models in a machine readable manner (detailed in Lesson 2). 
-This class encompasses a broader range of issues which include the ability 
+within the FITS standard itself is missing. Beyond the aforementioned need
+to declare models in a machine readable manner (detailed in Lesson 2), 
+this class encompasses a broader range of issues which include the ability 
 to declare byte order, to make associations between data and metadata, and 
 to create data models which extend both \textit{metadata and the data}. We 
 have already discussed the deficiencies of the former two issues in 
@@ -1457,7 +1457,7 @@ and representation of information held in ``non-file'' instances (such as
 a in a database).
 
 
-It is critical that this machinery be integral to the format.
+It is critical that this data modelling machinery be integral to the format.
 As we have already noted, in many of the above cases it is possible to 
 create a solution using one or more conventions, but doing so will
 result in files which are unparsable by downstream readers which
