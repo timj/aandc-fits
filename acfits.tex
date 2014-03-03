@@ -1503,10 +1503,8 @@ opinion.  Adherence to the maxim, and lack of any means to version
 the format in a machine readable manner, has stifled needed change of
 FITS, and we can broadly list a number of root problems in the format, 
 some of which are long-standing, that cause problems for both providers
-and consumers of astronomical data today. 
+and consumers of astronomical data today.  These include:
 
-{\color{red}
-These include:
 \begin{itemize}
 
 \item FITS serialization is not versioned in a standard machine readable manner. 
@@ -1533,15 +1531,14 @@ advanced structures than the FITS basic 2D image, data cube and table models.
 %\item FITS needs a standard API for reading files.
 
 \end{itemize}
-}
  
 
 We do not wish to recommend any particular corrective action to any particular 
 problem. We hope that action to correct deficiencies will flow from 
 constructive community discussion which will include the analysis of 
 other useful format solutions\footnote{Such as may be found in the two other 
-papers in this series which examine the JPEG2000 and NDF formats \citep{2014Jenness}} 
-and offered solutions to these problems. 
+papers in this series which examine the JPEG2000 {\color{red} Slava's paper ref
+here} and NDF formats \citep{2014Jenness}} and offered solutions to these problems. 
 Possible solutions may involve moving existing FITS conventions into the core
 standard, modification of the FITS standard to remove limitations or
 possibly transferring the FITS data model over into a new
