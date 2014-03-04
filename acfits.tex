@@ -1470,6 +1470,29 @@ should allow implementors to declare the features it supports, such as
 file, streaming parallel IO and distributed file support.
 }
 
+\section{Lesson 4. Conventions are not standards}
+
+As currently envisaged, \emph{conventions} have no path of migration
+to become part of the FITS standard. There are many useful conventions
+that provide features that many people use but no-one can guarantee
+that a particular convention will be supported by a FITS reader. A
+FITS library can not simply state that a particular version of the
+standard is supported but must also state all the conventions that are
+supported. As we have already seen, multiple conventions exist for
+continuing long header lines (\emph{multi-spec} and \texttt{CONTINUE})
+and for supporting hierarchical headers (\texttt{HIERARCH} and
+\emph{record-valued}) but the standard does not have anything to say
+as to which convention is preferred. Tile compression is rightfully
+thought of as a success for FITS but again tile compression is a
+convention and not a standard with no guarantee that a particular
+reader will be able to understand the compression scheme.
+
+\textsc{cfitsio} is acting as a \emph{de facto} standards body by
+supporting specific conventions but we feel that it is important that
+the lessons learned from implementing these conventions provide
+feedback to the standards process to allow the standard to continue to
+grow and evolve over time.
+
 \section{Summary -- Significant problems exist in the FITS standard}
 
 
