@@ -1194,7 +1194,7 @@ spectral-imaging data-cubes of unprecedented volumes in the order of
 hundreds of petabytes. Individual data sets can be as large as tens of
 terabytes.  Servicing such data as images in FITS is going to encounter
 significant performance fallbacks due to inability of FITS to provide
-acceptable performance for data-cubes large than just a few gigabytes.
+acceptable performance for data-cubes larger than just a few gigabytes.
 
 \subsubsection{No support for maintaining the integrity of distributed data sets}
 
@@ -1359,7 +1359,7 @@ of related files or perhaps something more exotic (see below).
 
 As we have already seen, FITS lacks semantic validation and its
 syntactic validation is very limited, achieved only by the creation
-hard-coded rules in software utilities such as \textsc{fitsverify}
+of hard-coded rules in software utilities such as \textsc{fitsverify}
 (part of the \textsc{ftools} package; \href{http://ascl.net/9912.002}{ascl:9912.002})
 Furthermore, the limitation on
 keyword length to 8 characters all but guarantees that semantic
@@ -1436,10 +1436,10 @@ readable by any FITS parser. Other deficiencies which arise and/or are unsolvabl
 as a result of this class of problem include no support for HPC parallel IO, 
 streaming issues, lack of distributed/virtual data representation
 and representation of information held in ``non-file'' instances (such as 
-a in a database).
+in a database).
 
 
-It is critical that this data modelling machinery be integral to the format.
+It is critical that this data modeling machinery be integral to the format.
 As we have already noted, in many of the above cases it is possible to 
 create a solution using one or more conventions, but doing so will
 result in files which are unparsable by downstream readers which
