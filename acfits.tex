@@ -1344,6 +1344,7 @@ generation of new instances.
 
 
 \subsection{Lesson 2. The format should be self-describing}
+\label{section_lesson_2}
 
 The next lesson that we may draw is that the format needs to be 
 self-describing in a machine readable manner. By this we mean 
@@ -1421,22 +1422,22 @@ This class causes difficulties in realizing the WCS model, for example.
 
 
 The other class of problem is that some needed machinery for data modeling
-within the FITS standard itself is missing. Beyond the aforementioned need
-to declare models in a machine readable manner (detailed in Lesson 2), 
-this class encompasses a broader range of issues which include the ability 
-to declare byte order, to make associations between data and metadata, and 
-to create data models which extend both \textit{metadata and the data}. We 
-have already discussed the deficiencies of the former two issues in 
-sections~\ref{section_byte_order} and \ref{section_associations} 
-respectively.  The last issue is related to the fact that there is no provision 
-in the standard for extending the existing capture of data itself. For example, 
-if one creates a convention for a new image type which utilizes wavelets 
-(see section~\ref{section_stream_image}) it is no longer 
-readable by any FITS parser. Other deficiencies which arise and/or are unsolvable 
-as a result of this class of problem include no support for HPC parallel IO, 
-streaming issues, lack of distributed/virtual data representation
-and representation of information held in ``non-file'' instances (such as 
-in a database).
+within the FITS standard itself is missing. Beyond the aforementioned need to
+declare models in a machine readable manner (detailed in
+Lesson~\ref{section_lesson_2}), this class encompasses a broader range of
+issues which include the ability to declare byte order, to make associations
+between data and metadata, and to create data models which extend both
+\textit{metadata and the data}. We have already discussed the deficiencies of
+the former two issues in sections~\ref{section_byte_order} and
+\ref{section_associations} respectively.  The last issue is related to the fact
+that there is no provision in the standard for extending the existing capture
+of data itself. For example, if one creates a convention for a new image type
+which utilizes wavelets (see section~\ref{section_stream_image}) it is no
+longer readable by any FITS parser. Other deficiencies which arise and/or are
+unsolvable as a result of this class of problem include no support for HPC
+parallel IO, streaming issues, lack of distributed/virtual data representation
+and representation of information held in ``non-file'' instances (such as in a
+database).
 
 
 It is critical that this data modeling machinery be integral to the format.
