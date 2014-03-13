@@ -1110,7 +1110,7 @@ stored in order of decreasing significance (known as big endian format).
 Sometimes the byte order needs to be checked and swapped to the native byte
 order in systems that use the little endian format when non-native data
 formats are not supported.  This is the case in some implementations of FITS
-readers that do not use the \texttt{cfitsio} library
+readers that do not use the \textsc{cfitsio} library
 (\href{http://ascl.net/1010.001}{ascl:1010.001}) and which use C
 routines to implement other scientific capabilities.  Programmers on little
 endian platforms who work with large data volumes may find this limitation
@@ -1243,7 +1243,7 @@ are directly translatable to dollars. For projects like SKA with many
 exabytes planned to be collected, volumes of data will be translated into
 many millions of dollars.
 
-Currently the \texttt{cfitsio} library supports several types of image
+Currently the \textsc{cfitsio} library supports several types of image
 compression by convention \citep[see
 e.g.,][\href{http://ascl.net/1010.002}{ascl:1010.002}]{2000ASPC..216..551P,2007ASPC..376..483S,2009PASP..121..414P}.
 Binary table extensions are used to contain the encoded data, though an
