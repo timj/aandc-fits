@@ -433,7 +433,13 @@ of these requirements. The Astronomical Data Center (ADC) XDF
 format, the Low-Frequency Array for Radio Astronomy (LOFAR) HDF5 data
 model \citep{2012ASPC..461..283A}, and Starlink's NDF
 \citep{1988STARB...2...11C,1993ASPC...52..229W,P91_adassxxiii} all
-serve as examples in this regard. XDF was created primarily to support
+serve as examples in this regard. 
+% I suggest here adding 
+% RPFITS - ATNF data-recording format \footnote{http://www.atnf.csiro.au/computing/software/rpfits.html}
+% and 
+% CASA MeasurementSet \footnote{http://casa.nrao.edu/Memos/229.html}
+
+XDF was created primarily to support
 the development of FITSML -- an XML version of the FITS data model which
 could use an XML schema for validation. NDF was developed in the late
 1980s as a means of organizing the hierarchical structures that were
@@ -1180,78 +1186,108 @@ range of characters.
 
 At the time when FITS was developed, the primary media used for
 archiving and transporting the data was a tape. A magnetic tape is
-unlike a hard-drive in that it is a serial access device.  The concept
-of serial accessing the data was naturally adopted for the FITS data
-model.  Although tapes are still widely used for archiving data,
-such a mode is no longer commonly available as the files are usually
-transferred to a hard-drive before being accessed. What is more, such
-serial nature of FITS has become a significant bottleneck when it comes
-to large data sets.
+unlike a hard-drive is a serial access device.  The concept
+of the serial streaming effectively defined the FITS data
+model.  Although the tapes are still well used for archiving purposes,
+such a mode is no longer practical, and the files are typically 
+transferred to a hard-drive before being read. However, such
+a serial nature of FITS has become a significant limitation for the efficient 
+work with the large multidimensional datasets.
 
-A range of new instruments, especially in radio astronomy (ASKAP,
-ALMA, MWA, LOFAR, eVLA and SKA) is producing (or will be producing)
-spectral-imaging data-cubes of unprecedented volumes in the order of
-hundreds of petabytes. Individual data sets can be as large as tens of
-terabytes.  Servicing such data as images in FITS is going to encounter
+Several new instruments, especially in radio astronomy (ASKAP~\citep{ASKAP..09},
+MWA~\citep{2012rsri.confE..36T}, LOFAR~\citep{2013A&A...556A...2V}, and SKA~\citep{ska-exascale}) 
+have been already producing or planning to produce
+in the near future the spectral-imaging data-cubes of unprecedented volumes in the order of
+tens and hundreds of petabytes per year. Due to the increased spacial and frequency 
+resolutions the individual data sets can be now be expected to be as large as tens of
+terabytes. 
+
+Servicing such data as images in FITS is going to encounter
 significant performance fallbacks due to inability of FITS to provide
 acceptable performance for data-cubes larger than just a few gigabytes.
 
 \subsubsection{No support for maintaining the integrity of distributed data sets}
 
-One possible solution is to generate many small related datasets. However
-the problem is that FITS does not have any mechanism to maintain the
-integrity of such distributed datasets on its own. Any integrity
-maintenance would be a custom solution that is likely to be
-incompatible with other systems when the data are moved around.
+One possible solution for the large datasets is to generate many small related subsets. 
+However, FITS does not have any mechanism to maintain the
+integrity of such distributed datasets on its own. Any support for the integrity
+of such datasets would have to require an external to FITS proprietary solution that 
+potentially might limit the interoperability and portability of the data.
 
 \subsubsection{No support for parallel write/read operations on HPC platforms}
 
-{\color{red} \textit{A little more description on LOFAR solution is needed }}
+Large datasets also require parallel read/write operations to be processed on 
+parallel high performance computers. FITS can not support optimisation for 
+parallel read/write operations. 
 
-Large datasets also require parallel read/write operations to be processed on parallel high performance
-computers. FITS can not support optimisation for parallel read/write operations. This has been
-the driving factor for LOFAR to invest a significant effort into development of a new format using
-HDF5  \citep{2012ASPC..461..283A}.
+This has been the driving factor for LOFAR to 
+invest a significant effort into development of a new format using
+HDF5  \citep{2012ASPC..461..283A}. Most of LOFAR's standard data products 
+is now stored using the HDF5 format, as well as HDF5 analogues for traditional radio data 
+structures such as visibility data and spectral image cubes. The HDF5 libraries allow 
+for the construction of distributed, entirely unbounded files. The nature of the HDF5 
+format further provides the ability to custom design a data encapsulation format, 
+specifying hierarchies, content and attributes.
 
 \subsubsection{No support for streaming imaging data}
 \label{section_stream_image}
 
-Servicing large data sets to the end user also requires significant
-rethinking of the framework of large data sets. FITS can only support a
-cutout framework.  However, it is unreasonable that a cutout framework
-can be of use for visual exploration of multi-petabyte imaging data.
+Servicing the large data sets to the end user also requires significant
+rethinking of the framework in general. FITS can only reasonably support the
+cutout framework, that is when a sub-cube is extracted from a dataset.
+FITS internal serialisation is not optimal for random read operations. 
+The random reads required to produce a cutout cause a high latency 
+due to the excessive \emph{seek} operation when going from one 
+frame of a cube to another. Although, this problem will have less impact
+on the performance once the solid state discs (SSD) replace HDD technology,
+the cutout framework is generally ineffective for visual exploration or
+inspection of multi-terabyte imaging datasets.
 
-A reasonable framework should be able to support multiple representations
-of the same data (e.g., multiple resolutions or fidelities), preferably
-from a single master file. It should also be possible to stream the data
+The solution could lie in adopting a comprehensive approach similar to the one
+employed in JPEG2000 \citep{2003SPIE.5150..791T}. The adopted
+serialisation and encoding of imaging data  in JPEG2000 supports multiple 
+representations (e.g., multiple resolutions or fidelities) of the image in 
+a single master file, but which can be distributed across the network. Encoding
+of the image can be transparently to the end user optimised to the used of the image.
+The used encoding schema also enables streaming the data
 progressively to the end-user, displaying an image as soon
-as the first data become available.
+as the first data become available. \citealt{2014arXiv1403.2801K} and 
+\citealt{2014arXiv1401.7433P}  demonstrate the applicability and effectiveness 
+of such approach on radio astronomy imagery. 
 
-Contemporary approaches widely adopted in other areas use encoded data
-(e.g., wavelet transforms) to achieve such functionality \citep{2003SPIE.5150..791T}. FITS is unable to support
-a comprehensive framework for encoded data, which has led to it
-falling behind any modern imaging format \citep[see e.g.,][]{2014Kitaeff}.
+Unfortunately, no improvement can enable FITS to support
+such a functionality as it requires a complete rethinking of the entire framework.
 
-{\color{red} Im worried that this section needs better support/rewording
-...many in the FITS community consider compression to be one of the things it 
-does 'right'. 
+\subsubsection{Limitted support for compression}
 
-\subsubsection{Insufficient support for compression}
+The large data volumes are directly translated into large cost of the archive and 
+network infrastructures, and the high latency of data retrieval. An effective 
+compression is going to be a must for the large datasets.
 
-Compression is going to be compulsory for large datasets as data volumes
-are directly translatable to dollars. For projects like SKA with many
-exabytes planned to be collected, volumes of data will be translated into
-many millions of dollars.
+The \texttt{cfitsio} library supports several types of binary and one type of 
+image compression by convention \citep[see
+e.g.,][\href{http://ascl.net/1010.002}{ascl:1010.002}]{2000ASPC..216..551P, 
+2007ASPC..376..483S,2009PASP..121..414P}. As FITS on its own does 
+not provide a mechanism to store compressed data or images, the binary 
+table extensions have been used to store the encoded data in both cases,
+however, to access an image, image \texttt{cfitsio} API must be used. 
 
-Currently the \texttt{cfitsio} library supports several types of image
-compression by convention \citep[see
-e.g.,][\href{http://ascl.net/1010.002}{ascl:1010.002}]{2000ASPC..216..551P,2007ASPC..376..483S,2009PASP..121..414P}.
-Binary table extensions are used to contain the encoded data, though an
-image access interface is used to hide this peculiarity due to the
-limitations of FITS. Obviously interoperability is lost in this case as
-no other library can read such an image without also adopting the
-convention.
-}
+Is this sufficient?
+
+Although, FITS acknowledges the existence of convention for compression,
+it does not specify the encoding or compression of the data on its own. The 
+serialisation of FITS is not optimal in order to support the advanced 
+compression techniques for multidimensional multi-terabyte datasets as the one 
+described in the previous section. \citealt{2014arXiv1403.2801K} demonstrate 
+how JPEG2000 outperforms \texttt{cfitsio} in both, compression ratio and 
+image retrieval speed, in some cases by more than two orders of magnitude.
+
+Another problem, of course, is that the compatibility for the \texttt{cfitsio} 
+compressed files is not guarantied as the details of the compression is not part of FITS
+standard. In the case of a standard like JPEG2000\footnote{\href{http://en.wikipedia.org
+/wiki/JPEG\_2000}{http://en.wikipedia.org/wiki/JPEG\_2000}}
+all the details are specified as part of a coherent framework. This approach enables 
+many libraries to be developed for the same format.
 
 \subsubsection{No support for capturing indeterminately sized data sets via streaming}
 
@@ -1541,7 +1577,7 @@ We do not wish to recommend any particular corrective action to any particular
 problem. We hope that action to correct deficiencies will flow from 
 constructive community discussion, including the analysis of
 other useful format solutions (such as those described in the
-companion papers \citep{2014Kitaeff,2014Jenness}), and offered solutions to these problems.
+companion papers \citep{2014arXiv1403.2801K,2014Jenness}), and offered solutions to these problems.
 Possible solutions may involve moving existing FITS conventions into the core
 standard, modification of the FITS standard to remove limitations or
 possibly transferring the FITS data model over into a new
