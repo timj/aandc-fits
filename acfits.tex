@@ -1185,8 +1185,10 @@ serial nature of FITS has become a significant bottleneck when it comes
 to working with large data sets.
 
 
-Consider that many new instruments, especially in radio astronomy (ASKAP~\citep{ASKAP..09},
+Consider that many new instruments, especially in radio astronomy 
+{\color{red} \textit{Fix missing refs} (ASKAP~\citep{ASKAP..09},
 MWA~\citep{2012rsri.confE..36T}, LOFAR~\citep{2013A&A...556A...2V}, and SKA~\citep{ska-exascale})
+}
 have been producing, or are planning to produce in the near future, 
 spectral-imaging data-cubes of unprecedented volumes in the order of
 tens and hundreds of petabytes per year. Due to the increased spatial and frequency
@@ -1232,8 +1234,8 @@ A reasonable framework should be able to support multiple representations
 of the same data (e.g., multiple resolutions or fidelities), preferably
 from a single master file. It should also be possible to stream the data
 progressively to the end-user, displaying an image as soon
-as the first data become available. \citealt{2014arXiv1403.2801K} and 
-\citealt{2014arXiv1401.7433P}  demonstrate the applicability and effectiveness 
+as the first data become available. {\color{red} \textit{Missing refs} \citealt{2014arXiv1403.2801K} and 
+\citealt{2014arXiv1401.7433P}}  demonstrate the applicability and effectiveness 
 of such approach on radio astronomy imagery. 
 
 Unfortunately, no improvement can enable FITS to support
@@ -1259,7 +1261,7 @@ Although, FITS acknowledges the existence of convention for compression,
 it does not specify the encoding or compression of the data on its own. The 
 serialisation of FITS is not optimal in order to support the advanced 
 compression techniques for multidimensional multi-terabyte datasets as the one 
-described in the previous section. \citealt{2014arXiv1403.2801K} demonstrate 
+described in the previous section. {\color{red} \textit{Missing ref} \citealt{2014arXiv1403.2801K}} demonstrate 
 how JPEG2000 outperforms \texttt{cfitsio} in both, compression ratio and 
 image retrieval speed, in some cases by more than two orders of magnitude.
 
