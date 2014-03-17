@@ -213,14 +213,14 @@ authors made a number of implementation choices that, while common at
 the time, are now seen to limit its utility with modern data. The
 authors of the FITS standard could not anticipate the challenges which
 we are facing today in astronomical computing. Difficulties we now
-face include, but are not limited to, having to address the need to
+face include, but are not limited to, addressing the need to
 handle an expanded range of specialized data product types (data
 models), being more conducive to the networked exchange and storage of
-data, handling very large datasets, and the need to capture
+data, handling very large datasets, and capturing
 significantly more complex metadata and data relationships.
 
 
-There are members of the community today who find some (or all) of
+There are members of the community today who find some or all of
 these limitations unworkable, and have decided to move ahead with
 storing data in other formats. If this fragmentation continues, we 
 risk abandoning the advantages of broad interoperability, and ready 
@@ -358,12 +358,12 @@ it will spur action to resolve them.
 As technologies and research techniques in astronomy have evolved, FITS
 has not kept pace. As a result, gaps between FITS utility and the
 needs of the research community have opened up and widened over time. In
-this part of the paper, we detail many issues, or deficiencies of FITS,
+this part of the paper, we detail many issues, or deficiencies, of FITS
 which we see in this regard.
 
 
-The deficiencies of FITS can be categorized into several groups.  These
-may be summarized as poor support for information interchange
+The deficiencies of FITS can be categorized into several groups: poor 
+support for information interchange
 (section~\ref{section_poor_exchange}), missing critical data models
 (section~\ref{section_crit_data_models}), inflexibility in representing
 both metadata and data (section~\ref{section_inflex_represent}) and
@@ -448,7 +448,7 @@ arbitrary hierarchies could lead to chaos and lack of ability for
 applications to interoperate \citep{2014Jenness}.
 HDX \citep{2003ASPC..295..221G} was developed around 2002 as a flexible
 way of layering high-level data structures, presented as a virtual XML
-DOM, atop otherwise unstructured external data stores; this was in
+Document Object Model (DOM), atop otherwise unstructured external data stores; this was in
 turn used to develop Starlink's NDX framework, which (amongst other
 things) allowed FITS files to be viewed and manipulated using the
 concepts of the NDF format.
@@ -458,11 +458,12 @@ data processing and I/O parallelization needs.
 
 
 \subsubsection{Lack of serialization/format versioning}
+\label{lack_of_serialization}
 
 
 There is no standard means which allows the FITS file to
 communicate the formatting version it conforms to.  Consider the example primary header
-in Fig.~\ref{fig:fitshead}, the only keyword which implies any type of
+in Fig.~\ref{fig:fitshead}; the only keyword which implies any type of
 format is SIMPLE which is set to `T', or true. The comment indicates that
 the file conforms to ``Standard FITS format'', but what indeed is that `Standard'?
 We cannot know if the implied standard is actually 3.0 or some earlier (or later!)
@@ -474,7 +475,7 @@ The designers and maintainers of FITS have espoused that a file is
 Certainly some in the community see this as a strength for the format
 as it appears to promote long term stability and ``archivability'' of FITS
 data \citep{2012EWASSAlle,2012LOC}. The assumption that FITS has not changed
-is however, false. Accounting may differ, but there have been at least three
+is, however, false. Accounting may differ, but there have been at least three
 recognized named versions of FITS. These include the first, or `basic' FITS
 version \citep{1979ipia.coll..445W}, the NOST version of FITS
 \citep{2001A&A...376..359H} and the current version 3.0 \citep{2010A&A...524A..42P}.
@@ -487,7 +488,7 @@ has negative consequences for its further development and its use.
 The first impact is that by omitting the ability to version the file no
 FITS reader knows what version of the format it is reading. The usual
 presumption made by software developers is that the latest version (v3.0)
-is being read, however, there are still many data which predate
+is being read. However, there are still many data which predate
 this version of FITS serialization making this supposition sometimes
 incorrect.
 
@@ -522,10 +523,10 @@ creation and so on.
 \subsubsection{Inadequate declaration and validation of content meaning}
 
 
-Related to, but separate from the lack of versioning of the
+Related to, but separate from, the lack of versioning of the
 serialization, is the lack of ability to declare the presence of data
 models and their associated semantic meaning.  By `data model' we
-adopt the following meaning:
+mean:
 
 
 \begin{quote}
@@ -619,7 +620,7 @@ It is clear then that there is a pressing need for namespaced data models,
 yet, the only way in which we can currently implement them is for a human
 to inspect the file, or to write special purpose software programs targeted to
 particular data models. Given the data volumes that we have in astronomy, the
-later choice is in the direction we should go, but is not practical
+latter choice is in the direction we should go, but is not practical
 in the general case.
 
 
@@ -661,16 +662,17 @@ information so that it can be scientifically consumed without human
 interpretation. Such information includes the WCS, for example.
 
 
-Our concern here is that there are either data models which are
+Our concern here is that there are data models which are either
 insufficient or missing in FITS and which are very basic to scientific
-(and in particular, astronomical) research. Other astronomical groups
-have recognized the need for some of these models. We detail
+research. Other astronomical groups have recognized the need for some of
+these models. We detail
 several important missing data models in this section below.
 
 \subsubsection{Scientific Errors}
 
 
-The measurement of physical properties is fundamental to astronomy
+The measurement of physical properties with their associated uncertainties 
+is fundamental to astronomical
 research. It is thus ironic that FITS, which is purposely designed for
 supporting astronomical research, has no standard data model for
 capturing information about scientific errors.
@@ -730,7 +732,7 @@ available.
 
 This is unfortunate. Not only does it reduce the range of
 transformations that can be described, but it also makes it harder to
-analyze the total transformation into its component parts thus making
+decompose the total transformation into its component parts thus making
 understanding and manipulation of the total transformation harder. The
 alternative approach -- a ``toolkit''-style system that creates complex
 transformations by stacking simpler atomic mappings -- is usually the
@@ -1035,7 +1037,7 @@ truncated size. Non-English authors are additionally forced to map
 into the limited character set. If you doubt this leads to problems,
 try the following experiment: open any non-trivial FITS file and scan
 the header. Unless you are an expert in the data models present in the
-file (and sometimes even if you are!) its easy to find that the
+file (and sometimes even if you are) it is easy to find that the
 cramped names of the keywords often leads to arcane and confusing
 metadata.
 
@@ -1054,8 +1056,8 @@ parameter values. These two conventions, when used in the same file,
 cause ambiguity and incorrect representation of the data.
 
 
-Finally, while being the least problematic of these issues, but still
-important, is the problem of the 2880 character logical record. While
+The least problematic of these issues is the problem of the 2880
+character logical record. While
 it is largely a low-level oddity of FITS now, it does have some small
 practical impact. Consider that this formatting requirement negatively
 impacts many FITS files today which have significant metadata. It
@@ -1132,8 +1134,8 @@ more efficient and reliable the archival data management will be.
 
 The allowed character set for metadata and data in FITS is overly
 restrictive and is limiting its application. The restrictions between
-metadata and data do not differ significantly. For metadata, the
-keywords which occur in the FITS header, FITS only supports the 7-bit
+metadata and data do not differ significantly. For metadata, 
+FITS only supports the 7-bit
 ASCII encoding for keyword values and comments. For data encoding,
 authors may again only use 7-bit ASCII for text (string) capture in
 either ASCII or binary FITS tables although the NULL character is
@@ -1172,36 +1174,36 @@ range of characters.
 \subsection{Inadequate support for large or distributed data}
 \label{section_poor_large_data_support}
 
-
 At the time when FITS was developed, the primary media used for
 archiving and transporting the data was a tape. A magnetic tape is
-unlike a hard-drive is a serial access device.  The concept
-of the serial streaming effectively defined the FITS data
-model.  Although the tapes are still well used for archiving purposes,
-such a mode is no longer practical, and the files are typically 
-transferred to a hard-drive before being read. However, such
-a serial nature of FITS has become a significant limitation for the efficient 
-work with the large multidimensional datasets.
+unlike a hard-drive in that it is a serial access device.  The concept
+of serial accessing the data was naturally adopted for the FITS data
+model.  Although tapes are still widely used for archiving data,
+such a mode is no longer commonly available as the files are usually
+transferred to a hard-drive before being accessed. What is more, the
+serial nature of FITS has become a significant bottleneck when it comes
+to working with large data sets.
 
-Several new instruments, especially in radio astronomy (ASKAP~\citep{ASKAP..09},
-MWA~\citep{2012rsri.confE..36T}, LOFAR~\citep{2013A&A...556A...2V}, and SKA~\citep{ska-exascale}) 
-have been already producing or planning to produce
-in the near future the spectral-imaging data-cubes of unprecedented volumes in the order of
-tens and hundreds of petabytes per year. Due to the increased spacial and frequency 
-resolutions the individual data sets can be now be expected to be as large as tens of
-terabytes. 
 
-Servicing such data as images in FITS is going to encounter
-significant performance fallbacks due to inability of FITS to provide
-acceptable performance for data-cubes larger than just a few gigabytes.
+Consider that many new instruments, especially in radio astronomy (ASKAP~\citep{ASKAP..09},
+MWA~\citep{2012rsri.confE..36T}, LOFAR~\citep{2013A&A...556A...2V}, and SKA~\citep{ska-exascale})
+have been producing, or are planning to produce in the near future, 
+spectral-imaging data-cubes of unprecedented volumes in the order of
+tens and hundreds of petabytes per year. Due to the increased spatial and frequency
+resolutions there are individual data sets which can now be expected to be as 
+large as tens of terabytes.
+
+
+For many reasons which we will detail below, FITS does not provide sufficient
+support for these types of large data.
 
 \subsubsection{No support for maintaining the integrity of distributed data sets}
 
-One possible solution for the large datasets is to generate many small related subsets. 
-However, FITS does not have any mechanism to maintain the
-integrity of such distributed datasets on its own. Any support for the integrity
-of such datasets would have to require an external to FITS proprietary solution that 
-potentially might limit the interoperability and portability of the data.
+One possible solution is to generate many small related datasets.
+The problem is that FITS does not have any mechanism to maintain the
+integrity of such distributed datasets on its own. Any integrity
+maintenance would be a custom solution that is likely to be
+incompatible with other systems when the data are moved around.
 
 \subsubsection{No support for parallel write/read operations on HPC platforms}
 
@@ -1221,24 +1223,14 @@ specifying hierarchies, content and attributes.
 \subsubsection{No support for streaming imaging data}
 \label{section_stream_image}
 
-Servicing the large data sets to the end user also requires significant
-rethinking of the framework in general. FITS can only reasonably support the
-cutout framework, that is when a sub-cube is extracted from a dataset.
-FITS internal serialisation is not optimal for random read operations. 
-The random reads required to produce a cutout cause a high latency 
-due to the excessive \emph{seek} operation when going from one 
-frame of a cube to another. Although, this problem will have less impact
-on the performance once the solid state discs (SSD) replace HDD technology,
-the cutout framework is generally ineffective for visual exploration or
-inspection of multi-terabyte imaging datasets.
+Serving large data sets to the end user also requires significant
+rethinking of the framework of large data sets. FITS can only support a
+cutout framework.  However, it is unreasonable that a cutout framework
+can be of use for visual exploration of multi-petabyte imaging data.
 
-The solution could lie in adopting a comprehensive approach similar to the one
-employed in JPEG2000 \citep{2003SPIE.5150..791T}. The adopted
-serialisation and encoding of imaging data  in JPEG2000 supports multiple 
-representations (e.g., multiple resolutions or fidelities) of the image in 
-a single master file, but which can be distributed across the network. Encoding
-of the image can be transparently to the end user optimised to the used of the image.
-The used encoding schema also enables streaming the data
+A reasonable framework should be able to support multiple representations
+of the same data (e.g., multiple resolutions or fidelities), preferably
+from a single master file. It should also be possible to stream the data
 progressively to the end-user, displaying an image as soon
 as the first data become available. \citealt{2014arXiv1403.2801K} and 
 \citealt{2014arXiv1401.7433P}  demonstrate the applicability and effectiveness 
@@ -1327,7 +1319,7 @@ to generate these data.}.
 
 These use cases are only examples of where we might go and some may be
 arguably of limited value. Nevertheless, the generalized use case that
-may be derived from all of these is of certain importance, namely,
+may be derived from all of these is certainly of importance:
 A science data storage format should be able to support both local 
 and remote data access, providing immediate and secure access to data 
 contained within itself, and providing transparent access to data held 
@@ -1402,7 +1394,7 @@ it.
 The declaration of validation rules should be flexible. In FITS,
 where syntactic rules are hard-coded, it is not possible to
 declare syntactic rules which check the range or data type of
-metadata fields\footnote{beyond the few canonical keywords
+metadata fields\footnote{Beyond the few canonical keywords
 which are part of the FITS standard such as \texttt{GCOUNT} 
 or \texttt{PCOUNT}} without re-coding the utility.
 Ideally, the data format should not rely on hard-coding these rules
@@ -1440,7 +1432,7 @@ and have limited the expression of new user data models.
 
 There are two general classes of problem which have held back realizing
 many needed models. One class concerns the limits created by the format
-by the serialization itself. Specifically we mean the limits on metadata 
+of the serialization itself. Specifically, we mean the limits on metadata 
 representation enumerated in section~\ref{subsection_information_representation}
 and character encoding in section~\ref{section_char_encoding}.
 This class causes difficulties in realizing the WCS model, for example.
