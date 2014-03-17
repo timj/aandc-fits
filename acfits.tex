@@ -1025,18 +1025,6 @@ then the comment, or keyword values longer than 68 characters will need
 another convention in order to capture it (such as creating a continuation
 line in the header using the \texttt{CONTINUE} convention \citep{2007Continue}.
 
-{\color{red} Not sure this para adds anything to the content of this section.
-We are not stating that there is an actual problem with these solutions..
-
-The use of conventions is also how support may be added for more
-advanced metadata structures, such as hierarchies. There are at 
-least two proposed conventions which attempt to add this feature to FITS.
-The most common is the \texttt{HIERARCH} convention mentioned previously, 
-that co-opts commentary keywords to realize the hierarchy. The other 
-convention is the \emph{record-valued} system proposed in the FITS 
-distortion paper \citep{FITSDistort} which adds special syntax to the 
-content of strings. 
-}
 
 Let us now consider the impact of keyword name constraints. Not only
 are keyword names limited to a small set of characters but keyword
@@ -1058,10 +1046,8 @@ form \texttt{TFORMnnn} and the 8 character limit?}
 These restrictions on the FITS card have impact on conventions with
 resulting limits on the utility of any implementation. Due to the limited 
 namespace and size of the keywords, different conventions often reuse 
-the same keywords for different purposes. For example, the previously 
-mentioned issue with the \texttt{HIERARCH} convention and its use of 
-commentary keywords for non-commentary purposes. As another example, 
-compare the use of \texttt{PV} keywords in the products of the SCAMP tools
+the same keywords for different purposes.  For example, compare the use 
+of \texttt{PV} keywords in the products of the SCAMP tools
 \citep{2006ASPC..351..112B}, used for polynomial distortion coefficients, 
 to the more common \texttt{PV} keywords used in the WCS convention for generic
 parameter values. These two conventions, when used in the same file,
@@ -1505,10 +1491,11 @@ that provide features that many people use but no-one can guarantee
 that a particular convention will be supported by a FITS reader. A
 FITS library can not simply state that a particular version of the
 standard is supported but must also state all the conventions that are
-supported. As we have already seen, multiple conventions exist for
+supported. Multiple conventions exist for
 continuing long header lines (\emph{multi-spec} and \texttt{CONTINUE})
 and for supporting hierarchical headers (\texttt{HIERARCH} and
-\emph{record-valued}) but the standard does not have anything to say
+the \emph{record-valued} system proposed in the FITS
+distortion paper \citep{FITSDistort}) but the standard does not have anything to say
 as to which convention is preferred. Tile compression is rightfully
 thought of as a success for FITS but again tile compression is a
 convention and not a standard with no guarantee that a particular
