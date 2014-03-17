@@ -582,10 +582,22 @@ keywords may be seen at the GSFC FITS site, see
 \url{http://fits.gsfc.nasa.gov/fits\_dictionary.html}} is also essentially
 an act of declaring one or more data model(s).
 
+Let us also note that it is not unreasonable to expect more than one model 
+to appear within a file. Consider data distributed by the Palomar Transient 
+Factory.  For these data to permit the widest
+variety of software tools to understand the astrometric distortion in these
+images, keywords from both the SIP'' andTPV'' conventions are included
+(\citep{2006SPIE.6268E.106T}).
+One convention expresses distortion polynomials in pixel space and the
+other in intermediate longitude and latitude, yet it is not immediately
+obvious which data model should be applied.
+ 
 
-All of these data models also imply an associated ``namespace'' which is
+All of these data models imply an associated ``namespace'' which is
 a means of declaring the origin of the data model so that we may
 disambiguate and/or associate declared properties between models.
+For example, separate namespaces should exist for the two aforementioned 
+astrometric distortion models in the example above.
 There are common problems which namespaced models help to solve and even
 the `simple' metadata in Fig.~\ref{fig:fitshead} illustrates this.
 
@@ -611,8 +623,7 @@ model2:TEMP.
 Namespacing mechanisms can both provide humans with documentation, and 
 provide software with the means to look up model definitions (perhaps from 
 remote locations), and thus apply syntactic or semantic validation rules 
-for the information at hand.
-This will allow the program to
+for the information at hand.  This will allow the program to
 answer the remainder of our posed questions above.
 
 
