@@ -493,18 +493,21 @@ incorrect.
 
 
 The lack of versioning also limits the ability of our community to
-move forward constructively with developing new FITS versions. Because
-we must maintain slavish conformance to older format conventions, it
-means that we accrete over time more and more ``design rules'' (or
-limitations, if you will) which limit our ability to implement new and
-needed features. Consider the awkward way, for example, in which the
-\texttt{HIERARCH} convention was implemented \citep{2009Wic}.
-In order to provide the needed functionality, the designers were forced into
-utilizing ``commentary'' keywords (a feature of the FITS format intended for
-free-form information about the history and contents of the file) for
-non-commentary functionality. This behavior by the community will only
-increase, fragmenting the FITS format through inaction rather than deliberate
-design.
+move forward constructively with developing new FITS versions. 
+Because we must maintain slavish conformance to older format requirements 
+it means that we accrete over time more and more ``design rules'' 
+which may limit our ability to implement new and needed features and 
+clutter reader code. Consider that three keywords have been deprecated 
+(\texttt{BLOCKED}, \texttt{CROTA2} and \texttt{EPOCH}) by the latest version 
+of FITS. Per the standard, these are ``obsolete structures that should not be 
+used in new FITS files but which shall remain valid indefinitely''.
+As such, software writers must indefinitely be on the guard for these metadata
+and writers of new conventions avoid utilizing these specific keywords.
+As time passes and changes of this nature accumulate, it will be progressively
+harder to interpret FITS data correctly and write new conventions.
+As there is no versioning to effectively declare deprecated structures in the 
+format finally ``illegal'', the upshot is a fragmenting the FITS format through
+inaction rather than deliberate design.
 
 
 Both of these issues needlessly drive greater and greater complexity
