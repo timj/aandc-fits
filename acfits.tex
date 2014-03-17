@@ -1496,20 +1496,6 @@ Schema should be capable of describing the layout of \textit{data and metadata}
 desired data models and associations between them.
 
 
-{\color{red}
-Consideration should be given to creation of a common API
-for accessing instances of the format. Given anticipated flexibility in
-serialization of the data, optimal access could and should also be varied.
-Consider that XML, for example, has at least two standard API for access its
-data, one which is object-oriented (the Domain Object Model, or DOM) and
-the other which is oriented towards streaming access (Simple API for XML,
-or SAX). 
-
-There should be an overarching data model for all readers, which
-should allow implementors to declare the features it supports, such as
-file, streaming parallel IO and distributed file support.
-}
-
 \subsection{Lesson 4. Conventions are not standards}
 As currently envisaged, \emph{conventions} have no path of migration
 to become part of the FITS standard. There are many useful conventions
