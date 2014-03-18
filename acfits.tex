@@ -222,13 +222,13 @@ significantly more complex metadata and data relationships.
 
 There are members of the community today who find some or all of
 these limitations unworkable, and have decided to move ahead with
-storing data in other formats. If this fragmentation continues, we 
-risk abandoning the advantages of broad interoperability, and ready 
+storing data in other formats. If this fragmentation continues, we
+risk abandoning the advantages of broad interoperability, and ready
 archivability, that the FITS format provides for astronomy.
 In this paper we detail some
 selected important problems which exist within the FITS standard
-today. These problems may provide insight into deeper underlying 
-issues which reside in the format and we provide a discussion of 
+today. These problems may provide insight into deeper underlying
+issues which reside in the format and we provide a discussion of
 some lessons learned. It is not our intention here to prescribe specific remedies to
 these issues; rather, it is to call attention of the FITS and
 greater astronomical computing communities to these problems in the
@@ -362,7 +362,7 @@ this part of the paper, we detail many issues, or deficiencies, of FITS
 which we see in this regard.
 
 
-The deficiencies of FITS can be categorized into several groups: poor 
+The deficiencies of FITS can be categorized into several groups: poor
 support for information interchange
 (section~\ref{section_poor_exchange}), missing critical data models
 (section~\ref{section_crit_data_models}), inflexibility in representing
@@ -434,8 +434,8 @@ the file and, at the most basic level, the ability to declare which version of
 the FITS serialization is being used.
 
 
-These shortcomings have been noticed by others and, in fact, members 
-of the astronomical community have designed formats to satisfy some 
+These shortcomings have been noticed by others and, in fact, members
+of the astronomical community have designed formats to satisfy some
 of these requirements. The Astronomical Data Center (ADC) XDF
 format, the Low-Frequency Array for Radio Astronomy (LOFAR) HDF5 data
 model \citep{2012ASPC..461..283A}, CASA measurement sets
@@ -445,11 +445,11 @@ RPFITS\footnote{\url{http://www.atnf.csiro.au/computing/software/rpfits.html}
 National Facility
 and Starlink's NDF
 \citep{1988STARB...2...11C,1993ASPC...52..229W,P91_adassxxiii} all
-serve as examples in this regard. 
+serve as examples in this regard.
 
-XDF was created primarily to support archiving, web-based use of 
-published astronomical data and the development of FITSML -- an XML version 
-of the FITS data model which could use an XML schema for validation. 
+XDF was created primarily to support archiving, web-based use of
+published astronomical data and the development of FITSML -- an XML version
+of the FITS data model which could use an XML schema for validation.
 NDF was developed in the late
 1980s as a means of organizing the hierarchical structures that were
 available via the Starlink HDS format when it became apparent that
@@ -503,26 +503,26 @@ incorrect.
 
 
 The lack of versioning also limits the ability of our community to
-move forward constructively with developing new FITS versions. 
-Because we must maintain slavish conformance to older format requirements 
-it means that we accrete over time more and more ``design rules'' 
-which may limit our ability to implement new and needed features and 
-clutter reader code. Consider that three keywords have been deprecated 
-(\texttt{BLOCKED}, \texttt{CROTA2} and \texttt{EPOCH}) by the latest version 
-of FITS. Per the standard, these are ``obsolete structures that should not be 
+move forward constructively with developing new FITS versions.
+Because we must maintain slavish conformance to older format requirements
+it means that we accrete over time more and more ``design rules''
+which may limit our ability to implement new and needed features and
+clutter reader code. Consider that three keywords have been deprecated
+(\texttt{BLOCKED}, \texttt{CROTA2} and \texttt{EPOCH}) by the latest version
+of FITS. Per the standard, these are ``obsolete structures that should not be
 used in new FITS files but which shall remain valid indefinitely''.
 As such, software writers must indefinitely be on the guard for these metadata
 and writers of new conventions avoid utilizing these specific keywords.
 As time passes and changes of this nature accumulate, it will be progressively
 harder to interpret FITS data correctly and write new conventions.
-As there is no versioning to effectively declare deprecated structures in the 
+As there is no versioning to effectively declare deprecated structures in the
 format finally ``illegal'', the upshot is a fragmenting the FITS format through
 inaction rather than deliberate design.
 
 
 Both of these issues needlessly drive greater and greater complexity
 in implementation of FITS parsers. Furthermore, lack of versioning
-arguably works counter to the purpose of archivability of the files. 
+arguably works counter to the purpose of archivability of the files.
 Future archivists will certainly want to know what version of the
 format they are dealing with without having to guess from ancillary
 evidence such as the presence of certain keywords, date of the file
@@ -591,8 +591,8 @@ keywords may be seen at the GSFC FITS site, see
 \url{http://fits.gsfc.nasa.gov/fits\_dictionary.html}} is also essentially
 an act of declaring one or more data model(s).
 
-Let us also note that it is not unreasonable to expect more than one model 
-to appear within a file. Consider data distributed by the Palomar Transient 
+Let us also note that it is not unreasonable to expect more than one model
+to appear within a file. Consider data distributed by the Palomar Transient
 Factory.  For these data to permit the widest
 variety of software tools to understand the astrometric distortion in these
 images, keywords from both the SIP'' andTPV'' conventions are included
@@ -600,12 +600,12 @@ images, keywords from both the SIP'' andTPV'' conventions are included
 One convention expresses distortion polynomials in pixel space and the
 other in intermediate longitude and latitude, yet it is not immediately
 obvious which data model should be applied.
- 
+
 
 All of these data models imply an associated ``namespace'' which is
 a means of declaring the origin of the data model so that we may
 disambiguate and/or associate declared properties between models.
-For example, separate namespaces should exist for the two aforementioned 
+For example, separate namespaces should exist for the two aforementioned
 astrometric distortion models in the example above.
 There are common problems which namespaced models help to solve and even
 the `simple' metadata in Fig.~\ref{fig:fitshead} illustrates this.
@@ -628,10 +628,10 @@ in the example header. Namespaced data models help address these issues. With
 an appropriate namespace mechanism in place, it is possible to create a
 machine readable mapping between the data models so that any software program
 can determine whether model1:TEMP is the same (or different) property as
-model2:TEMP. 
-Namespacing mechanisms can both provide humans with documentation, and 
-provide software with the means to look up model definitions (perhaps from 
-remote locations), and thus apply syntactic or semantic validation rules 
+model2:TEMP.
+Namespacing mechanisms can both provide humans with documentation, and
+provide software with the means to look up model definitions (perhaps from
+remote locations), and thus apply syntactic or semantic validation rules
 for the information at hand.  This will allow the program to
 answer the remainder of our posed questions above.
 
@@ -691,7 +691,7 @@ several important missing data models in this section below.
 \subsubsection{Scientific Errors}
 
 
-The measurement of physical properties with their associated uncertainties 
+The measurement of physical properties with their associated uncertainties
 is fundamental to astronomical
 research. It is thus ironic that FITS, which is purposely designed for
 supporting astronomical research, has no standard data model for
@@ -760,7 +760,7 @@ most efficient representation as far as data storage is concerned
 (for example AST, see below).
 
 
-To illustrate the problem consider the imaging data taken by the 
+To illustrate the problem consider the imaging data taken by the
 Hubble Space Telescope which require multiple distortion components \citep[see e.g.,][]{2013ASPC..475...49H}.
 Some are small but discontinuous. Others are linear but time varying.
 There is no FITS WCS compatible solution that handles these needs well.
@@ -808,8 +808,8 @@ The reality is that to solve these problems, many software systems
 have chosen alternate solutions and save their WCS information in FITS
 files in other ways (or in separate files). For example, the AST
 library \citep{1998ASPC..145...41W,2012ASPC..461..825B} is not subject
-to these limitations, but 
-is forced to use non-standard FITS keywords when serializing mappings 
+to these limitations, but
+is forced to use non-standard FITS keywords when serializing mappings
 to FITS files (see Fig.~\ref{fig:asthead}).
 
 
@@ -912,9 +912,9 @@ data of interest and examine it locally.
 Some might insist that this is an easily solved problem. Simply
 declare a keyword, like \texttt{DQUALITY}, and allow it to take a boolean
 value. To be sure, that example is an exaggeration, but it helps to
-illustrate that there is no single optimum between the virtue of 
+illustrate that there is no single optimum between the virtue of
 simplicity and the vice of being simplistic.
-Data quality cannot be judged on a single, or even a 
+Data quality cannot be judged on a single, or even a
 small set, of parameters. The
 data which are adequate for one type of use, may be wholly inadequate
 in another usage context. Consider that engineering data generally are
@@ -979,8 +979,8 @@ occurred in metadata capture. Over the intervening years the FITS
 community has added new metadata conventions such as \texttt{HIERARCH}
 \citep{2009Wic} and \texttt{GROUPING} \citep{2007Jen,1995ASPC...77..229J}, which have
 allowed for greater flexibility in capturing metadata.
-This expansion in capability to serialize information is to be 
-expected and is all to the good. Nevertheless, as we shall illustrate 
+This expansion in capability to serialize information is to be
+expected and is all to the good. Nevertheless, as we shall illustrate
 below, the expansion is still insufficient relative to actual need.
 
 
@@ -998,22 +998,22 @@ Metadata may comprise a rich assortment of data structures and
 single-valued metadata are only the beginning. There is a need to
 capture sets, lists, vectors and objects within metadata (to name only
 the most basic of structures). Yet FITS cards, without additional
-conventions, are only capable of capturing single, scalar keyword-value 
-pairings. 
+conventions, are only capable of capturing single, scalar keyword-value
+pairings.
 
-The expression of both objects and non-scalar, multi-valued keywords 
-is difficult in FITS and data model designers have to resort to 
-conventions to achieve this. Object storage is enabled in part by 
-utilizing a hierarchical convention such as \texttt{HIERARCH} or the 
-\emph{record-valued} system proposed in the FITS distortion paper 
-\citep{FITSDistort}.  In order to hold a keyword 
-with either a `set' or `list' value, a common local convention adopted is 
-to create a set of keywords sharing the same base name followed by a 
-integer value which may (or may not) indicate order of the values 
-(such as \texttt{ICMB001}, \texttt{ICMB002}, and so on). Another example 
+The expression of both objects and non-scalar, multi-valued keywords
+is difficult in FITS and data model designers have to resort to
+conventions to achieve this. Object storage is enabled in part by
+utilizing a hierarchical convention such as \texttt{HIERARCH} or the
+\emph{record-valued} system proposed in the FITS distortion paper
+\citep{FITSDistort}.  In order to hold a keyword
+with either a `set' or `list' value, a common local convention adopted is
+to create a set of keywords sharing the same base name followed by a
+integer value which may (or may not) indicate order of the values
+(such as \texttt{ICMB001}, \texttt{ICMB002}, and so on). Another example
 is the IRAF \textit{multispec} format
 \citep[see][and references therein]{1993ASPC...52..467V} which uses
-this scheme to specify related world coordinate information (see 
+this scheme to specify related world coordinate information (see
 Fig.~\ref{fig:multispec} for an example).  The AST library
 \citep[][and see also \S\ref{sec:wcs}]{1998ASPC..145...41W} takes a
 similar approach in converting the WCS objects into FITS headers when
@@ -1039,11 +1039,11 @@ WAT2_004= '9.09" spec 3 = "3 111 2 5043.5"                              '
 \end{figure*}
 
 All of this is not to say that there are not restrictions on the expression
-of scalar values in headers. Consider that FITS cards are limited to 80 
-characters and FITS keyword names may be no longer than 8 characters. The 
-result of these constraints is that keyword values may be no longer than 
-68 characters. Of course, if you use all of the space for keyword values, 
-then the comment, or keyword values longer than 68 characters will need 
+of scalar values in headers. Consider that FITS cards are limited to 80
+characters and FITS keyword names may be no longer than 8 characters. The
+result of these constraints is that keyword values may be no longer than
+68 characters. Of course, if you use all of the space for keyword values,
+then the comment, or keyword values longer than 68 characters will need
 another convention in order to capture it (such as creating a continuation
 line in the header using the \texttt{CONTINUE} convention \citep{2007Continue}.
 
@@ -1066,11 +1066,11 @@ metadata.
 %form \texttt{TFORMnnn} and the 8 character limit?}
 
 These restrictions on the FITS card have impact on conventions with
-resulting limits on the utility of any implementation. Due to the limited 
-namespace and size of the keywords, different conventions often reuse 
-the same keywords for different purposes.  For example, compare the use 
+resulting limits on the utility of any implementation. Due to the limited
+namespace and size of the keywords, different conventions often reuse
+the same keywords for different purposes.  For example, compare the use
 of \texttt{PV} keywords in the products of the SCAMP tools
-\citep{2006ASPC..351..112B}, used for polynomial distortion coefficients, 
+\citep{2006ASPC..351..112B}, used for polynomial distortion coefficients,
 to the more common \texttt{PV} keywords used in the WCS convention for generic
 parameter values. These two conventions, when used in the same file,
 cause ambiguity and incorrect representation of the data.
@@ -1085,8 +1085,8 @@ often results in odd sections of the FITS file containing large blocks
 of white space. Certainly, in FITS files which have anything larger than
 small amounts data (50Kb or more) this is not a particularly pressing
 problem. However, for FITS files which have small amounts of data
-below this approximate threshold (such as might occur when holding 
-reduced data tables or when oriented primarily to metadata transport or 
+below this approximate threshold (such as might occur when holding
+reduced data tables or when oriented primarily to metadata transport or
 capture) this is simply wasteful.
 
 \subsubsection{Insufficient support for missing values}
@@ -1123,32 +1123,32 @@ indicate relationships but this relies on convention and string
 parsing rather than being a standard part of the format.
 
 
-As a real world example of this problem, consider the data processing 
-system for the Herschel Space Observatory which includes 
-context products that serve as containers for groups of data products 
-with each product capable of being mapped to a 
-FITS file stored on disk 
+As a real world example of this problem, consider the data processing
+system for the Herschel Space Observatory which includes
+context products that serve as containers for groups of data products
+with each product capable of being mapped to a
+FITS file stored on disk
 \citep[see the Herschel architecture and design document][]{2008HerschelDesign}.
-In particular, Herschel's observational data 
-hierarchy allows all products associated with an observation (telemetry, 
-calibration, raw and processed data) to be linked with the capability of 
-lazy loading of products from the archive ``cloud''. 
-Satisfying the requirement that all products are storable as FITS files 
-has forced the links in these hierarchies to be specified in a very 
-convoluted form, understandable only within the 
+In particular, Herschel's observational data
+hierarchy allows all products associated with an observation (telemetry,
+calibration, raw and processed data) to be linked with the capability of
+lazy loading of products from the archive ``cloud''.
+Satisfying the requirement that all products are storable as FITS files
+has forced the links in these hierarchies to be specified in a very
+convoluted form, understandable only within the
 Herschel interactive processing environment
 \citep[HIPE;][]{2010ASPC..434..139O} and not by other FITS readers.
 
 
-Another example of a solution to this problem is the conversion of NDF 
+Another example of a solution to this problem is the conversion of NDF
 format files to FITS and back to NDF \citep{SUN55,1997STARB..19...14C}.
-They demonstrated that you can represent a hierarchical data grouping 
-in the FITS multi-extension format, but this is done using EXTNAME 
-conventions combined with headers representing the extension level in 
-the hierarchy and the type of component and so is not understood by 
-other FITS tools. 
+They demonstrated that you can represent a hierarchical data grouping
+in the FITS multi-extension format, but this is done using EXTNAME
+conventions combined with headers representing the extension level in
+the hierarchy and the type of component and so is not understood by
+other FITS tools.
 
-In both cases above, a standardized way of specifying relationships 
+In both cases above, a standardized way of specifying relationships
 between extensions would be extremely valuable to data and application interoperability.
 
 
@@ -1172,11 +1172,11 @@ processors that are commonly used in universities and research
 laboratories.
 
 
-The inability to specify the byte order will obviously result in a 
+The inability to specify the byte order will obviously result in a
 need to byte swap data. In most cases, this is not a significant
 problem or impact on performance for modern software systems and
 can be discounted. There is however, another, more significant issue
-tied to this limitation. The ability to wrap/translate existing data products 
+tied to this limitation. The ability to wrap/translate existing data products
 into FITS files, without reprocessing them to the specified
 byte-order in the FITS standard, is important. From
 the perspective of an archivist with the responsibility of preserving the
@@ -1189,7 +1189,7 @@ more efficient and reliable the archival data management will be.
 
 The allowed character set for metadata and data in FITS is overly
 restrictive and is limiting its application. The restrictions between
-metadata and data do not differ significantly. For metadata, 
+metadata and data do not differ significantly. For metadata,
 FITS only supports the 7-bit
 ASCII encoding for keyword values and comments. For data encoding,
 authors may again only use 7-bit ASCII for text (string) capture in
@@ -1240,13 +1240,13 @@ serial nature of FITS has become a significant bottleneck when it comes
 to working with large data sets.
 
 
-Consider that many new instruments, especially in radio astronomy 
+Consider that many new instruments, especially in radio astronomy
 (ASKAP~\citep{2009IEEEP..97.1507D},
 MWA~\citep{2013PASA...30....7T}, LOFAR~\citep{2013A&A...556A...2V}, and SKA~\citep{ska-exascale})
-have been producing, or are planning to produce in the near future, 
+have been producing, or are planning to produce in the near future,
 spectral-imaging data-cubes of unprecedented volumes in the order of
 tens and hundreds of petabytes per year. Due to the increased spatial and frequency
-resolutions there are individual data sets which can now be expected to be as 
+resolutions there are individual data sets which can now be expected to be as
 large as tens of terabytes.
 
 
@@ -1263,17 +1263,17 @@ incompatible with other systems when the data are moved around.
 
 \subsubsection{No support for parallel write/read operations on HPC platforms}
 
-Large datasets also require parallel read/write operations to be processed on 
-parallel high performance computers. FITS can not support optimisation for 
-parallel read/write operations. 
+Large datasets also require parallel read/write operations to be processed on
+parallel high performance computers. FITS can not support optimisation for
+parallel read/write operations.
 
-This has been the driving factor for LOFAR to 
+This has been the driving factor for LOFAR to
 invest a significant effort into development of a new format using
-HDF5  \citep{2012ASPC..461..283A}. Most of LOFAR's standard data products 
-is now stored using the HDF5 format, as well as HDF5 analogues for traditional radio data 
-structures such as visibility data and spectral image cubes. The HDF5 libraries allow 
-for the construction of distributed, entirely unbounded files. The nature of the HDF5 
-format further provides the ability to custom design a data encapsulation format, 
+HDF5  \citep{2012ASPC..461..283A}. Most of LOFAR's standard data products
+is now stored using the HDF5 format, as well as HDF5 analogues for traditional radio data
+structures such as visibility data and spectral image cubes. The HDF5 libraries allow
+for the construction of distributed, entirely unbounded files. The nature of the HDF5
+format further provides the ability to custom design a data encapsulation format,
 specifying hierarchies, content and attributes.
 
 \subsubsection{No support for streaming imaging data}
@@ -1288,42 +1288,42 @@ A reasonable framework should be able to support multiple representations
 of the same data (e.g., multiple resolutions or fidelities), preferably
 from a single master file. It should also be possible to stream the data
 progressively to the end-user, displaying an image as soon
-as the first data become available. \citealt{2014Kitaeff} and 
-\citealt{2014arXiv1401.7433P}  demonstrate the applicability and effectiveness 
-of such approach on radio astronomy imagery. 
+as the first data become available. \citealt{2014Kitaeff} and
+\citealt{2014arXiv1401.7433P}  demonstrate the applicability and effectiveness
+of such approach on radio astronomy imagery.
 
 Unfortunately, no improvement can enable FITS to support
 such a functionality as it requires a complete rethinking of the entire framework.
 
 \subsubsection{Limited support for compression}
 
-The large data volumes are directly translated into large cost of the archive and 
-network infrastructures, and the high latency of data retrieval. Effective 
+The large data volumes are directly translated into large cost of the archive and
+network infrastructures, and the high latency of data retrieval. Effective
 compression is a must for large datasets.
 
 Currently one of the most common means to get compressed data is to utilize
-the \textsc{cfitsio} library which supports several types of binary and one type of 
+the \textsc{cfitsio} library which supports several types of binary and one type of
 image compression by convention \citep[see
-e.g.,][\href{http://ascl.net/1010.002}{ascl:1010.002}]{2000ASPC..216..551P, 
+e.g.,][\href{http://ascl.net/1010.002}{ascl:1010.002}]{2000ASPC..216..551P,
 2007ASPC..376..483S,2009PASP..121..414P}.
 
 
-The core problem is then that the FITS standard does not provide any mechanism 
-to store compressed data or images.  This is problematic in two ways. First, 
+The core problem is then that the FITS standard does not provide any mechanism
+to store compressed data or images.  This is problematic in two ways. First,
 as mentioned, one must rely on a third party convention and library to get compression.
-This means that the compatibility for the 
+This means that the compatibility for the
 compressed files is not guarantied as the details of the compression is not part of FITS
 standard. In the case of a standard like JPEG2000\footnote{\href{http://en.wikipedia.org
 /wiki/JPEG\_2000}{http://en.wikipedia.org/wiki/JPEG\_2000}}
 all the details are specified as part of a coherent framework. This approach enables
 many libraries to be developed for the same format.
-Second, because a convention must be used, the serialization of FITS is not optimal 
-in order to support the advanced 
-compression techniques needed for adequate handling of multidimensional 
+Second, because a convention must be used, the serialization of FITS is not optimal
+in order to support the advanced
+compression techniques needed for adequate handling of multidimensional
 multi-terabyte datasets. Lower level details, when made part of the
-standard, make a significant difference. For example, 
-\citealt{2014Kitaeff} demonstrate 
-how JPEG2000 outperforms \textsc{cfitsio} in both, compression ratio and 
+standard, make a significant difference. For example,
+\citealt{2014Kitaeff} demonstrate
+how JPEG2000 outperforms \textsc{cfitsio} in both, compression ratio and
 image retrieval speed, in some cases by more than two orders of magnitude.
 
 
@@ -1371,42 +1371,42 @@ or a cloud?  Similarly, we would
 want FITS to contain, and adequately access, data generated by a
 service (think simulation data, for example). Possibly FITS could
 itself execute simple stored algorithms to generate a portion of its
-data\footnote{This probably implies the need for a ``FITS language'' 
+data\footnote{This probably implies the need for a ``FITS language''
 to generate these data.}.
 
 
 These use cases are only examples of where we might go and some may be
 arguably of limited value. Nevertheless, the generalized use case that
 may be derived from all of these is certainly of importance:
-a science data storage format should be able to support both local 
-and remote data access, providing immediate and secure access to data 
-contained within itself, and providing transparent access to data held 
-in non-local entities such as cloud storage, databases, services, and 
+a science data storage format should be able to support both local
+and remote data access, providing immediate and secure access to data
+contained within itself, and providing transparent access to data held
+in non-local entities such as cloud storage, databases, services, and
 other files.
 
 
 \section{Discussion -- Lessons Learned}
 
 What then are the lessons we might draw from the deficiencies
-we have identified with FITS? Are there any deeper issues and 
+we have identified with FITS? Are there any deeper issues and
 commonalities which thread throughout these problems? In fact,
 there are several.
 
 
 \subsection{Lesson 1. The format should be versioned}
-Contrary to the conclusion drawn in \citet{1997ASPC..125..257W} 
+Contrary to the conclusion drawn in \citet{1997ASPC..125..257W}
 the first lesson that we may draw is that the format needs to be
-versioned. 
-As we have argued in this paper, we disagree with the premise 
+versioned.
+As we have argued in this paper, we disagree with the premise
 that FITS has never undergone significant change and hence, there
-is only one version. Without versioning, it becomes a significantly 
+is only one version. Without versioning, it becomes a significantly
 harder task to write parsers for the format, requiring the software
 developer to encompass as many design rules as possible in order
 to robustly handle format instances. As the format evolves and
 adds new design rules, it only becomes more difficult to write the
 next parser and, as bad, older parsers of the format may fail quietly.
-Ultimately, this experience is contrary to the espoused goal of 
-archivability as one can ultimately never know for certain which 
+Ultimately, this experience is contrary to the espoused goal of
+archivability as one can ultimately never know for certain which
 permutation of the format the FITS file being read conforms to.
 
 
@@ -1429,18 +1429,18 @@ generation of new instances.
 \subsection{Lesson 2. The format should be self-describing}
 \label{section_lesson_2}
 
-The next lesson that we may draw is that the format needs to be 
-self-describing in a machine readable manner. By this we mean 
+The next lesson that we may draw is that the format needs to be
+self-describing in a machine readable manner. By this we mean
 
 \begin{quote}
 a self-describing format is one where the formatted instance
-is capable of conveying and validating the semantic information 
+is capable of conveying and validating the semantic information
 it holds
 \end{quote}
 
-where the formatted ``instance'' may be a file, or a collection 
+where the formatted ``instance'' may be a file, or a collection
 of related files or perhaps something more exotic (see above section
-\ref{subsection_virt_dist_components}). 
+\ref{subsection_virt_dist_components}).
 
 As we have already seen, FITS lacks semantic validation and its
 syntactic validation is very limited, achieved only by the creation
@@ -1462,7 +1462,7 @@ The declaration of validation rules should be flexible. In FITS,
 where syntactic rules are hard-coded, it is not possible to
 declare syntactic rules which check the range or data type of
 metadata fields\footnote{Beyond the few canonical keywords
-which are part of the FITS standard such as \texttt{GCOUNT} 
+which are part of the FITS standard such as \texttt{GCOUNT}
 or \texttt{PCOUNT}} without re-coding the utility.
 Ideally, the data format should not rely on hard-coding these rules
 in software. Rather, a means to capture and associate the data
@@ -1473,7 +1473,7 @@ written software programs (similar, perhaps, in the way that JSON
 or XML formats have schema).
 
 
-This approach has additional benefits downstream. First, it will help 
+This approach has additional benefits downstream. First, it will help
 to avoid misinterpretation because it is better for the creator
 of the data and/or data model to provide the machine readable information rather
 than a downstream programmer. Second, there is a saving in effort
@@ -1485,21 +1485,21 @@ practice.
 
 \subsection{Lesson 3. The format should not limit expression of desired data models}
 
-FITS was originally designed around a data model which contained a single, generic, 
+FITS was originally designed around a data model which contained a single, generic,
 two dimensional image and an associated header for metadata. This basic data model
-has been expanded to allow more instances (extensions), as well as types of data 
-(data cubes and tables). 
+has been expanded to allow more instances (extensions), as well as types of data
+(data cubes and tables).
 As we discussed in prior sections, working with the basic data model of FITS,
 authors have implemented their own data models with ever greater demand being
 placed on the type of data (models) FITS may hold.
-Holding the line on format changes via the ``once FITS, always FITS'' maxim 
-has been harmful.  Original format design decisions have largely been held onto, 
-and have limited the expression of new user data models. 
+Holding the line on format changes via the ``once FITS, always FITS'' maxim
+has been harmful.  Original format design decisions have largely been held onto,
+and have limited the expression of new user data models.
 
 
 There are two general classes of problem which have held back realizing
 many needed models. One class concerns the limits created by the format
-of the serialization itself. Specifically, we mean the limits on metadata 
+of the serialization itself. Specifically, we mean the limits on metadata
 representation enumerated in section~\ref{subsection_information_representation}
 and character encoding in section~\ref{section_char_encoding}.
 This class causes difficulties in realizing the WCS model, for example.
@@ -1509,8 +1509,8 @@ The other class of problem is that some needed machinery for data modeling
 within the FITS standard itself is missing. Beyond the aforementioned need to
 declare models in a machine readable manner (detailed in
 \hyperref[section_lesson_2]{Lesson~2}), this class encompasses a broader range
-of issues which include the missing ability to declare byte order, 
-no standard means to make associations between data and metadata, and 
+of issues which include the missing ability to declare byte order,
+no standard means to make associations between data and metadata, and
 an inability to create data models which extend both
 \textit{metadata and the data}. We have already discussed the deficiencies of
 the former two issues in sections~\ref{section_byte_order} and
@@ -1526,20 +1526,20 @@ database).
 
 
 It is critical that this data modeling machinery be integral to the format.
-As we have already noted, in many of the above cases it is possible to 
+As we have already noted, in many of the above cases it is possible to
 create a solution using one or more conventions, but doing so will
 result in files which are unparsable by downstream readers which
-do not implement these conventions. In addition, there is no apparent 
+do not implement these conventions. In addition, there is no apparent
 solution, using a FITS convention, than can solve the limitation on the
 restricted expression of keyword names nor can one utilize conventions
 to describe how to serialize \textit{data}.
 
 
-The data format should do as little to impede the expression of data 
+The data format should do as little to impede the expression of data
 models.  In practice this means having very few hard-coded rules
 within the format itself such as the 2880 byte record or 80 byte card.
 Schema should be capable of describing the layout of \textit{data and metadata}
- and the format serialization should be flexible enough to handle 
+ and the format serialization should be flexible enough to handle
 desired data models and associations between them.
 
 
@@ -1552,7 +1552,7 @@ FITS library can not simply state that a particular version of the
 standard is supported but must also state all the conventions that are
 supported. Multiple conventions exist for
 continuing long header lines (\emph{multi-spec} and \texttt{CONTINUE})
-and for supporting hierarchical headers (\texttt{HIERARCH} and in 
+and for supporting hierarchical headers (\texttt{HIERARCH} and in
 \citealt{FITSDistort}) but the standard does not have anything to say
 as to which convention is preferred. Tile compression is rightfully
 thought of as a success for FITS but again tile compression is a
@@ -1570,20 +1570,20 @@ grow and evolve over time.
 
 The problems which we have described in this paper are significant
 and we have tried to provide an analysis of their deeper origin.
-From our investigation, it is clear that FITS suffers from a lack of 
+From our investigation, it is clear that FITS suffers from a lack of
 evolution. Original design decisions, such as the header byte layout
-and fixed character encoding made a certain sense at the time FITS 
+and fixed character encoding made a certain sense at the time FITS
 was founded. The later enshrinement of the FITS maxim, which has
-been utilized to effectively freeze the format, was a mistake in our 
+been utilized to effectively freeze the format, was a mistake in our
 opinion.  Adherence to the maxim, and lack of any means to version
 the format in a machine readable manner, has stifled needed change of
-FITS, and we can broadly list a number of root problems in the format, 
+FITS, and we can broadly list a number of root problems in the format,
 some of which are long-standing, that cause problems for both providers
 and consumers of astronomical data today.  These include:
 
 \begin{itemize}
 
-\item FITS serialization is not versioned in a standard machine readable manner. 
+\item FITS serialization is not versioned in a standard machine readable manner.
 
 \item FITS cannot specify data model designs in a machine readable document
 which may be used to do syntactic and semantic validation.
@@ -1597,21 +1597,21 @@ many basic structures in metadata. These include things such as non-scalar
 values, sets, lists, and objects.
 
 \item FITS data modeling is unable to specify the capture ``data''.
-There is no provision to allow a user to create a new data model in more 
+There is no provision to allow a user to create a new data model in more
 advanced structures than the FITS basic 2D image, data cube and table models.
 
-\item FITS lacks a machine readable mechanism for re-using and extending data models 
-(FITS conventions are inadequate in this regard). 
+\item FITS lacks a machine readable mechanism for re-using and extending data models
+(FITS conventions are inadequate in this regard).
 
 \item FITS lacks a standard mechanism for associating data models with one another.
 
 \item FITS lacks support for missing values in floating point data.
 
 \end{itemize}
- 
 
-We do not wish to recommend any particular corrective action to any particular 
-problem. We hope that action to correct deficiencies will flow from 
+
+We do not wish to recommend any particular corrective action to any particular
+problem. We hope that action to correct deficiencies will flow from
 constructive community discussion, including the analysis of
 other useful format solutions such as those described in the
 companion papers \citep{2014Kitaeff,2014Jenness}, and offered solutions to these problems.
