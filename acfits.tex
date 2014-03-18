@@ -1113,14 +1113,16 @@ parsing rather than being a standard part of the format.
 As a real world example of this problem, consider the data processing 
 system for the Herschel Space Observatory which includes 
 context products that serve as containers for groups of data products 
-\citep{Herschel_context}, with each product capable of being mapped to a 
-FITS file stored on disk. In particular, Herschel's observational data 
+with each product capable of being mapped to a 
+FITS file stored on disk 
+\citep[see the Herschel architecture and design document][]{2008HerschelDesign}.
+In particular, Herschel's observational data 
 hierarchy allows all products associated with an observation (telemetry, 
 calibration, raw and processed data) to be linked with the capability of 
-lazy loading of products from the archive ``cloud'' \citep{Herschel_obscontext}. 
+lazy loading of products from the archive ``cloud''. 
 Satisfying the requirement that all products are storable as FITS files 
 has forced the links in these hierarchies to be specified in a very 
-convoluted form \citep{Herschel_spire_context}, understandable only within the 
+convoluted form, understandable only within the 
 Herschel interactive processing environment
 \citep[HIPE;][]{2010ASPC..434..139O} and not by other FITS readers.
 
