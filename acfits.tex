@@ -993,10 +993,13 @@ the most basic of structures). Yet FITS cards, without additional
 conventions, are only capable of capturing single, scalar keyword-value 
 pairings. 
 
-The expression of non-scalar, multi-valued keywords is difficult in 
-FITS and data model designers often resort to special conventions to 
-achieve this. For example, in order to hold a keyword with either a 
-`set' or `list' value, a common, non-standard, convention adopted is 
+The expression of both objects and non-scalar, multi-valued keywords 
+is difficult in FITS and data model designers have to resort to 
+conventions to achieve this. Object storage is enabled in part by 
+utilizing a hierarchical convention such as \texttt{HIERARCH} or the 
+\emph{record-valued} system proposed in the FITS distortion paper 
+\citep{FITSDistort}.  In order to hold a keyword 
+with either a `set' or `list' value, a common local convention adopted is 
 to create a set of keywords sharing the same base name followed by a 
 integer value which may (or may not) indicate order of the values 
 (such as \texttt{ICMB001}, \texttt{ICMB002}, and so on). Another example 
@@ -1008,6 +1011,7 @@ Fig.~\ref{fig:multispec} for an example).  The AST library
 similar approach in converting the WCS objects into FITS headers when
 the transformations are too complex to be represented by standard WCS
 headers (see Fig.~\ref{fig:asthead}).
+
 
 \begin{figure*}
 \begin{minipage}{\textwidth}
@@ -1538,9 +1542,8 @@ FITS library can not simply state that a particular version of the
 standard is supported but must also state all the conventions that are
 supported. Multiple conventions exist for
 continuing long header lines (\emph{multi-spec} and \texttt{CONTINUE})
-and for supporting hierarchical headers (\texttt{HIERARCH} and
-the \emph{record-valued} system proposed in the FITS
-distortion paper \citep{FITSDistort}) but the standard does not have anything to say
+and for supporting hierarchical headers (\texttt{HIERARCH} and in 
+\citep{FITSDistort}) but the standard does not have anything to say
 as to which convention is preferred. Tile compression is rightfully
 thought of as a success for FITS but again tile compression is a
 convention and not a standard with no guarantee that a particular
