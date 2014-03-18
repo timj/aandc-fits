@@ -1380,20 +1380,28 @@ there are several.
 
 
 \subsection{Lesson 1. The format should be versioned}
-
-The first lesson that we may draw is that the format needs to be
-versioned. Without versioning, it becomes a significantly harder
-task to write parsers for the format, requiring the software
+Contrary to the conclusion drawn in \citet{1997ASPC..125..257W} 
+the first lesson that we may draw is that the format needs to be
+versioned. 
+As we have argued in this paper, we disagree with the premise 
+that FITS has never undergone significant change and hence, there
+is only one version. Without versioning, it becomes a significantly 
+harder task to write parsers for the format, requiring the software
 developer to encompass as many design rules as possible in order
 to robustly handle format instances. As the format evolves and
-accretes new design rules, it only becomes harder to write the
+adds new design rules, it only becomes more difficult to write the
 next parser and, as bad, older parsers of the format may fail quietly.
+Ultimately, this experience is contrary to the espoused goal of 
+archivability as one can ultimately never know for certain which 
+permutation of the format the FITS file being read conforms to.
+
 
 In contrast, when versioning is present, implementers of parsers
 are able to target a sub-set of the format design, and declare
 that within the software so that, should it inadvertently be used
 on a version it doesn't understand, it may fail gracefully and
 in a planned manner.
+
 
 Because it is so important to understanding the design of
 the format versioning metadata should be part of the standard.
