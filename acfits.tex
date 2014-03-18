@@ -954,21 +954,6 @@ scientifically meaningful manner -- are out of scope for that work by
 design, since experience has shown them to be more contentious than
 one might expect.  These questions should perhaps be taken up by the FITS community.
 
-\subsubsection{Insufficient support for missing values}
-
-Missing values are a common feature of most datasets, and are distinct from
-invalid values (such as \texttt{NaN} or \textit{Not a Number}) that may occur
-for example in floating point calculations. For images with integer data
-types, one can make use of the \texttt{BLANK} keyword to represent missing
-values, and for tables with integer and string columns, one can make use of
-the \texttt{TNULL} header keyword. However, for floating point images or
-table columns, there is no mechanism for specifying missing values. This has
-led to the common use of \texttt{NaN} to represent missing floating-point
-values. However, one should carefully distinguish between true missing values
-(which in an image could indicate for example an area of sky that was not
-observed), versus an invalid value (represented by \texttt{NaN}) which may
-represent for example a saturated pixel, and this is not currently possible
-in FITS.
 
 \subsection{Inflexibility in information representation}
 \label{section_inflex_represent}
@@ -1090,6 +1075,22 @@ problem. However, for FITS files which have small amounts of data
 below this approximate threshold (such as might occur when holding 
 reduced data tables or when oriented primarily to metadata transport or 
 capture) this is simply wasteful.
+
+\subsubsection{Insufficient support for missing values}
+
+Missing values are a common feature of most datasets, and are distinct from
+invalid values (such as \texttt{NaN} or \textit{Not a Number}) that may occur
+for example in floating point calculations. For images with integer data
+types, one can make use of the \texttt{BLANK} keyword to represent missing
+values, and for tables with integer and string columns, one can make use of
+the \texttt{TNULL} header keyword. However, for floating point images or
+table columns, there is no mechanism for specifying missing values. This has
+led to the common use of \texttt{NaN} to represent missing floating point
+values. However, one should carefully distinguish between true missing values
+(which in an image could indicate for example an area of sky that was not
+observed), versus an invalid value (represented by \texttt{NaN}) which may
+represent for example a saturated pixel, and this is not currently possible
+in FITS.
 
 
 \subsubsection{Awkwardness in representing the associations present in both data and metadata}
@@ -1578,6 +1579,8 @@ advanced structures than the FITS basic 2D image, data cube and table models.
 (FITS conventions are inadequate in this regard). 
 
 \item FITS lacks a standard mechanism for associating data models with one another.
+
+\item FITS lacks support for missing values for floating point data.
 
 \end{itemize}
  
