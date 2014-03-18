@@ -1059,3 +1059,33 @@ booktitle = {Astronomical Data Analysis Software and Systems VI},
   adsnote = {Provided by the SAO/NASA Astrophysics Data System}
 }
 
+@proceeding{doi:10.1117/12.925460,
+author = {Shupe, David L. and Laher, Russ R. and Storrie-Lombardi, Lisa and Surace, Jason and Grillmair, Carl and Levitan, David and Sesar, Branimir},
+title = {More flexibility in representing geometric distortion in astronomical images},
+journal = {Proc. SPIE},
+volume = {8451},
+number = {},
+pages = {84511M-84511M-13},
+abstract = {A number of popular software tools in the public domain are used by astronomers, professional and amateur
+alike, but some of the tools that have similar purposes cannot be easily interchanged, owing to the lack of a
+common standard. For the case of image distortion, SCAMP and SExtractor, available from Astromatic.net,
+perform astrometric calibration and source-object extraction on image data, and image-data geometric distortion
+is computed in celestial coordinates with polynomial coefficients stored in the FITS header with the PV i_j
+keywords. Another widely-used astrometric-calibration service, Astrometry.net, solves for distortion in pixel
+coordinates using the SIP convention that was introduced by the Spitzer Science Center. Up until now, due to
+the complexity of these distortion representations, it was very difficult to use the output of one of these packages
+as input to the other. New Python software, along with faster-computing C-language translations, have been
+developed at the Infrared Processing and Analysis Center (IPAC) to convert FITS-image headers from PV to
+SIP and vice versa. It is now possible to straightforwardly use Astrometry.net for astrometric calibration and
+then SExtractor for source-object extraction. The new software also enables astrometric calibration by SCAMP
+followed by image visualization with tools that support SIP distortion, but not PV . The software has been
+incorporated into the image-processing pipelines of the Palomar Transient Factory (PTF), which generate FITS
+images with headers containing both distortion representations. The software permits the conversion of archived
+images, such as from the Spitzer Heritage Archive and NASA/IPAC Infrared Science Archive, from SIP to PV
+or vice versa. This new capability renders unnecessary any new representation, such as the proposed TPV
+distortion convention.},
+year = {2012},
+doi = {10.1117/12.925460},
+URL = { http://dx.doi.org/10.1117/12.925460},
+eprint = {}
+}
