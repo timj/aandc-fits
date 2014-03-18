@@ -1094,14 +1094,29 @@ indicate relationships but this relies on convention and string
 parsing rather than being a standard part of the format.
 
 
-The conversion of NDF format files to FITS and back to NDF
-\citep{SUN55,1997STARB..19...14C}, has demonstrated that you can
-represent a hierarchical data grouping in the FITS multi-extension
-format, but this is done using EXTNAME conventions combined with
-headers representing the extension level in the hierarchy and the type
-of component and so is not understood by other FITS tools. A
-standardised way of specifying relationships between extensions would
-be extremely valuable to data and application interoperability.
+As a real world example of this problem, consider the data processing 
+system for the Herschel Space Observatory which includes 
+context products that serve as containers for groups of data products 
+\citep{Herschel_context}, with each product capable of being mapped to a 
+FITS file stored on disk. In particular, Herschel's observational data 
+hierarchy allows all products associated with an observation (telemetry, 
+calibration, raw and processed data) to be linked with the capability of 
+lazy loading of products from the archive ``cloud'' \citep{Herschel_obscontext}. 
+Satisfying the requirement that all products are storable as FITS files 
+has forced the links in these hierarchies to be specified in a very 
+convoluted form \citep{Herschel_spire_context}, understandable only within the 
+Herschel data processing environment and not by other FITS readers.
+
+Another example of a solution to this problem is the conversion of NDF 
+format files to FITS and back to NDF \citep{SUN55,1997STARB..19...14C}.
+They demonstrated that you can represent a hierarchical data grouping 
+in the FITS multi-extension format, but this is done using EXTNAME 
+conventions combined with headers representing the extension level in 
+the hierarchy and the type of component and so is not understood by 
+other FITS tools. 
+
+In both cases above, a standardized way of specifying relationships 
+between extensions would be extremely valuable to data and application interoperability.
 
 
 \subsubsection{No support for declaring byte order}
