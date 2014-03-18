@@ -413,7 +413,14 @@ FILTNAM1= 'F555W             ' / first filter name
 HSTPHOT =                    T / Preprocessed by HSTphot/mask
 END
 \end{verbatim}
-\caption{Representative simple primary header of a FITS file showing an assortment of FITS keywords and their associated values. Bytes which contain data may or may not follow the `END' keyword of the header.}
+\caption{Representative simple primary header of a FITS file showing
+  an assortment of FITS keywords and their associated values. This
+  header from 1995 uses a definition of the, now deprecated,
+  \texttt{EPOCH} keyword that is at odds with the standard usage of
+  the period but the lack of parseable units for the field make it
+  hard for a computer parser to understand this.
+  Bytes which contain data may or may not follow the \texttt{END} keyword of
+  the header.}
 \label{fig:fitshead}
 \end{minipage}
 \end{figure*}
