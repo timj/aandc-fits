@@ -542,7 +542,8 @@ mean:
 ``a description of the objects represented by a computer system
 together with their properties and relationships; these are typically
 `real world' objects such as products, suppliers, customers, and
-orders.\footnote{Definition adopted from Wikipedia, see \url{http://en.wikipedia.org/wiki/Data\_model}}
+orders.\footnote{Definition adopted from Wikipedia, see
+\url{http://en.wikipedia.org/wiki/Data\_model}}
 ''
 \end{quote}
 
@@ -626,7 +627,7 @@ this information. This problem is not isolated to a solitary bit
 of rogue metadata. We can ask similar questions about most of the keywords
 in the example header. Namespaced data models help address these issues. With
 an appropriate namespace mechanism in place, it is possible to create a
-machine readable mapping between the data models so that any software program
+machine-readable mapping between the data models so that any software program
 can determine whether model1:TEMP is the same (or different) property as
 model2:TEMP.
 Namespacing mechanisms can both provide humans with documentation, and
@@ -1315,7 +1316,8 @@ to store compressed data or images.  This is problematic in two ways. First,
 as mentioned, one must rely on a third party convention and library to get compression.
 This means that the compatibility for the
 compressed files is not guarantied as the details of the compression is not part of FITS
-standard. In the case of a standard like JPEG2000\footnote{\url{http://en.wikipedia.org/wiki/JPEG\_2000}}
+standard. In the case of a standard like JPEG2000\footnote{%
+\url{http://en.wikipedia.org/wiki/JPEG\_2000}}
 all the details are specified as part of a coherent framework. This approach enables
 many libraries to be developed for the same format.
 Second, because a convention must be used, the serialization of FITS is not optimal
@@ -1433,7 +1435,7 @@ generation of new instances.
 \label{section_lesson_2}
 
 The next lesson that we may draw is that the format needs to be
-self-describing in a machine readable manner. By this we mean
+self-describing in a machine-readable manner. By this we mean
 
 \begin{quote}
 a self-describing format is one where the formatted instance
@@ -1470,7 +1472,7 @@ or \texttt{PCOUNT}} without re-coding the utility.
 Ideally, the data format should not rely on hard-coding these rules
 in software. Rather, a means to capture and associate the data
 model/namespace information with the contents of the formatted
-instance, in a machine readable manner, should be found so that
+instance, in a machine-readable manner, should be found so that
 validation can be possible without human inspection or specifically
 written software programs (similar, perhaps, in the way that JSON
 or XML formats have schema).
@@ -1478,7 +1480,7 @@ or XML formats have schema).
 
 This approach has additional benefits downstream. First, it will help
 to avoid misinterpretation because it is better for the creator
-of the data and/or data model to provide the machine readable information rather
+of the data and/or data model to provide the machine-readable information rather
 than a downstream programmer. Second, there is a saving in effort
 in that the model is done once and need not be repeated by numerous
 downstream programmers. Finally, good validation tools will allow the community
@@ -1510,7 +1512,7 @@ This class causes difficulties in realizing the WCS model, for example.
 
 The other class of problem is that some needed machinery for data modeling
 within the FITS standard itself is missing. Beyond the aforementioned need to
-declare models in a machine readable manner (detailed in
+declare models in a machine-readable manner (detailed in
 \hyperref[section_lesson_2]{Lesson~2}), this class encompasses a broader range
 of issues which include the missing ability to declare byte order,
 no standard means to make associations between data and metadata, and
@@ -1581,7 +1583,7 @@ time FITS was founded. The later enshrinement of the FITS maxim, which
 has
 been utilized to effectively freeze the format, was a mistake in our
 opinion.  Adherence to the maxim, and lack of any means to version
-the format in a machine readable manner, has stifled needed change of
+the format in a machine-readable manner, has stifled needed change of
 FITS, and we can broadly list a number of root problems in the format,
 some of which are long-standing, that cause problems for both providers
 and consumers of astronomical data today.  These include:
@@ -1606,7 +1608,7 @@ There is no provision to allow a user to create a new data model in more
 advanced structures than the FITS basic 2D image, data cube and table models.
 
 {\color{red} \textit{Not sure this point is adequately supported in the text}
-\item FITS lacks a machine readable mechanism for re-using and extending data models
+\item FITS lacks a machine-readable mechanism for re-using and extending data models
 (FITS conventions are inadequate in this regard).
 }
 
