@@ -1297,39 +1297,6 @@ of such approach on radio astronomy imagery.
 Unfortunately, no improvement can enable FITS to support
 such a functionality as it requires a complete rethinking of the entire framework.
 
-{\color{red} \textit{This section is somewhat controversial}
-\subsubsection{Limited support for compression}
-
-The large data volumes are directly translated into large cost of the archive and
-network infrastructures, and the high latency of data retrieval. Effective
-compression is a must for large datasets.
-
-Currently one of the most common means to get compressed data is to utilize
-the \textsc{cfitsio} library which supports several types of binary and one type of
-image compression by convention \citep[see
-e.g.,][\href{http://ascl.net/1010.002}{ascl:1010.002}]{2000ASPC..216..551P,
-2007ASPC..376..483S,2009PASP..121..414P}.
-
-
-The core problem is then that the FITS standard does not provide any mechanism
-to store compressed data or images.  This is problematic in two ways. First,
-as mentioned, one must rely on a third party convention and library to get compression.
-This means that the compatibility for the
-compressed files is not guarantied as the details of the compression is not part of FITS
-standard. In the case of a standard like JPEG2000\footnote{%
-\url{http://en.wikipedia.org/wiki/JPEG\_2000}}
-all the details are specified as part of a coherent framework. This approach enables
-many libraries to be developed for the same format.
-Second, because a convention must be used, the serialization of FITS is not optimal
-in order to support the advanced
-compression techniques needed for adequate handling of multidimensional
-multi-terabyte datasets. Lower level details, when made part of the
-standard, make a significant difference. For example,
-\citet{2014Kitaeff} demonstrate
-how JPEG2000 outperforms \textsc{cfitsio} in both, compression ratio and
-image retrieval speed, in some cases by more than two orders of magnitude.
-}
-
 
 \subsubsection{No support for capturing indeterminately sized data sets via streaming}
 
