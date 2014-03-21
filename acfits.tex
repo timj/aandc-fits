@@ -1264,6 +1264,7 @@ maintenance would be a custom solution that is likely to be
 incompatible with other systems when the data are moved around.
 
 \subsubsection{No support for parallel write/read operations on HPC platforms}
+\label{subsection_hpc_io}
 
 Large datasets also require parallel read/write operations to be processed on
 parallel high performance computers. FITS can not support optimisation for
@@ -1279,7 +1280,7 @@ format further provides the ability to custom design a data encapsulation format
 specifying hierarchies, content and attributes.
 
 \subsubsection{No support for streaming imaging data}
-\label{section_stream_image}
+\label{subsection_stream_image}
 
 Serving large data sets to the end user also requires significant
 rethinking of the framework of large data sets. FITS can only support a
@@ -1299,6 +1300,7 @@ such a functionality as it requires a complete rethinking of the entire framewor
 
 
 \subsubsection{No support for capturing indeterminately sized data sets via streaming}
+\label{subsection_stream_indeterm}
 
 
 Frequently there is a need to store data from an instrument or remote
@@ -1489,12 +1491,14 @@ the former two issues in sections~\ref{section_byte_order} and
 \ref{section_associations} respectively.  The last issue is related to the fact
 that there is no provision in the standard for extending the existing capture
 of data itself. For example, if one creates a convention for a new image type
-which utilizes wavelets (see section~\ref{section_stream_image}) it is no
+which utilizes wavelets (see section~\ref{subsection_stream_image}) it is no
 longer readable by any FITS parser. Other deficiencies which arise and/or are
 unsolvable as a result of this class of problem include no support for HPC
-parallel IO, streaming issues, lack of distributed/virtual data representation
-and representation of information held in ``non-file'' instances (such as in a
-database).
+parallel IO (section~\ref{subsection_hpc_io}), streaming issues 
+(sections~\ref{subsection_stream_image} and \ref{subsection_stream_indeterm}),
+lack of distributed/virtual data representation 
+and representation of information held in ``non-file'' instances such as in a
+database (section~\ref{subsection_virt_dist_components}).
 
 
 It is critical that this data modeling machinery be integral to the format.
