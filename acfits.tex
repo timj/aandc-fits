@@ -1494,12 +1494,12 @@ the former two issues in sections~\ref{section_byte_order} and
 \ref{section_associations} respectively.  The last issue is related to the fact
 that there is no provision in the standard for extending the existing capture
 of data itself. For example, if one creates a convention for a new image type
-which supports multiple representations of the data (section~\ref{subsection_stream_image}) 
+which supports multiple representations of the data (section~\ref{subsection_stream_image})
 it is no longer readable by any FITS parser. Other deficiencies which arise and/or are
 unsolvable as a result of this class of problem include no support for HPC
-parallel IO (section~\ref{subsection_hpc_io}), streaming issues 
+parallel IO (section~\ref{subsection_hpc_io}), streaming issues
 (sections~\ref{subsection_stream_image} and \ref{subsection_stream_indeterm}),
-lack of distributed/virtual data representation 
+lack of distributed/virtual data representation
 and representation of information held in ``non-file'' instances such as in a
 database (section~\ref{subsection_virt_dist_components}).
 
@@ -1552,9 +1552,9 @@ grow and evolve over time.
 The problems which we have described in this paper are significant
 and we have tried to provide an analysis of their deeper origin.
 From our investigation, it is clear that FITS suffers from a lack of
-sufficient evolution. Original design decisions, such as the header 
-byte layout and fixed character encoding made a certain sense at the 
-time FITS was founded. The later enshrinement of the FITS maxim, which 
+sufficient evolution. Original design decisions, such as the header
+byte layout and fixed character encoding made a certain sense at the
+time FITS was founded. The later enshrinement of the FITS maxim, which
 has
 been utilized to effectively freeze the format, was a mistake in our
 opinion.  Adherence to the maxim, and lack of any means to version
