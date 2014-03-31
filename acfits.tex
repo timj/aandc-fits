@@ -616,13 +616,13 @@ There are common problems which namespaced models help to solve and even
 the `simple' metadata in Fig.~\ref{fig:fitshead} illustrates this.
 
 
-Consider the TEMP keyword in the example. Without reading the comment
+Consider the \texttt{TEMP} keyword in the example. Without reading the comment
 associated with it, we cannot know if this is this a temperature or perhaps
 some type of temporary file or resource or something else. If it is a
 temperature then what is this the temperature of? What do the values '0'
-and '1' mean? Are these the only valid values for this keyword?  TEMP is
+and '1' mean? Are these the only valid values for this keyword?  \texttt{TEMP} is
 a likely keyword string to appear in other files, how do we know if the
-TEMP in the other files is the same one we see in the example?
+\texttt{TEMP} in the other files is the same one we see in the example?
 
 
 Clearly, it is a non-trivial matter for the machine to determine whether
@@ -632,8 +632,8 @@ of rogue metadata. We can ask similar questions about most of the keywords
 in the example header. Namespaced data models help address these issues. With
 an appropriate namespace mechanism in place, it is possible to create a
 machine-readable mapping between the data models so that any software program
-can determine whether model1:TEMP is the same (or different) property as
-model2:TEMP.
+can determine whether \texttt{model1:TEMP} is the same (or different) property as
+\texttt{model2:TEMP}.
 Namespacing mechanisms can both provide humans with documentation, and
 provide software with the means to look up model definitions (perhaps from
 remote locations), and thus apply syntactic or semantic validation rules
