@@ -451,7 +451,7 @@ and Starlink's NDF
 \citep{1988STARB...2...11C,1993ASPC...52..229W,P91_adassxxiii} all
 serve as examples in this regard.
 
-XDF was created primarily to support archiving, web-based use of
+XDF \citep{2001ASPC..238..217S} was created primarily to support archiving, web-based use of
 published astronomical data and the development of FITSML -- an XML version
 of the FITS data model which could use an XML schema for validation.
 NDF was developed in the late
@@ -465,7 +465,7 @@ Document Object Model (DOM), atop otherwise unstructured external data stores; t
 turn used to develop Starlink's NDX framework, which (amongst other
 things) allowed FITS files to be viewed and manipulated using the
 concepts of the NDF format.
-HDF5 was chosen to accommodate LOFAR's
+HDF5 \citep{2012ASPC..461..283A} was chosen to accommodate LOFAR's
 exceptional high data rates, 6-dimensional data complexity, distributed
 data processing and I/O parallelization needs.
 
@@ -520,7 +520,7 @@ and writers of new conventions avoid utilizing these specific keywords.
 As time passes and changes of this nature accumulate, it will be progressively
 harder to interpret FITS data correctly and write new conventions.
 As there is no versioning to effectively declare deprecated structures in the
-format finally ``illegal'', the upshot is a fragmenting the FITS format through
+format finally ``illegal'', the upshot is a fragmenting of the FITS format through
 inaction rather than deliberate design.
 
 
@@ -561,7 +561,7 @@ instrumentation, and so forth. In FITS-speak, we can say that any FITS
 keyword outside those defined in the FITS standard is a data model
 parameter, and collections of related FITS keywords form a data model.
 Ideally a data model should be associated with a given, unique,
-``namespace'' so that collisions in naming of the models and requisite
+``name\-space'' so that collisions in naming of the models and requisite
 parameters are avoided.
 
 
@@ -572,11 +572,11 @@ in the file?'' (e.g., all of
 the needed keywords occur in the correct places in the file) and ``are
 there any non-normative values in the file?'' (all metadata/data values
 are within expected bounds) are both questions answered by syntactic
-``validation'', the conformance of information in the file to one or more
+validation, the conformance of information in the file to one or more
 declared data models.  The question of ``how do these data (inter)relate
 with other data'' (e.g., can named structures in the file be associated
 in some manner with others in another file/extension?) is one of semantic
-validation. By confirming that the file is 'valid' in both senses, we may
+validation. By confirming that the file is `valid' in both senses, we may
 link the data model to the information in the file, and hence answer the
 fundamental question ``what does this data you gave me represent?'' (e.g., lists
 of stars, tables of galaxies, images of dust clouds, etc).
