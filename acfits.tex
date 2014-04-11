@@ -655,7 +655,11 @@ First and foremost, we must recognize that there are constantly new data models
 being created and modified. Some of these are documented in a human readable
 fashion but there are many more models which do not even meet this standard.
 Worse, due in part to the lack of good validation tools, the community has
-accepted many informal variants of existing models (both documented and otherwise).
+accepted many informal variants of existing models. These variants may both 
+be documented or not but are a result of either accidental an intentional 
+stretching of the original metadata usage. Consider the example in 
+Fig.~\ref{fig:fitshead} which is an informal variant because of its non-standard 
+use of the \texttt{EPOCH} keyword.
 Finally, there is the possible complication of more than one data model being
 fully, or partially, present within a file. Without explicit signposts for
 the software to use, it is likely impossible to determine which data models
