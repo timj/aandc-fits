@@ -481,10 +481,6 @@ type of format is SIMPLE which is set to `T', or true. The comment
 indicates that the file conforms to ``Standard FITS format'', but what
 indeed is that `Standard'?
 
-% We believe, firstly, that the question of the number of existing FITS
-% versions is at least more subtle than it might appear, and that this
-% subtlety has costs to implementers; and secondly that it may now be
-% time to revisit the standard's requirements of backward compatibility.
 
 The designers and maintainers of FITS have espoused the principle
 ``once FITS, forever FITS''
@@ -506,23 +502,27 @@ most recent FITS description (such as 64-bit integers, negative
 \texttt{BITPIX} values, FITS extensions and tables) which were not
 present in the first FITS version and demonstrably FITS has evolved.
 
-Even if the ``once FITS, forever FITS'' doctrine is taken to require
-only perfect backward and forward compatibility, the latter requires
-only that a FITS reader will not produce \emph{errors} when confronted
-with a `newer' FITS file, but does not require that it will be able to
-faithfully interpret and make available all of the content of that
-file, nor even that the reader will be reliably able to detect and
-report the existence of features it does not recognize.  However much
-of a problem this is in practice -- and the backward compatibility
-means that it always \emph{should} be feasible to use the most recent
-FITS reader -- it creates uncertainty and causes implementers to rely
-more on `duck-typing' and heuristics which are
-ultimately error prone because it requires the implementer of the parser
-to perfectly interpret the signature of any particular set of features
-present in the given FITS instance from among other possible features which are
-absent. Furthermore, as the format evolves beyond the date of its creation,
-the software cannot know how that signature may change and may incorrectly
-identify the version.
+
+The ``once FITS, forever FITS'' doctrine may be taken to require
+backward and forward compatibility or, if you will, compatibility
+with all FITS files ever created in the case where there is only
+one version ever.
+Either way, backward compatibility means that it always
+\emph{should} be feasible to use the most recent FITS reader. For
+forward compatibility, at minimum, a reasonable expectation goes
+beyond believing a FITS reader not
+crash when confronted with a newer FITS file. Ideally, it should do
+more than this, parsing what parts of the file are still compliant with
+its understanding of the format and reporting on those parts/features
+of the file which it does not recognize. In both cases, without
+unambiguous version metadata, readers have to rely on `duck-typing'
+and heuristics which are ultimately error prone because it requires
+the implementer of the parser to perfectly interpret the signature
+of any particular set of features present in the given FITS instance
+from among other possible features which are absent. Furthermore, as
+the format evolves beyond the date of its creation, the software cannot
+know how that signature may change and may incorrectly
+identify the version, a clear difficulty for forward compatibility.
 The reliance on heuristics also has impact beyond writing a FITS parser.
 Future archivists will certainly want to know what version of the
 format they are dealing with without having to guess from ancillary
