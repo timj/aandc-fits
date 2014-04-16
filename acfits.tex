@@ -470,67 +470,90 @@ exceptional high data rates, 6-dimensional data complexity, distributed
 data processing and I/O parallelization needs.
 
 
+
 \subsubsection{Lack of serialization/format versioning}
 \label{lack_of_serialization}
 
+There is no standard means for a FITS file to communicate
+the formatting version it conforms to.  Consider the example primary
+header in Fig.~\ref{fig:fitshead}: the only keyword which implies any
+type of format is SIMPLE which is set to `T', or true. The comment
+indicates that the file conforms to ``Standard FITS format'', but what
+indeed is that `Standard'?
 
-There is no standard means which allows the FITS file to
-communicate the formatting version it conforms to.  Consider the example primary header
-in Fig.~\ref{fig:fitshead}; the only keyword which implies any type of
-format is SIMPLE which is set to `T', or true. The comment indicates that
-the file conforms to ``Standard FITS format'', but what indeed is that `Standard'?
-We cannot know if the implied standard is actually 3.0 or some earlier (or later!)
-version.
+% We believe, firstly, that the question of the number of existing FITS
+% versions is at least more subtle than it might appear, and that this
+% subtlety has costs to implementers; and secondly that it may now be
+% time to revisit the standard's requirements of backward compatibility.
 
+The designers and maintainers of FITS have espoused the principle
+``once FITS, forever FITS''
+\citep[see e.g.,][]{1988A&AS...73..359G,1993FITS1}.  Certainly some in the
+community see this as a strength for the format as it appears to
+promote long term stability and ``archivability'' of FITS data
+\citep{2012EWASSAlle,2012LOC}.  This is not, however, quite the same
+thing as saying that FITS is unversioned.  There have been at least
+three named descriptions of FITS.  These include the first, or `basic
+FITS' document \citep{1979ipia.coll..445W,1981A&AS...44..363W}, the
+NOST version of FITS \citep{2001A&A...376..359H}, and the current
+version 3.0 \citep{2010A&A...524A..42P}.  One can regard these as
+successive improvements of a document describing changing best
+practices for an unchanging format (compare ``the value [of the
+putative FITS version keyword] is always 1.0 by default'' in
+\citep{1997ASPC..125..257W}, which discusses this general point in
+some depth). However the fact remains that there are features in the
+most recent FITS description (such as 64-bit integers, negative
+\texttt{BITPIX} values, FITS extensions and tables) which were not
+present in the first FITS version and demonstrably FITS has evolved.
 
-The designers and maintainers of FITS have espoused that a file is
-``once FITS, forever FITS'' \citep[see e.g.,][]{1988A&AS...73..359G,1993FITS1}.
-Certainly some in the community see this as a strength for the format
-as it appears to promote long term stability and ``archivability'' of FITS
-data \citep{2012EWASSAlle,2012LOC}. The assumption that FITS has not changed
-is, however, false. Accounting may differ, but there have been at least three
-recognized named versions of FITS. These include the first, or `basic' FITS
-version \citep{1979ipia.coll..445W}, the NOST version of FITS
-\citep{2001A&A...376..359H} and the current version 3.0 \citep{2010A&A...524A..42P}.
-Indeed, for the extreme doubters, why do we name a version `3.0' if there
-were not two earlier recognized versions? It is clear then that the format
-has not been static.  Even so, the assumption that the FITS format is static
-has negative consequences for its further development and its use.
-
-
-The first impact is that by omitting the ability to version the file no
-FITS reader knows what version of the format it is reading. The usual
-presumption made by software developers is that the latest version (v3.0)
-is being read. However, there are still many data which predate
-this version of FITS serialization making this supposition sometimes
-incorrect.
-
-
-The lack of versioning also limits the ability of our community to
-move forward constructively with developing new FITS versions.
-Because we must maintain slavish conformance to older format requirements
-it means that we accrete over time more and more ``design rules''
-which may limit our ability to implement new and needed features and
-clutter reader code. Consider that three keywords have been deprecated
-(\texttt{BLOCKED}, \texttt{CROTA2} and \texttt{EPOCH}) by the latest version
-of FITS. Per the standard, these are ``obsolete structures that should not be
-used in new FITS files but which shall remain valid indefinitely''.
-As such, software writers must indefinitely be on the guard for these metadata
-and writers of new conventions avoid utilizing these specific keywords.
-As time passes and changes of this nature accumulate, it will be progressively
-harder to interpret FITS data correctly and write new conventions.
-As there is no versioning to effectively declare deprecated structures in the
-format finally ``illegal'', the upshot is a fragmenting of the FITS format through
-inaction rather than deliberate design.
-
-
-Both of these issues needlessly drive greater and greater complexity
-in implementation of FITS parsers. Furthermore, lack of versioning
-arguably works counter to the purpose of archivability of the files.
+Even if the ``once FITS, forever FITS'' doctrine is taken to require
+only perfect backward and forward compatibility, the latter requires
+only that a FITS reader will not produce \emph{errors} when confronted
+with a `newer' FITS file, but does not require that it will be able to
+faithfully interpret and make available all of the content of that
+file, nor even that the reader will be reliably able to detect and
+report the existence of features it does not recognize.  However much
+of a problem this is in practice -- and the backward compatibility
+means that it always \emph{should} be feasible to use the most recent
+FITS reader -- it creates uncertainty and causes implementers to rely
+more on `duck-typing' and heuristics which are
+ultimately error prone because it requires the implementer of the parser
+to perfectly interpret the signature of any particular set of features
+present in the given FITS instance from among other possible features which are
+absent. Furthermore, as the format evolves beyond the date of its creation,
+the software cannot know how that signature may change and may incorrectly
+identify the version.
+The reliance on heuristics also has impact beyond writing a FITS parser.
 Future archivists will certainly want to know what version of the
 format they are dealing with without having to guess from ancillary
 evidence such as the presence of certain keywords, date of the file
 creation and so on.
+
+
+The lack of versioning also limits the ability of our community to
+move forward constructively with developing new FITS versions.
+The ``once FITS, forever FITS'' doctrine requires we accrete
+more and more ``design rules'' which may limit our ability to implement
+new and needed features and clutter reader code. Consider that three keywords
+have been deprecated
+(\texttt{BLOCKED}, \texttt{CROTA2} and \texttt{EPOCH}) by the latest version
+of FITS. Per the standard, these are ``obsolete structures that should not be
+used in new FITS files but which shall remain valid indefinitely''.
+As such, software writers must indefinitely be on guard for these metadata
+and writers of new conventions must avoid utilizing these specific keywords.
+As time passes and changes of this nature accumulate, it will be progressively
+harder to interpret FITS data correctly and write new conventions.
+
+
+Although the FITS format is apparently rather simple, on disk, the
+multiple versions of the format description, and the existence of
+numerous header conventions, mean that reading a FITS file in full
+generality is a complicated and messy business.  As there is no
+versioning mechanism to effectively declare deprecated structures
+finally ``illegal'', these complications and costs will only
+increase. In consequence, it may be time to consider whether the
+(otherwise clear) benefits of the ``once FITS, forever FITS'' doctrine
+continue to outweigh the costs.
 
 
 \subsubsection{Inadequate declaration and validation of content meaning}
@@ -1469,7 +1492,7 @@ has been expanded to allow more instances (extensions), as well as types of data
 As we discussed in prior sections, working with the basic data model of FITS,
 authors have implemented their own data models with ever greater demand being
 placed on the type of data (models) FITS may hold.
-Holding the line on format changes via the ``once FITS, always FITS'' maxim
+Holding the line on format changes via the ``once FITS, forever FITS'' doctrine
 has been harmful.  Original format design decisions have largely been held onto,
 and have limited the expression of new user data models.
 
@@ -1554,10 +1577,10 @@ and we have tried to provide an analysis of their deeper origin.
 From our investigation, it is clear that FITS suffers from a lack of
 sufficient evolution. Original design decisions, such as the header
 byte layout and fixed character encoding made a certain sense at the
-time FITS was founded. The later enshrinement of the FITS maxim, which
-has
+time FITS was founded. The later enshrinement of the FITS ``Once FITS, always
+FITS'' doctrine, which has
 been utilized to effectively freeze the format, was a mistake in our
-opinion.  Adherence to the maxim, and lack of any means to version
+opinion.  Adherence to the doctrine, and lack of any means to version
 the format in a machine-readable manner, has stifled necessary change of
 FITS, and we can broadly list a number of root problems in the format,
 some of which are long-standing, that cause problems for both providers
