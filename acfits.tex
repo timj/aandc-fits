@@ -509,13 +509,13 @@ with all FITS files ever created in the case where there is only
 one version ever.
 Either way, backward compatibility means that it always
 \emph{should} be feasible to use the most recent FITS reader. For
-forward compatibility, at minimum, a reasonable expectation goes
-beyond believing a FITS reader not
-crash when confronted with a newer FITS file. Ideally, it should do
-more than this, parsing what parts of the file are still compliant with
-its understanding of the format and reporting on those parts/features
-of the file which it does not recognize. In both cases, without
-unambiguous version metadata, readers have to rely on `duck-typing'
+forward compatibility, at minimum, reasonable expectation goes
+beyond requiring a FITS reader not crash when confronted with a newer 
+FITS file; it should do more than this. Ideally, it should parse 
+what parts of the file are still compliant with
+its understanding of the format and report on those parts/features
+of the file which it does not recognize. In either compatibility case, 
+without unambiguous version metadata, readers have to rely on `duck-typing'
 and heuristics which are ultimately error prone because it requires
 the implementer of the parser to perfectly interpret the signature
 of any particular set of features present in the given FITS instance
