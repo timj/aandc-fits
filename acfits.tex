@@ -509,11 +509,11 @@ one version ever.
 Either way, backward compatibility means that it always
 \emph{should} be feasible to use the most recent FITS reader. For
 forward compatibility, at minimum, reasonable expectation goes
-beyond requiring a FITS reader not crash when confronted with a newer 
-FITS file; it should do more than this. Ideally, it should parse 
+beyond requiring a FITS reader not crash when confronted with a newer
+FITS file; it should do more than this. Ideally, it should parse
 what parts of the file are still compliant with
 its understanding of the format and report on those parts/features
-of the file which it does not recognize. In either compatibility case, 
+of the file which it does not recognize. In either compatibility case,
 without unambiguous version metadata, readers have to rely on `duck-typing'
 and heuristics which are ultimately error prone because it requires
 the implementer of the parser to perfectly interpret the signature
@@ -550,7 +550,7 @@ numerous header conventions, mean that reading a FITS file in full
 generality is a complicated and messy business.  As there is no
 versioning mechanism to effectively declare deprecated structures
 finally ``illegal'', these complications and costs will only
-increase. 
+increase.
 %In consequence, it may be time to consider whether the
 %(otherwise clear) benefits of the ``once FITS, forever FITS'' doctrine
 %continue to outweigh the costs.
@@ -678,10 +678,10 @@ First and foremost, we must recognize that there are constantly new data models
 being created and modified. Some of these are documented in a human readable
 fashion but there are many more models which do not even meet this standard.
 Worse, due in part to the lack of good validation tools, the community has
-accepted many informal variants of existing models. These variants may both 
-be documented or not but are a result of either accidental or intentional 
-stretching of the original metadata usage. The header in 
-Fig.~\ref{fig:fitshead}, for example, is an informal variant because of its non-standard 
+accepted many informal variants of existing models. These variants may both
+be documented or not but are a result of either accidental or intentional
+stretching of the original metadata usage. The header in
+Fig.~\ref{fig:fitshead}, for example, is an informal variant because of its non-standard
 use of the \texttt{EPOCH} keyword.
 Finally, there is the possible complication of more than one data model being
 fully, or partially, present within a file. Without explicit signposts for
@@ -988,7 +988,7 @@ may regard it, not as simply an abbreviation for a certain number of
 kilometers, but instead as a distance whose value is determined at a
 certain atmospheric pressure level.
 
-The purely syntactical issues surrounding unit strings are 
+The purely syntactical issues surrounding unit strings are
 being addressed by the IVOA's `VOUnits' work \citep{VOUnits}, but the higher
 level questions -- of communicating and defining new units, of
 indicating documentation, and of converting between them in a
@@ -1436,11 +1436,11 @@ generation of new instances.
 \label{section_lesson_2}
 
 The next lesson that we may draw is that the format needs to be
-``self-describing'' in a machine-readable manner. 
-We consider a self-describing format to be one where the formatted 
+``self-describing'' in a machine-readable manner.
+We consider a self-describing format to be one where the formatted
 instance is capable of conveying and validating the semantic information
-it holds where the formatted ``instance'' may be a file, or a 
-collection of related files or perhaps something more exotic 
+it holds where the formatted ``instance'' may be a file, or a
+collection of related files or perhaps something more exotic
 (see above section~\ref{subsection_virt_dist_components}).
 
 As we have already seen, FITS lacks semantic validation and its
@@ -1456,7 +1456,7 @@ and can lead to the inadvertent creation of informal (and
 undetectable) variants. Furthermore, without this validation,
 archiving and interchange of information in the format suffers.
 It is harder to build robust software systems as any components
-involved in the interchange of FITS are unable to adequately 
+involved in the interchange of FITS are unable to adequately
 detect, and handle, invalid files fed to it.
 
 The declaration of validation rules should be flexible. In FITS,
