@@ -1114,19 +1114,6 @@ of the author is still ambiguous (for example, they may not want to resolve
 in favor of one model or the other and both models are important to keep).
 
 
-The least problematic of these issues is the problem of the 2880
-character logical record. While
-it is largely a low-level oddity of FITS now, it does have some small
-practical impact. Consider that this formatting requirement negatively
-impacts many FITS files today which have significant metadata. It
-often results in odd sections of the FITS file containing large blocks
-of white space. Certainly, in FITS files which have anything larger than
-small amounts data (50\,KB or more) this is not a particularly pressing
-problem. However, for FITS files which have small amounts of data
-below this approximate threshold (such as might occur when holding
-reduced data tables or when oriented primarily to metadata transport or
-capture) this is simply wasteful.
-
 \subsubsection{Insufficient support for missing values}
 
 Missing values are a common feature of most datasets, and are distinct from
