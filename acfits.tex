@@ -698,20 +698,21 @@ are present and map information to appropriate meaning.
 \label{section_crit_data_models}
 
 
-It is not the case that FITS is missing all needed data models. In
-terms of structures which represent basic organizations of the
-information used in astronomy, FITS includes such things like ``table'',
-``image'' or ``data cube''. These items are really simple representations
-of the data at a primitive level, and are certainly needed for basic
-access to the information within the file.
+One of FITS strengths is that it includes some common data structures 
+which are important in astronomy data. The FITS standard includes such 
+things like ``table'' and ``n-dimensional array'', the later which is 
+used to model both images and data cubes.  These items are really simple 
+representations of the data at a primitive level, and are certainly 
+needed for basic access to the information within the file.  Nevertheless, 
+these structures, by themselves, do not contain much in the way of necessary 
+detail and semantic information which tells the consumer exactly what 
+it is they are actually consuming. For this reason, they cannot be considered to
+be data models.
 
 
-Nevertheless, these structures, by themselves, do not contain much in
-the way of necessary detail and semantic information which tells the
-consumer exactly what it is they are actually consuming. While these
-structures do provide for the capture of semantic information (such as
-in the form of table column keywords) an additional data model (or
-models) must still be created or implemented by the author of the FITS
+While these structures do provide for the capture of semantic information 
+(such as in the form of table column keywords) an additional data model 
+(or models) must still be created or implemented by the author of the FITS
 file if there is a desire to convey what it is. Consider the many
 types of images or tables which are possible. Semantic information, in
 the form of a data model, allows the author to properly label the
@@ -722,8 +723,9 @@ interpretation. Such information includes the WCS, for example.
 Our concern here is that there are data models which are either
 insufficient or missing in FITS and which are very basic to scientific
 research. Other astronomical groups have recognized the need for some of
-these models. We detail
-several important missing data models in this section below.
+these models. We detail several important missing data models in this 
+section below.
+
 
 \subsubsection{Scientific Errors}
 
