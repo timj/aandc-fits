@@ -1100,8 +1100,18 @@ the same keywords for different purposes.  For example, compare the use
 of \texttt{PV} keywords in the products of the SCAMP tools
 \citep{2006ASPC..351..112B}, used for polynomial distortion coefficients,
 to the more common \texttt{PV} keywords used in the WCS convention for generic
-parameter values. These two conventions, when used in the same file,
-cause ambiguity and incorrect representation of the data.
+parameter values. 
+These two conventions, when used in the same file, cause ambiguity and
+incorrect representation of the data. It is true that FITS libraries
+will often provide a means to choose between one duplicate keyword or another
+so that in the strictest terms the issue may be resolved.
+Nevertheless, there is no guarantee that the author of
+the files intended resolution per the manner of library in use, nor is there any
+guarantee that different libraries will resolve the matter in the same way
+so the same file may wind up with different meaning if read by different parsers.
+Finally, even if libraries were consistent in behavior, the original intention
+of the author is still ambiguous (for example, they may not want to resolve
+in favor of one model or the other and both models are important to keep).
 
 
 The least problematic of these issues is the problem of the 2880
