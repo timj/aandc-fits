@@ -56,6 +56,17 @@
 
 \usepackage{breakurl}
 
+\usepackage{listings}
+
+\lstset{
+  language=C,
+  basicstyle=\ttfamily,
+  showstringspaces=false,
+  stringstyle=\color{red},
+  morecomment=[l]{/},
+  commentstyle=\color{blue},
+}
+
 %% The lineno packages adds line numbers. Start line numbering with
 %% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
 %% for the whole article with \linenumbers after \end{frontmatter}.
@@ -399,7 +410,7 @@ appears in Fig.~\ref{fig:fitshead}.
 
 \begin{figure*}
 \begin{minipage}{\textwidth}
-\begin{verbatim}
+\begin{lstlisting}
 SIMPLE  =                    T / Standard FITS format
 BITPIX  =                  -32 / 32 bit IEEE floating point numbers
 NAXIS   =                    3 / Number of axes
@@ -418,7 +429,7 @@ TEMP    =                    0 / Temperature (0=cold, 1=warm)
 FILTNAM1= 'F555W             ' / first filter name
 HSTPHOT =                    T / Preprocessed by HSTphot/mask
 END
-\end{verbatim}
+\end{lstlisting}
 \caption{Representative simple primary header of a FITS file showing
   an assortment of FITS keywords and their associated values. This
   header from 1995 uses a definition of the, now deprecated,
@@ -844,7 +855,7 @@ to FITS files (see Fig.~\ref{fig:asthead}).
 
 \begin{figure*}
 \begin{minipage}{\textwidth}
-\begin{verbatim}
+\begin{lstlisting}
 PLRLG_A =     5.50788096462284 / Polar longitude (rad.s)
 ENDAST_K= 'SphMap  '           / End of object definition
 MAPB_A  = '        '           / Second component Mapping
@@ -863,7 +874,7 @@ M0_A    =    0.426766777415161 / Forward matrix value
 M1_A    =    0.699933471661958 / Forward matrix value
 M2_A    =    0.572680760059142 / Forward matrix value
 M3_A    =   -0.418237169285184 / Forward matrix value
-\end{verbatim}
+\end{lstlisting}
 \caption{Example header of a representation of an AST WCS object in a
   FITS header  when the mapping is too complex to be represented using the
   FITS-WCS standard.}
@@ -1051,14 +1062,14 @@ headers (see Fig.~\ref{fig:asthead}).
 
 \begin{figure*}
 \begin{minipage}{\textwidth}
-\begin{verbatim}
+\begin{lstlisting}
 WAT0_001= 'system=multispec'
 WAT1_001= 'wtype=multispec label=Wavelength units=Angstroms'
 WAT2_001= 'wtype=multispec spec1 = "1 113 2 4955.4428886353510.055675655'
 WAT2_002= '83 256 0. 23.22 31.27 1. 0. 2 4 1. 256. 4963.0163112090 5.676'
 WAT2_003= '976664 -0.3191636898579552 -0.8169352858733255" spec2 ="2 112'
 WAT2_004= '9.09" spec 3 = "3 111 2 5043.5"                              '
-\end{verbatim}
+\end{lstlisting}
 \caption{Example header from an IRAF \textit{multispec} dataset
   indicating the use of multi-line headers that differs from the
   \texttt{CONTINUE} convention.}
