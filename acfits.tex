@@ -1563,11 +1563,18 @@ thought of as a success for FITS but again tile compression
 convention and not a standard with no guarantee that a particular
 reader will be able to understand the compression scheme.
 
-\textsc{cfitsio} is acting as a \emph{de facto} standards body by
-supporting specific conventions but we feel that it is important that
-the lessons learned from implementing these conventions provide
-feedback to the standards process to allow the standard to continue to
-grow and evolve over time.
+\textsc{cfitsio,} because it is so heavily relied upon by the 
+community to implement FITS reader software, may be considered to
+be the \emph{de facto} implementation of FITS. This fact, along
+with the lack of a migration path for conventions, effectively means
+it is also acting as a \emph{de facto} standards body. \textsc{cfitsio}
+supports some conventions but not others. 
+Effectively, the conventions it supports have become mainstream 
+while others have not. This is the wrong process for
+making worthy conventions widespread. We feel that it is important 
+that the lessons learned from implementing these conventions provide
+feedback to the standards process to allow the standard to continue 
+to grow and evolve over time.
 
 \section{Summary -- Significant problems exist in the FITS standard}
 
