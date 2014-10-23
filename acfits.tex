@@ -1306,21 +1306,21 @@ specifying hierarchies, content and attributes.
 \subsubsection{No support for streaming imaging data}
 \label{subsection_stream_image}
 
-Serving large data sets to the end user also requires significant
-rethinking of the framework of large data sets. FITS can only support a
-cutout framework.  However, it is unreasonable that a cutout framework
-can be of use for visual exploration of multi-petabyte imaging data.
-
-A reasonable framework should be able to support multiple representations
-of the same data (e.g., multiple resolutions or fidelities), preferably
-from a single master file. It should also be possible to stream the data
+While FITS supports cutout capabilities, serving large datasets to an 
+end user requires support for multiple data representations
+of the same data (e.g. multiple resolutions or fidelities)
+that may aid in visual exploration of multi-petabyte imaging data.
+%A reasonable framework should be able to support multiple representations
+%of the same data (e.g., multiple resolutions or fidelities), preferably
+%from a single master file. 
+It should also be possible to stream the data
 progressively to the end-user, displaying an image as soon
 as the first data become available. \citet{2014Kitaeff} and
 \citet{2014arXiv1401.7433P}  demonstrate the applicability and effectiveness
 of such approach on radio astronomy imagery.
 
-Unfortunately, no improvement can enable FITS to support
-such a functionality as it requires a complete rethinking of the entire framework.
+Unfortunately, no improvement can enable FITS to support such a functionality 
+as it requires a complete rethinking of the entire framework.
 
 
 \subsubsection{No support for capturing indeterminately sized data sets via streaming}
