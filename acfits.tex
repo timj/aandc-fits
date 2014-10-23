@@ -303,7 +303,7 @@ proposed or collected it. The community routinely combines original
 observations, theoretical calculations, observations from others, and
 data from archives on the internet in order to obtain better and wider
 ranging scientific results. A wide variety of research projects now involve many
-diverse data sets from a range of sources. Instruments in astronomy
+diverse datasets from a range of sources. Instruments in astronomy
 now produce several orders of magnitude larger datasets than were common
 at the time FITS was born, in some cases requiring parallelized,
 distributed storage systems to provide adequate data rates
@@ -801,7 +801,7 @@ spectrometer \citep{2010SPIE.7741E..67G} is placed in the beam.
 
 
 Another case with poor support is Integral Field Unit (IFU) data.
-Many of these data sets
+Many of these datasets
 have discontinuous WCS models. The only way to support these in FITS
 now is to explicitly map each pixel to the world coordinates. Besides
 being space inefficient, it is difficult to manipulate in any simple
@@ -1059,7 +1059,7 @@ WAT2_002= '83 256 0. 23.22 31.27 1. 0. 2 4 1. 256. 4963.0163112090 5.676'
 WAT2_003= '976664 -0.3191636898579552 -0.8169352858733255" spec2 ="2 112'
 WAT2_004= '9.09" spec 3 = "3 111 2 5043.5"                              '
 \end{verbatim}
-\caption{Example header from an IRAF \textit{multispec} data set
+\caption{Example header from an IRAF \textit{multispec} dataset
   indicating the use of multi-line headers that differs from the
   \texttt{CONTINUE} convention.}
 \label{fig:multispec}
@@ -1262,7 +1262,7 @@ model.  Although tapes are still widely used for archiving data,
 such an access mode is no longer commonly available as the files are usually
 transferred to a hard-drive before being accessed. What is more, the
 serial nature of FITS has become a significant bottleneck when it comes
-to working with large data sets.
+to working with large datasets.
 
 
 Consider that many new instruments, especially in radio astronomy
@@ -1272,14 +1272,14 @@ SKA;~\citealp{ska-exascale})
 have been producing, or are planning to produce in the near future,
 spectral-imaging data-cubes of unprecedented volumes in the order of
 tens and hundreds of petabytes per year. Due to the increased spatial and frequency
-resolutions there are individual data sets which can now be expected to be as
+resolutions there are individual datasets which can now be expected to be as
 large as tens of terabytes.
 
 
 For many reasons which we will detail below, FITS does not provide sufficient
 support for these types of large data.
 
-%\subsubsection{No support for maintaining the integrity of distributed data sets}
+%\subsubsection{No support for maintaining the integrity of distributed datasets}
 %
 %One possible solution is to generate many small related datasets.
 %The problem is that FITS does not have any standard mechanism to maintain the
@@ -1323,13 +1323,13 @@ Unfortunately, no improvement can enable FITS to support such a functionality
 as it requires a complete rethinking of the entire framework.
 
 
-\subsubsection{No support for capturing indeterminately sized data sets via streaming}
+\subsubsection{No support for capturing indeterminately sized datasets via streaming}
 \label{subsection_stream_indeterm}
 
 
 Frequently there is a need to store data from an instrument or remote
 site that is being transmitted over a network. It is common that when
-the transfer begins the final size of the data set is not known. Those
+the transfer begins the final size of the dataset is not known. Those
 using FITS have handled this by writing such data to a file without
 specifying the size of the last dimension in an image or table, and
 when the stream is completed, the header is appropriately updated.
