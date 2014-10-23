@@ -1287,12 +1287,12 @@ support for these types of large data.
 %maintenance would be a custom solution that is likely to be
 %incompatible with other systems when the data are moved around.
 
-\subsubsection{No support for parallel write/read operations on HPC platforms}
-\label{subsection_hpc_io}
+\subsubsection{No support for parallel write/read operations}
+\label{subsection_parallel_io}
 
-Large datasets also require parallel read/write operations to be processed on
-parallel high performance computers. FITS cannot support optimization for
-parallel read/write operations.
+Large datasets require parallel read/write operations to be processed on
+parallel computers.  FITS, however, cannot support optimization for parallel 
+read/write operations.
 
 This has been the driving factor for LOFAR to
 invest a significant effort into development of a new format using
@@ -1512,8 +1512,8 @@ that there is no provision in the standard for extending the existing capture
 of data itself. For example, if one creates a convention for a new image type
 which supports multiple representations of the data (section~\ref{subsection_stream_image})
 it is no longer readable by any FITS parser. Other deficiencies which arise and/or are
-unsolvable as a result of this class of problem include no support for HPC
-parallel IO (section~\ref{subsection_hpc_io}), streaming issues
+unsolvable as a result of this class of problem include no support for 
+optimization of parallel IO (section~\ref{subsection_parallel_io}), streaming issues
 (sections~\ref{subsection_stream_image} and \ref{subsection_stream_indeterm}),
 lack of distributed/virtual data representation
 and representation of information held in ``non-file'' instances such as in a
