@@ -718,7 +718,7 @@ which are important in astronomy data. The FITS standard includes such
 things like ``table'' and ``n-dimensional array'' the latter which is 
 used to model both images and data cubes.  These items are really simple 
 representations of the data at a primitive level, and are certainly 
-needed for basic access to the information within the file.  Nevertheless, 
+needed for basic access to the information within the file.  Even so 
 these structures, by themselves, do not contain much in the way of necessary 
 detail and semantic information which tells the consumer exactly what 
 it is they are actually consuming. For this reason, they cannot be considered to
@@ -726,9 +726,16 @@ be data models.
 
 
 The FITS standard does supply a few data models, for example the aforementioned
-WCS, and these are generally regarded as another strong point. 
-Nevertheless, FITS would benefit from an expansion in its roster of data models.
-We detail some missing critical models below.
+WCS, and these are generally regarded as another strong point as few other data 
+formats supply much in the way data models in their standard. The number and 
+richness of core data models varies with each format ranging from HDF5 which
+does not supply any data models to NDF, itself a data model implemented in HDS, 
+which has arguably the richest model in its core definition.
+It is a matter of opinion as to whether more data models in the format standard 
+are better or not. NDF has its advocates but clearly it is not as well adopted as 
+FITS which has a less rich assortment of data models in its standard.
+Nevertheless, we believe FITS would benefit from an expansion in its roster of 
+standard data models.  We detail some important missing data models below.
 
 
 \subsection{Scientific Errors}
