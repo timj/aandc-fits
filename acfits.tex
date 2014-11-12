@@ -364,16 +364,21 @@ to these new challenges.
 The strengths of FITS are well known and include an easily understood
 serialization, a plethora of stable supporting software, good documentation of
 the format and the simple fact that it remains to this day the "lingua franca"
-of astronomical data format exchange.
-What we feel has been missing is an attempt within the community to
+of astronomical data format exchange. What we feel has been missing is an 
+attempt within the community to
 dispassionately discuss and understand FITS in terms of problems in
-its application to modern astronomical research. It is our intended goal
+its application to modern astronomical research. We hope to show that 
+technologies and research techniques in astronomy have evolved and FITS has 
+not kept pace. As a result, gaps between FITS utility and the needs of the 
+research community have opened up and widened over time. 
+It is our intended goal
 in this paper to highlight some selected, important, problems which exist
 in the FITS core standard today. 
 By intent this paper does not prescribe specific solutions to these issues;
 rather, we hope to bring awareness of these issues to the FITS and greater
 astronomical computing communities in the hopes that it will spur action to 
 resolve them.
+
 
 We have grouped the discussion of issues as information interchange
 (section~\ref{section_poor_exchange}),
@@ -386,26 +391,7 @@ analysis of any deeper causes or ``lessons learned''
 (section~\ref{sec:discussion}).
 
 
-\section{Deficiencies of FITS for Modern Astronomical Research}
-\label{section_deficiencies}
-
-As technologies and research techniques in astronomy have evolved, FITS
-has not kept pace. As a result, gaps between FITS utility and the
-needs of the research community have opened up and widened over time. In
-this part of the paper, we detail many issues, or deficiencies, of FITS
-which we see in this regard.
-
-
-The deficiencies of FITS can be categorized into several groups: poor
-support for information interchange
-(section~\ref{section_poor_exchange}), missing critical data models
-(section~\ref{section_crit_data_models}), inflexibility in representing
-both metadata and data (section~\ref{section_inflex_represent}) and
-inadequate support for large and/or distributed data
-(section~\ref{section_poor_large_data_support}). We address each of
-these below.
-
-\subsection{Needed information interchange features}
+\section{Information Interchange}
 \label{section_poor_exchange}
 
 FITS originated as a delivery format for observatory data. It was the format
@@ -503,7 +489,7 @@ data processing and I/O parallelization needs.
 
 
 
-\subsubsection{Lack of serialization/format versioning}
+\subsection{Lack of serialization/format versioning}
 \label{lack_of_serialization}
 
 There is no standard means for a FITS file to communicate
@@ -589,7 +575,7 @@ increase.
 %continue to outweigh the costs.
 
 
-\subsubsection{Inadequate declaration and validation of content meaning}
+\subsection{Inadequate declaration and validation of content meaning}
 
 
 Related to, but separate from, the lack of versioning of the
@@ -722,7 +708,7 @@ the software to use, it is likely impossible to determine which data models
 are present and map information to appropriate meaning.
 
 
-\subsection{Missing critical data models}
+\section{Data models}
 \label{section_crit_data_models}
 
 
@@ -744,7 +730,7 @@ Nevertheless, FITS would benefit from an expansion in its roster of data models.
 We detail some missing critical models below.
 
 
-\subsubsection{Scientific Errors}
+\subsection{Scientific Errors}
 
 
 The measurement of physical properties with their associated uncertainties
@@ -786,7 +772,8 @@ class. For example, ``statistical'' errors may have an assigned ``sigma''
 value.
 \end{itemize}
 
-\subsubsection{Extended Coordinate Support}
+
+\subsection{Extended Coordinate Support}
 \label{sec:wcs}
 
 
@@ -900,7 +887,8 @@ M3_A    =   -0.418237169285184 / Forward matrix value
 \end{figure*}
 
 
-\subsubsection{History and Provenance}
+\subsection{History and Provenance}
+\label{sec:history}
 
 
 The FITS standard encourages people to store processing history
@@ -955,7 +943,7 @@ systems custom to Earth Science and remote sensing
 \citep{2008IPAWTilmes,2008IPAWMcCann}.
 
 
-\subsubsection{Data Quality}
+\subsection{Data Quality}
 
 
 One of the more pressing needs in our era of shared and distributed
@@ -990,7 +978,7 @@ be judged by the dataset consumer without directly examining the data
 themselves.
 
 
-\subsubsection{Units}
+\subsection{Units}
 
 
 The FITS support for units is syntactically flexible (albeit with
@@ -1020,7 +1008,7 @@ design, since experience has shown them to be more contentious than
 one might expect.  These questions should perhaps be taken up by the FITS community.
 
 
-\subsection{Inflexibility in information representation}
+\section{Metadata and data representation}
 \label{section_inflex_represent}
 
 
@@ -1040,7 +1028,7 @@ expected and is all to the good. Nevertheless, as we shall illustrate
 below, the expansion is still insufficient relative to actual need.
 
 
-\subsubsection{Constrained metadata representation}
+\subsection{Constrained metadata representation}
 \label{subsection_information_representation}
 
 
@@ -1142,7 +1130,7 @@ of the author is still ambiguous (for example, they may not want to resolve
 in favor of one model or the other and both models are important to keep).
 
 
-\subsubsection{Insufficient support for missing values}
+\subsection{Insufficient support for missing values}
 
 Missing values are a common feature of most datasets, and are distinct from
 invalid values (such as \texttt{NaN} or \textit{Not a Number}) that may occur
@@ -1159,7 +1147,7 @@ represent for example a saturated pixel; such a distinction is not currently pos
 in FITS.
 
 
-\subsubsection{Awkwardness in representing the associations present in both data and metadata}
+\subsection{Awkwardness in representing the associations present in both data and metadata}
 \label{section_associations}
 
 
@@ -1205,7 +1193,7 @@ In both cases above, a standardized way of specifying relationships
 between extensions would be extremely valuable to data and application interoperability.
 
 
-\subsubsection{No support for declaring byte order}
+\subsection{No support for declaring byte order}
 \label{section_byte_order}
 
 The original FITS standard specification \citep{1981A&AS...44..363W}
@@ -1237,7 +1225,7 @@ records of astronomical observations, the less the data are altered, the
 more efficient and reliable the archival data management will be.
 
 
-\subsubsection{No support for alternative encodings}
+\subsection{No support for alternative encodings}
 \label{section_char_encoding}
 
 The allowed character set for metadata and data in FITS is overly
@@ -1279,7 +1267,7 @@ format should also allow keywords themselves to be expressed in a broader
 range of characters.
 
 
-\subsection{Inadequate support for large or distributed data}
+\section{Large or distributed datasets}
 \label{section_poor_large_data_support}
 
 At the time when FITS was developed, the primary media used for
@@ -1306,15 +1294,7 @@ large as tens of terabytes.
 For many reasons which we will detail below, FITS does not provide sufficient
 support for these types of large data.
 
-%\subsubsection{No support for maintaining the integrity of distributed datasets}
-%
-%One possible solution is to generate many small related datasets.
-%The problem is that FITS does not have any standard mechanism to maintain the
-%integrity of such distributed datasets on its own. Any integrity
-%maintenance would be a custom solution that is likely to be
-%incompatible with other systems when the data are moved around.
-
-\subsubsection{No support for parallel write/read operations}
+\subsection{No support for parallel write/read operations}
 \label{subsection_parallel_io}
 
 Large datasets require parallel read/write operations to be processed on
@@ -1330,7 +1310,7 @@ for the construction of distributed, entirely unbounded files. The nature of the
 format further provides the ability to custom design a data encapsulation format,
 specifying hierarchies, content and attributes.
 
-\subsubsection{No support for streaming imaging data}
+\subsection{No support for streaming imaging data}
 \label{subsection_stream_image}
 
 While FITS supports cutout capabilities, serving large datasets to an 
@@ -1347,7 +1327,7 @@ as the first data become available. \citet{2014Kitaeff} and
 of such approach on radio astronomy imagery.
 
 
-\subsubsection{No support for capturing indeterminately sized datasets via streaming}
+\subsection{No support for capturing indeterminately sized datasets via streaming}
 \label{subsection_stream_indeterm}
 
 
@@ -1366,7 +1346,7 @@ metadata. A library supporting the data format should support such
 usage.
 
 
-\subsubsection{No support for declaration of virtual and distributed components}
+\subsection{No support for declaration of virtual and distributed components}
 \label{subsection_virt_dist_components}
 
 
