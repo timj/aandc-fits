@@ -322,8 +322,7 @@ distributed storage systems to provide adequate data rates
 
 
 Astronomers have increasingly come to rely on others to write software
-programs
-to help process and analyze their data. Common libraries, analysis
+programs to help process and analyze their data. Common libraries, analysis
 environments, pipeline processed data, applications and services
 provided by third parties form a crucial foundation for many
 astronomers' toolboxes. All of this requires that the interchange of
@@ -362,12 +361,29 @@ will fall in favor of other scientific data formats should it not adapt
 to these new challenges.
 
 
-It is our intended goal in this paper to highlight some selected,
-important, problems which exist in the FITS core standard today.
+The strengths of FITS are well known and include an easily understood
+serialization, a plethora of stable supporting software, good documentation of
+the format and the simple fact that it remains to this day the "lingua franca"
+of astronomical data format exchange.
+What we feel has been missing is an attempt within the community to
+dispassionately discuss and understand FITS in terms of problems in
+its application to modern astronomical research. It is our intended goal
+in this paper to highlight some selected, important, problems which exist
+in the FITS core standard today. 
 By intent this paper does not prescribe specific solutions to these issues;
 rather, we hope to bring awareness of these issues to the FITS and greater
-astronomical computing communities in the hopes that
-it will spur action to resolve them.
+astronomical computing communities in the hopes that it will spur action to 
+resolve them.
+
+We have grouped the discussion of issues as information interchange
+(section~\ref{section_poor_exchange}),
+data models (section~\ref{section_crit_data_models}),
+metadata and data representation (section~\ref{section_inflex_represent}) and
+large and/or distributed datasets
+(section~\ref{section_poor_large_data_support}).
+We address each of these topics in turn then try to provide an analysis
+of any deeper causes below.
+
 
 \section{Deficiencies of FITS for Modern Astronomical Research}
 \label{section_deficiencies}
