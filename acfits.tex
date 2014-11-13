@@ -725,17 +725,26 @@ it is they are actually consuming. For this reason, they cannot be considered to
 be data models.
 
 
-The FITS standard does supply a few data models, for example the aforementioned
-WCS, and these are generally regarded as another strong point as few other data 
-formats supply much in the way data models in their standard. The number and 
-richness of core data models varies with each format ranging from HDF5 which
-does not supply any data models to NDF, itself a data model implemented in HDS, 
-which has arguably the richest model in its core definition.
-It is a matter of opinion as to whether more data models in the format standard 
-are better or not. NDF has its advocates but clearly it is not as well adopted as 
-FITS which has a less rich assortment of data models in its standard.
-Nevertheless, we believe FITS would benefit from an expansion in its roster of 
-standard data models.  We detail some important missing data models below.
+The FITS standard does supply a data model, for example the aforementioned
+WCS may be considered to be part of it. These standard semantics are generally 
+regarded as another strong point of FITS.  The other data formats we have 
+previously mentioned vary in how extensive their core data model is. The range
+goes from HDF5, which does not supply any data model per se, to that of NDF/HDS 
+which has very rich metadata in its data model.
+
+
+It is a matter of opinion as to whether more/richer detailed data models in the 
+format standard are better or not. The NDF core data model metadata are certainly 
+more detailed than the metadata in the FITS standard. On the other hand, NDF does 
+not have any native ability to contain tabular data and FITS is certainly more 
+widely adopted than NDF.  Extended FITS models also suffer from the same lack of 
+universal uptake. Nevertheless, we believe FITS would benefit from an expansion 
+in its standard data model as there are certainly common semantics which 
+may be found in all of these other non-standard FITS data models which the 
+community can benefit from. 
+
+
+In this section we detail some important missing (component) data models.
 
 
 \subsection{Scientific Errors}
