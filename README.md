@@ -1,2 +1,2 @@
-Paper entitled *The Future of Astronomical Data Formats: Learning
-from FITS*, submitted to Astronomy & Computing.
+Paper entitled *Learning from FITS: Limitations in use in modern
+astronomical research*, submitted to Astronomy & Computing.
