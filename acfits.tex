@@ -712,36 +712,34 @@ are present and map information to appropriate meaning.
 \section{Data models}
 \label{section_crit_data_models}
 
-
-One of FITS strengths is that it includes some common data structures 
-which are important in astronomy data. The FITS standard includes such 
-things like ``table'' and ``n-dimensional array'' the latter which is 
-used to model both images and data cubes.  These items are really simple 
-representations of the data at a primitive level, and are certainly 
-needed for basic access to the information within the file.  Even so 
-these structures, by themselves, do not contain much in the way of necessary 
-detail and semantic information which tells the consumer exactly what 
+One of FITS strengths is that it includes some common data structures
+which are important in astronomy data. The FITS standard includes such
+things like ``table'' and ``n-dimensional array'' the latter which is
+used to model both images and data cubes.  These items are really simple
+representations of the data at a primitive level, and are certainly
+needed for basic access to the information within the file.  Even so
+these structures, by themselves, do not contain much in the way of necessary
+detail and semantic information which tells the consumer exactly what
 it is they are actually consuming. For this reason, they cannot be considered to
 be data models.
 
 
 The FITS standard does supply a data model, for example the aforementioned
-WCS may be considered to be part of it. These standard semantics are generally 
-regarded as another strong point of FITS.  The other data formats we have 
+WCS may be considered to be part of it, and these standard semantics are generally
+regarded as another strong point of FITS.  The other data formats we have
 previously mentioned vary in how extensive their core data model is. The range
-goes from HDF5, which does not supply any data model per se, to that of NDF/HDS 
+goes from HDF5, which does not supply any data model per se, to that of NDF
 which has very rich metadata in its data model.
 
 
-It is a matter of opinion as to whether more/richer detailed data models in the 
-format standard are better or not. The NDF core data model metadata are certainly 
-more detailed than the metadata in the FITS standard. On the other hand, NDF does 
-not have any native ability to contain tabular data and FITS is certainly more 
-widely adopted than NDF.  Extended FITS models also suffer from the same lack of 
-universal uptake. Nevertheless, we believe FITS would benefit from an expansion 
-in its standard data model as there are certainly common semantics which 
-may be found in all of these other non-standard FITS data models which the 
-community can benefit from. 
+It is a matter of opinion as to whether more/richer detailed data models in the
+format standard are better or not. The NDF core data model metadata are certainly
+more detailed than the metadata in the FITS standard. On the other hand FITS is 
+certainly more widely adopted than NDF. Nevertheless, we believe FITS would benefit 
+from an expansion in its standard data model as there are certainly common semantics 
+which may be found in other data formats (e.g. NDF, XDF, etc) and FITS-based model
+extensions (e.g. such as MBFITS or local data dictionaries) which the community can 
+benefit from.
 
 
 In this section we detail some important missing (component) data models.
