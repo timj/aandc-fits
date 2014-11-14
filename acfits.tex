@@ -1404,7 +1404,7 @@ other files.
 \section{Discussion -- Lessons Learned}
 \label{sec:discussion}
 
-What then are the lessons we might draw from the deficiencies
+What then are the lessons we might draw from the limitations
 we have identified with FITS? Are there any deeper issues and
 commonalities which thread throughout these problems? In fact,
 there are several.
@@ -1525,13 +1525,13 @@ declare models in a machine-readable manner (detailed in
 of issues which include the missing ability to declare byte order,
 no standard means to make associations between data and metadata, and
 an inability to create data models which extend both
-\textit{metadata and the data}. We have already discussed the deficiencies of
-the former two issues in sections~\ref{section_byte_order} and
+\textit{metadata and the data}. We have already discussed the former two 
+issues in sections~\ref{section_byte_order} and
 \ref{section_data_associations} respectively.  The last issue is related to the fact
 that there is no provision in the standard for extending the existing capture
 of data itself. For example, if one creates a convention for a new image type
 which supports multiple representations of the data (section~\ref{subsection_stream_image})
-it is no longer readable by any FITS parser. Other deficiencies which arise and/or are
+it is no longer readable by any FITS parser. Other limitations which arise and/or are
 unsolvable as a result of this class of problem include no support for 
 optimization of parallel IO (section~\ref{subsection_parallel_io}), streaming issues
 (sections~\ref{subsection_stream_image} and \ref{subsection_stream_indeterm}),
@@ -1637,7 +1637,7 @@ The lack of this feature stymies the solution of many large dataset problems.
 
 We have illustrated a number of lessons to be learned from the FITS experience
 in this paper. We do not wish however to recommend specific corrective action 
-to any particular problem. Instead we hope that action to correct deficiencies 
+to any particular problem. Instead we hope that action to correct limitations
 will flow from constructive community discussion including the analysis of
 other astronomical data formats and any lessons learned from their use
 and construction.
