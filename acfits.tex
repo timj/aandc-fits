@@ -489,8 +489,8 @@ data processing and I/O parallelization needs.
 
 
 
-\subsection{Lack of serialization/format versioning}
-\label{lack_of_serialization}
+\subsection{Format versioning}
+\label{subsection_format_versioning}
 
 There is no standard means for a FITS file to communicate
 the formatting version it conforms to.  Consider the example primary
@@ -576,7 +576,8 @@ increase.
 %continue to outweigh the costs.
 
 
-\subsection{Inadequate declaration and validation of content meaning}
+\subsection{Declaration and validation of content meaning}
+\label{subsection_semantic_validation_and_declaration}
 
 
 Related to, but separate from, the lack of versioning of the
@@ -1043,7 +1044,7 @@ expected and is all to the good. Nevertheless, as we shall illustrate
 below, the expansion is still insufficient relative to actual need.
 
 
-\subsection{Constrained metadata representation}
+\subsection{Rich metadata representation}
 \label{subsection_information_representation}
 
 
@@ -1145,7 +1146,7 @@ of the author is still ambiguous (for example, they may not want to resolve
 in favor of one model or the other and both models are important to keep).
 
 
-\subsection{Insufficient support for missing values}
+\subsection{Expanded missing values support}
 
 Missing values are a common feature of most datasets, and are distinct from
 invalid values (such as \texttt{NaN} or \textit{Not a Number}) that may occur
@@ -1162,7 +1163,7 @@ represent for example a saturated pixel; such a distinction is not currently pos
 in FITS.
 
 
-\subsection{Limited ability to represent data associations}
+\subsection{Data associations}
 \label{section_data_associations}
 
 
@@ -1208,7 +1209,7 @@ In both cases above, a standardized way of specifying relationships
 between extensions would be extremely valuable to data and application interoperability.
 
 
-\subsection{No support for declaring byte order}
+\subsection{Declaring byte order}
 \label{section_byte_order}
 
 The original FITS standard specification \citep{1981A&AS...44..363W}
@@ -1240,7 +1241,7 @@ records of astronomical observations, the less the data are altered, the
 more efficient and reliable the archival data management will be.
 
 
-\subsection{No support for alternative encodings}
+\subsection{Alternative encodings}
 \label{section_char_encoding}
 
 The allowed character set for metadata and data in FITS is overly
@@ -1309,7 +1310,7 @@ large as tens of terabytes.
 For many reasons which we will detail below, FITS does not provide sufficient
 support for these types of large data.
 
-\subsection{No support for parallel write/read operations}
+\subsection{Parallel write/read operations}
 \label{subsection_parallel_io}
 
 Large datasets require parallel read/write operations to be processed on
@@ -1325,7 +1326,7 @@ for the construction of distributed, entirely unbounded files. The nature of the
 format further provides the ability to custom design a data encapsulation format,
 specifying hierarchies, content and attributes.
 
-\subsection{No support for streaming imaging data}
+\subsection{Streaming imaging data}
 \label{subsection_stream_image}
 
 While FITS supports cutout capabilities, serving large datasets to an 
@@ -1342,7 +1343,7 @@ as the first data become available. \citet{2014Kitaeff} and
 of such approach on radio astronomy imagery.
 
 
-\subsection{No support for capturing indeterminately sized datasets via streaming}
+\subsection{Capturing indeterminately sized datasets via streaming}
 \label{subsection_stream_indeterm}
 
 
@@ -1361,7 +1362,7 @@ metadata. A library supporting the data format should support such
 usage.
 
 
-\subsection{No support for declaration of virtual and distributed components}
+\subsection{Virtual and distributed datasets}
 \label{subsection_virt_dist_components}
 
 
