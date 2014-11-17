@@ -380,15 +380,14 @@ We have grouped the discussion of issues as general topics ``information interch
 We address each of these topics in turn below then try to provide an
 analysis of any deeper causes or ``lessons learned'' (section~\ref{sec:discussion}).
 
-
-By intent this paper does not prescribe specific solutions to these issues;
-rather, we hope to bring awareness of these issues to the FITS and greater
-astronomical computing communities in the hopes that it will spur action to 
-resolve them. Our effort will also continue. We plan to extend the work started 
-here in a future paper in which we will gather use cases or ``lessons learned'' 
-which also show FITS strengths, and gleaning the same from other data formats. 
-From these we plan to extract and publish an overview of the requirements for
-a modern astronomical data format.
+%By intent this paper does not prescribe specific solutions to these issues;
+%rather, we hope to bring awareness of these issues to the FITS and greater
+%astronomical computing communities in the hopes that it will spur action to 
+%resolve them. Our effort will also continue. We plan to extend the work started 
+%here in a future paper in which we will gather use cases or ``lessons learned'' 
+%which also show FITS strengths, and gleaning the same from other data formats. 
+%From these we plan to extract and publish an overview of the requirements for
+%a modern astronomical data format.
 
 
 \section{Information Interchange}
@@ -1590,60 +1589,72 @@ that the lessons learned from implementing these conventions provide
 feedback to the standards process to allow the standard to continue 
 to grow and evolve over time.
 
-\section{Summary -- Significant problems exist in the FITS standard}
+
+\section{Summary}
 
 
-The problems which we have described in this paper are significant
+The limitations which we have described in this paper are significant
 and we have tried to provide an analysis of their deeper origin.
 From our investigation, it is clear that FITS suffers from a lack of
 sufficient evolution. Original design decisions, such as the header
 byte layout and fixed character encoding made a certain sense at the
-time FITS was founded. The later enshrinement of the FITS ``Once FITS, always
-FITS'' doctrine, which has been utilized to effectively freeze the format, 
-was a mistake in our opinion.  Adherence to the doctrine, and lack of 
-any means to version the format in a machine-readable manner, has 
-stifled necessary change of FITS, and we can broadly list a number of 
-root problems in the format, some of which are long-standing, that 
-cause problems for both providers and consumers of astronomical data today. 
-These include:
+time FITS was founded. The later enshrinement of the FITS ``Once FITS, 
+always FITS'' doctrine, which has been utilized to effectively freeze 
+the format, was a mistake in our opinion. Adherence to the doctrine, 
+and lack of any means to version the format in a machine-readable manner, 
+has stifled necessary change of FITS.
+
+
+More positively, the limitations identified in FITS provide an opportunity 
+to draw a number of important lessons to be learned from the FITS experience. 
+Furthermore, we can use our analysis to identify root causes and turn 
+these into requirements which might be used as goals for future work.  
+For example, some possible requirements might include:
 
 \begin{itemize}
 
-\item FITS serialization is not versioned.
+\item The data format shall be versioned.
 
-\item FITS cannot specify data model designs in a machine-readable document
-which may be used to do syntactic and semantic validation.
+\item The data format shall allow for syntactic and semantic validation.
 
-\item FITS keyword names and values are too short.
+\item The data format standard contain provision for declaration of common 
+advanced data structures. These structures include non-scalar values, sets, 
+objects and associations between other metadata and data.
 
-\item FITS needs an expanded character set (for both metadata and data).
+\item The data format shall allow declaration of the character set 
+(in both metadata and data).
 
-\item FITS, without resorting to conventions, is unable to express many basic structures in 
-its metadata such as non-scalar values, sets, lists, and objects.
-
-\item FITS conventions are unable to specify new data structures to capture 
-``data''. All data models must use existing n-dimensional array and (binary or
-ASCII) table data structures.
-
-\item FITS lacks a standard mechanism for associating data models with one another.
-
-\item FITS lacks support for missing values in floating point data.
-
-\item FITS lacks many critical data models which are commonly needed.
+\item The data format shall allow user models to declare new data structures
+in data\footnote{FITS conventions are unable to specify new 
+data structures to capture ``data''. All data models must use existing 
+n-dimensional array and (binary or ASCII) table data structures}.
 
 \end{itemize}
 
+Finally the community needs to not forget FITS strengths.
+In particular, FITS inclusion of semantic content (data models) as part of the
+standard should continue to be pushed. There are many critical missing data
+models (section~\ref{section_crit_data_models}) that, if included in the standard, 
+would provide compelling reasons to use a data format.
 
-We have illustrated a number of lessons to be learned from the FITS experience
-in this paper. We do not wish however to recommend specific corrective action 
-to any particular problem. Instead we hope that action to correct limitations
-will flow from constructive community discussion including the analysis of
-other astronomical data formats and any lessons learned from their use
+
+To be clear, we do not wish to recommend specific corrective action 
+to any particular problem or derived requirement. Instead we hope that 
+action will flow from constructive community discussion including the analysis 
+of other astronomical data formats and any lessons learned from their use
 and construction.
-The form of the possible resolutions to problems in FITS may involve moving 
-existing FITS conventions into the core standard, modification of the FITS 
-standard to remove limitations, or even transferring the FITS data model over
+We may anticipate that the form of the possible resolutions to problems in FITS may 
+involve moving existing FITS conventions into the core standard, modification of 
+the FITS standard to remove limitations, or even transferring the FITS data model over
 into a new serialization. 
+
+
+Our effort will also continue. We plan to extend the work started
+here in a future paper in which we will gather use cases or ``lessons learned''
+which also show FITS strengths, and gleaning the same from other data formats.
+From these we plan to extract and publish an overview of the requirements for
+a modern astronomical data format.
+
 
 These technical problems will be solved one way or another. If the
 community is not willing to do the hard work of hammering out a
@@ -1653,9 +1664,7 @@ increasingly fragmented and we will no longer enjoy the easy
 interoperability that FITS has provided for many years.
 
 
-
 \section{Acknowledgments}
-
 
 The authors wish to thank Bill Pence and Rob Seaman for many insightful
 discussions.  We thank Bob Hanisch and an anonymous referee for providing
