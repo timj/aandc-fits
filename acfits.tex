@@ -1621,10 +1621,9 @@ which may be used to do syntactic and semantic validation.
 \item FITS, without resorting to conventions, is unable to express many basic structures in 
 its metadata such as non-scalar values, sets, lists, and objects.
 
-\item FITS data modeling is unable to specify the capture of ``data''.
-There is no provision to allow a user to create a new data model in more
-advanced structures than the FITS basic 2D image, data cube and table models.
-The lack of this feature stymies the solution of many large dataset problems.
+\item FITS conventions are unable to specify new data structures to capture 
+``data''. All data models must use existing n-dimensional array and (binary or
+ASCII) table data structures.
 
 \item FITS lacks a standard mechanism for associating data models with one another.
 
