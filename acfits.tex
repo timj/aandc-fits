@@ -1320,9 +1320,9 @@ This has been the driving factor for LOFAR to
 invest a significant effort into development of a new format using
 HDF5  \citep{2012ASPC..461..283A}. Most of LOFAR's standard data products
 are now stored using the HDF5 format, as well as HDF5 analogs for traditional radio data
-structures such as visibility data and spectral image cubes. The HDF5 libraries allow
-for the construction of distributed, entirely unbounded files (HDF5 allows splitting
-of file among many storage devices). The nature of the HDF5
+structures such as visibility data and spectral image cubes.  The HDF5 libraries allow 
+for the construction of distributed files and impose no limits on their sizes.
+The nature of the HDF5
 format further provides the ability to custom design a data encapsulation format,
 specifying hierarchies, content and attributes.
 
@@ -1631,10 +1631,10 @@ n-dimensional array and (binary or ASCII) table data structures}.
 
 \end{itemize}
 
-Finally the community needs to not forget FITS strengths.
-In particular, FITS inclusion of semantic content (data models) as part of the
-standard should continue to be pushed. There are many critical missing data
-models (section~\ref{section_crit_data_models}) that, if included in the standard, 
+We should not neglect FITS strengths either. In particular, FITS inclusion of 
+semantic content (data models) as part of the standard should continue to be 
+pushed. There are many critical missing data models 
+(section~\ref{section_crit_data_models}) that, if included in the standard, 
 would provide compelling reasons to use a data format.
 
 
@@ -1656,12 +1656,12 @@ From these we plan to extract and publish an overview of the requirements for
 a modern astronomical data format.
 
 
-These technical problems will be solved one way or another. If the
-community is not willing to do the hard work of hammering out a
-universal (or widely-adopted) approach, individual projects will
-continue to make their own ad-hoc solutions. Data formats will become
-increasingly fragmented and we will no longer enjoy the easy
-interoperability that FITS has provided for many years.
+%These technical problems will be solved one way or another. If the
+%community is not willing to do the hard work of hammering out a
+%universal (or widely-adopted) approach, individual projects will
+%continue to make their own ad-hoc solutions. Data formats will become
+%increasingly fragmented and we will no longer enjoy the easy
+%interoperability that FITS has provided for many years.
 
 
 \section{Acknowledgments}
