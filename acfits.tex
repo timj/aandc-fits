@@ -994,25 +994,34 @@ themselves.
 
 
 \subsection{Units}
+\label{sec_units}
 
+A strength of FITS is that includes support for units within its core
+standard. There are, however, limitations in the utility of the provided
+specification.
 
-The FITS support for units is syntactically flexible (albeit with
-a few specification ambiguities which would be resolved by an explicit
-grammar), but the model does not accommodate the full range of
-contemporary astronomical data.  This is evident from the significant
-fraction of unit strings in current databases which do not conform to
-the FITS prescriptions.  The solution is not simply to expand the list
-of recommended units since, as well as being slow, this fails to
-distinguish between, for example, different definitions of the second,
-or to communicate places where the distinction does or does not
-matter.
-
-There is also a provenance issue to defining new units, since -- to
-pick the example of the unit of `Jupiter radius' -- two different
-groups may prefer the mean or equatorial values for the radius, or in contrast
-may regard it, not as simply an abbreviation for a certain number of
+First, while it syntactically flexible, there are a few
+specification ambiguities which could be resolved by an explicit grammar.  
+This limitation has perhaps been one reason that others
+have felt the need to publish more explicit prescriptions for units
+\citep{1995OGIPUnits}.  Another limitation is that the model does   
+not accommodate the full range of contemporary astronomical data. This
+is evident from the adoption of other units systems by some major
+archives such as the CDS (Centre de Données astronomiques de Strasbourg,
+\url{http://cds.u-strasbg.fr/}) which contains a large number of published 
+astronomical tables (see the units section within \citealt{2000CDSUnits}).  
+Finally, there is also a provenance issue to defining new units, since 
+-- to pick the example of
+the unit of `Jupiter radius' -- two different groups may prefer the
+mean or equatorial values for the radius, or in contrast may regard it,
+not as simply an abbreviation for a certain number of
 kilometers, but instead as a distance whose value is determined at a
 certain atmospheric pressure level.
+
+The solution to these limitations is not simply to expand the list of
+recommended units since, as well as being slow, this fails to distinguish
+between, for example, different definitions of the second, or to communicate 
+places where the distinction does or does not matter.
 
 The purely syntactical issues surrounding unit strings are
 being addressed by the IVOA's `VOUnits' work \citep{VOUnits}, but the higher
@@ -1020,7 +1029,14 @@ level questions -- of communicating and defining new units, of
 indicating documentation, and of converting between them in a
 scientifically meaningful manner -- are out of scope for that work by
 design, since experience has shown them to be more contentious than
-one might expect.  These questions should perhaps be taken up by the FITS community.
+one might expect. These questions should be taken up by the FITS community.
+
+Solutions then may involve cherry-picking VOUnits syntactical fixes and 
+alteration of the units model to use some namespacing mechanism which 
+would help to disambiguate sources of extended units models found within a file.
+Finally, we believe that an analysis of other more recent work, such as that
+found in \citeauthor{VOUnits} and \citeauthor{2000CDSUnits} can help to quickly
+round out the roster of standard units.
 
 
 \section{Metadata and data representation}
