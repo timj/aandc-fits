@@ -996,7 +996,7 @@ themselves.
 \subsection{Units}
 \label{sec_units}
 
-A strength of FITS is that includes support for units within its core
+A strength of FITS is that it includes support for units within its core
 standard. There are, however, limitations in the utility of the provided
 specification.
 
@@ -1007,8 +1007,7 @@ have felt the need to publish more explicit prescriptions for units
 \citep{1995OGIPUnits}.  Another limitation is that the model does   
 not accommodate the full range of contemporary astronomical data. This
 is evident from the adoption of other units systems by some major
-archives such as the CDS (Centre de Donn\'ees astronomiques de Strasbourg,
-\url{http://cds.u-strasbg.fr/}) which contains a large number of published 
+archives such as the CDS (Centre de Donn\'ees astronomiques de Strasbourg\footnote{\url{http://cds.u-strasbg.fr/}}) which contains a large number of published 
 astronomical tables (see the units section within \citealt{2000CDSUnits}).  
 Finally, there is also a provenance issue to defining new units, since 
 -- to pick the example of
@@ -1120,7 +1119,7 @@ result of these constraints is that keyword values may be no longer than
 68 characters. Of course, if you use all of the space for keyword values,
 then the comment, or keyword values longer than 68 characters will need
 another convention in order to capture it (such as creating a continuation
-line in the header using the \texttt{CONTINUE} convention \citep{2007Continue}.
+line in the header using the \texttt{CONTINUE} convention \citep{2007Continue}).
 
 
 Let us now consider the impact of keyword name constraints. Not only
@@ -1215,7 +1214,7 @@ Herschel interactive processing environment
 Another approach to this situation is the conversion of NDF
 format files to FITS and back to NDF \citep{SUN55,1997STARB..19...14C}.
 They demonstrated that you can represent a hierarchical data grouping
-in the FITS multi-extension format, but this is done using EXTNAME
+in the FITS multi-extension format, but this is done using \texttt{EXTNAME}
 conventions combined with headers representing the extension level in
 the hierarchy and the type of component and so is not understood by
 other FITS tools.
@@ -1688,7 +1687,7 @@ helpful comments that improved the contents of this paper.
 MdVB acknowledges partial support from grants NSF AST-1108686 and NASA
 NNX12AH91H.
 
-This research has made use of NASA’s Astrophysics Data System.
+This research has made use of NASA's Astrophysics Data System.
 
 
 %% The Appendices part is started with the command \appendix;
