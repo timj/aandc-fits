@@ -367,12 +367,12 @@ the format and the simple fact that it remains to this day the \emph{lingua
 franca} of astronomical data format exchange. What we feel has been missing
 is an attempt within the community to
 dispassionately discuss and understand FITS in terms of problems in
-its application to modern astronomical research. In this paper we hope to show 
-that technologies and research techniques in astronomy have evolved but FITS has 
-not kept pace. As a result, gaps between FITS utility and the needs of the 
-research community have opened up and widened over time. 
-It is our intended goal in this paper to highlight some selected, important, 
-problems which exist in the FITS core standard today. 
+its application to modern astronomical research. In this paper we hope to show
+that technologies and research techniques in astronomy have evolved but FITS has
+not kept pace. As a result, gaps between FITS utility and the needs of the
+research community have opened up and widened over time.
+It is our intended goal in this paper to highlight some selected, important,
+problems which exist in the FITS core standard today.
 We have grouped the discussion of issues as general topics ``information interchange''
 (section~\ref{section_poor_exchange}), ``data models'' (section~\ref{section_crit_data_models}),
 ``metadata and data representation'' (section~\ref{section_inflex_represent}) and
@@ -382,10 +382,10 @@ analysis of any deeper causes or ``lessons learned'' (section~\ref{sec:discussio
 
 %By intent this paper does not prescribe specific solutions to these issues;
 %rather, we hope to bring awareness of these issues to the FITS and greater
-%astronomical computing communities in the hopes that it will spur action to 
-%resolve them. Our effort will also continue. We plan to extend the work started 
-%here in a future paper in which we will gather use cases or ``lessons learned'' 
-%which also show FITS strengths, and gleaning the same from other data formats. 
+%astronomical computing communities in the hopes that it will spur action to
+%resolve them. Our effort will also continue. We plan to extend the work started
+%here in a future paper in which we will gather use cases or ``lessons learned''
+%which also show FITS strengths, and gleaning the same from other data formats.
 %From these we plan to extract and publish an overview of the requirements for
 %a modern astronomical data format.
 
@@ -456,7 +456,7 @@ the serialization is being used.
 These capabilities have been explored and implemented in several other data formats in astronomy.
 %These needed capabilities have been noticed by others and, in fact, members
 %of the astronomical community have designed formats to satisfy some
-%of these requirements. 
+%of these requirements.
 The Astronomical Data Center (ADC) XDF
 format, the Low-Frequency Array for Radio Astronomy (LOFAR) HDF5 data
 model \citep{2012ASPC..461..283A}, CASA measurement sets
@@ -734,11 +734,11 @@ NDF which has very rich metadata in its data model.
 
 It is a matter of opinion as to whether more/richer detailed data models in the
 format standard are better or not. The NDF core data model metadata are certainly
-more detailed than the metadata in the FITS standard. On the other hand FITS is 
-certainly more widely adopted than NDF. Nevertheless, we believe FITS would benefit 
-from an expansion in its standard data model as there are certainly common semantics 
+more detailed than the metadata in the FITS standard. On the other hand FITS is
+certainly more widely adopted than NDF. Nevertheless, we believe FITS would benefit
+from an expansion in its standard data model as there are certainly common semantics
 which may be found in other data formats (e.g. NDF, XDF, etc) and FITS-based model
-extensions (e.g. such as MBFITS or local data dictionaries) which the community can 
+extensions (e.g. such as MBFITS or local data dictionaries) which the community can
 benefit from.
 
 
@@ -918,7 +918,7 @@ environment but it is highly unlikely that the content of the
 \texttt{HISTORY} block can be understood by any other software packages. History
 needs to be treated as a first-class citizen with a standardized way of
 registering important information such as the date, the software tool and
-any relevant arguments or switches. 
+any relevant arguments or switches.
 
 
 A related issue is data provenance; that is, sufficient records of how files
@@ -1001,15 +1001,15 @@ standard. There are, however, limitations in the utility of the provided
 specification.
 
 First, while it syntactically flexible, there are a few
-specification ambiguities which could be resolved by an explicit grammar.  
+specification ambiguities which could be resolved by an explicit grammar.
 This limitation has perhaps been one reason that others
 have felt the need to publish more explicit prescriptions for units
-\citep{1995OGIPUnits}.  Another limitation is that the model does   
+\citep{1995OGIPUnits}.  Another limitation is that the model does
 not accommodate the full range of contemporary astronomical data. This
 is evident from the adoption of other units systems by some major
-archives such as the CDS (Centre de Donn\'ees astronomiques de Strasbourg\footnote{\url{http://cds.u-strasbg.fr/}}) which contains a large number of published 
-astronomical tables (see the units section within \citealt{2000CDSUnits}).  
-Finally, there is also a provenance issue to defining new units, since 
+archives such as the CDS (Centre de Donn\'ees astronomiques de Strasbourg\footnote{\url{http://cds.u-strasbg.fr/}}) which contains a large number of published
+astronomical tables (see the units section within \citealt{2000CDSUnits}).
+Finally, there is also a provenance issue to defining new units, since
 -- to pick the example of
 the unit of `Jupiter radius' -- two different groups may prefer the
 mean or equatorial values for the radius, or in contrast may regard it,
@@ -1019,7 +1019,7 @@ certain atmospheric pressure level.
 
 The solution to these limitations is not simply to expand the list of
 recommended units since, as well as being slow, this fails to distinguish
-between, for example, different definitions of the second, or to communicate 
+between, for example, different definitions of the second, or to communicate
 places where the distinction does or does not matter.
 
 The purely syntactical issues surrounding unit strings are
@@ -1030,8 +1030,8 @@ scientifically meaningful manner -- are out of scope for that work by
 design, since experience has shown them to be more contentious than
 one might expect. These questions should be taken up by the FITS community.
 
-Solutions then may involve cherry-picking VOUnits syntactical fixes and 
-alteration of the units model to use some namespacing mechanism which 
+Solutions then may involve cherry-picking VOUnits syntactical fixes and
+alteration of the units model to use some namespacing mechanism which
 would help to disambiguate sources of extended units models found within a file.
 Finally, we believe that an analysis of other more recent work, such as that
 found in \citeauthor{VOUnits} and \citeauthor{2000CDSUnits} can help to quickly
@@ -1146,7 +1146,7 @@ the same keywords for different purposes.  For example, compare the use
 of \texttt{PV} keywords in the products of the SCAMP tools
 \citep{2006ASPC..351..112B}, used for polynomial distortion coefficients,
 to the more common \texttt{PV} keywords used in the WCS convention for generic
-parameter values. 
+parameter values.
 These two conventions, when used in the same file, cause ambiguity and
 incorrect representation of the data. It is true that FITS libraries
 will often provide a means to choose between one duplicate keyword or another
@@ -1328,14 +1328,14 @@ support for these types of large data.
 \label{subsection_parallel_io}
 
 Large datasets require parallel read/write operations to be processed on
-parallel computers.  FITS, however, cannot support optimization for parallel 
+parallel computers.  FITS, however, cannot support optimization for parallel
 read/write operations.
 
 This has been the driving factor for LOFAR to
 invest a significant effort into development of a new format using
 HDF5  \citep{2012ASPC..461..283A}. Most of LOFAR's standard data products
 are now stored using the HDF5 format, as well as HDF5 analogs for traditional radio data
-structures such as visibility data and spectral image cubes.  The HDF5 libraries allow 
+structures such as visibility data and spectral image cubes.  The HDF5 libraries allow
 for the construction of distributed files and impose no limits on their sizes.
 The nature of the HDF5
 format further provides the ability to custom design a data encapsulation format,
@@ -1344,13 +1344,13 @@ specifying hierarchies, content and attributes.
 \subsection{Streaming imaging data}
 \label{subsection_stream_image}
 
-While FITS supports cutout capabilities, serving large datasets to an 
+While FITS supports cutout capabilities, serving large datasets to an
 end user requires support for multiple data representations
 of the same data (e.g. multiple resolutions or fidelities)
 that may aid in visual exploration of multi-petabyte imaging data.
 %A reasonable framework should be able to support multiple representations
 %of the same data (e.g., multiple resolutions or fidelities), preferably
-%from a single master file. 
+%from a single master file.
 It should also be possible to stream the data
 progressively to the end-user, displaying an image as soon
 as the first data become available. \citet{2014Kitaeff} and
@@ -1421,7 +1421,7 @@ other files.
 \label{sec:discussion}
 
 What then are the lessons we might draw from the above analysis
-of FITS? Are there any deeper issues and commonalities which thread 
+of FITS? Are there any deeper issues and commonalities which thread
 throughout these issues? In fact, there are several.
 
 
@@ -1540,14 +1540,14 @@ declare models in a machine-readable manner (detailed in
 of issues which include the missing ability to declare byte order,
 no standard means to make associations between data and metadata, and
 an inability to create data models which extend both
-\textit{metadata and the data}. We have already discussed the former two 
+\textit{metadata and the data}. We have already discussed the former two
 issues in sections~\ref{section_byte_order} and
 \ref{section_data_associations} respectively.  The last issue is related to the fact
 that there is no provision in the standard for extending the existing capture
 of data itself. For example, if one creates a convention for a new image type
 which supports multiple representations of the data (section~\ref{subsection_stream_image})
 it is no longer readable by any FITS parser. Other limitations which arise and/or are
-unsolvable as a result of this class of problem include no support for 
+unsolvable as a result of this class of problem include no support for
 optimization of parallel IO (section~\ref{subsection_parallel_io}), streaming issues
 (sections~\ref{subsection_stream_image} and \ref{subsection_stream_indeterm}),
 lack of distributed/virtual data representation
@@ -1591,17 +1591,17 @@ thought of as a success for FITS but again tile compression
 convention and not a standard with no guarantee that a particular
 reader will be able to understand the compression scheme.
 
-\textsc{cfitsio,} because it is so heavily relied upon by the 
+\textsc{cfitsio,} because it is so heavily relied upon by the
 community to implement FITS reader software, may be considered to
 be the \emph{de facto} implementation of FITS. This fact, along
 with the lack of a migration path for conventions, effectively means
 it is also acting as a \emph{de facto} standards body. \textsc{cfitsio}
-supports some conventions but not others. 
-Effectively, the conventions it supports have become mainstream 
+supports some conventions but not others.
+Effectively, the conventions it supports have become mainstream
 while others have not. This is the wrong process for
-making worthy conventions widespread. We feel that it is important 
+making worthy conventions widespread. We feel that it is important
 that the lessons learned from implementing these conventions provide
-feedback to the standards process to allow the standard to continue 
+feedback to the standards process to allow the standard to continue
 to grow and evolve over time.
 
 
@@ -1613,17 +1613,17 @@ and we have tried to provide an analysis of their deeper origin.
 From our investigation, it is clear that FITS suffers from a lack of
 sufficient evolution. Original design decisions, such as the header
 byte layout and fixed character encoding made a certain sense at the
-time FITS was founded. The later enshrinement of the FITS ``Once FITS, 
-always FITS'' doctrine, which has been utilized to effectively freeze 
-the format, was a mistake in our opinion. Adherence to the doctrine, 
-and lack of any means to version the format in a machine-readable manner, 
+time FITS was founded. The later enshrinement of the FITS ``Once FITS,
+always FITS'' doctrine, which has been utilized to effectively freeze
+the format, was a mistake in our opinion. Adherence to the doctrine,
+and lack of any means to version the format in a machine-readable manner,
 has stifled necessary change of FITS.
 
 
-More positively, the limitations identified in FITS provide an opportunity 
-to draw a number of important lessons to be learned from the FITS experience. 
-Furthermore, we can use our analysis to identify root causes and turn 
-these into requirements which might be used as goals for future work.  
+More positively, the limitations identified in FITS provide an opportunity
+to draw a number of important lessons to be learned from the FITS experience.
+Furthermore, we can use our analysis to identify root causes and turn
+these into requirements which might be used as goals for future work.
 For example, some possible requirements might include:
 
 \begin{itemize}
@@ -1632,36 +1632,36 @@ For example, some possible requirements might include:
 
 \item The data format shall allow for syntactic and semantic validation.
 
-\item The data format standard contain provision for declaration of common 
-advanced data structures. These structures include non-scalar values, sets, 
+\item The data format standard contain provision for declaration of common
+advanced data structures. These structures include non-scalar values, sets,
 objects and associations between other metadata and data.
 
-\item The data format shall allow declaration of the character set 
+\item The data format shall allow declaration of the character set
 (in both metadata and data).
 
 \item The data format shall allow user models to declare new data structures
-in data\footnote{FITS conventions are unable to specify new 
-data structures to capture ``data''. All data models must use existing 
+in data\footnote{FITS conventions are unable to specify new
+data structures to capture ``data''. All data models must use existing
 n-dimensional array and (binary or ASCII) table data structures}.
 
 \end{itemize}
 
-We should not neglect FITS strengths either. In particular, FITS inclusion of 
-semantic content (data models) as part of the standard should continue to be 
-pushed. There are many critical missing data models 
-(section~\ref{section_crit_data_models}) that, if included in the standard, 
+We should not neglect FITS strengths either. In particular, FITS inclusion of
+semantic content (data models) as part of the standard should continue to be
+pushed. There are many critical missing data models
+(section~\ref{section_crit_data_models}) that, if included in the standard,
 would provide compelling reasons to use a data format.
 
 
-To be clear, we do not wish to recommend specific corrective action 
-to any particular problem or derived requirement. Instead we hope that 
-action will flow from constructive community discussion including the analysis 
+To be clear, we do not wish to recommend specific corrective action
+to any particular problem or derived requirement. Instead we hope that
+action will flow from constructive community discussion including the analysis
 of other astronomical data formats and any lessons learned from their use
 and construction.
-We may anticipate that the form of the possible resolutions to problems in FITS may 
-involve moving existing FITS conventions into the core standard, modification of 
+We may anticipate that the form of the possible resolutions to problems in FITS may
+involve moving existing FITS conventions into the core standard, modification of
 the FITS standard to remove limitations, or even transferring the FITS data model over
-into a new serialization. 
+into a new serialization.
 
 
 Our effort will also continue. We plan to extend the work started
