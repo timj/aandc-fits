@@ -269,6 +269,7 @@ Standards
 
 % \linenumbers
 
+\newcommand{\ascl}[1]{\href{http://www.ascl.net/#1}{ascl:#1}}
 \newcommand{\aspconf}{ASP Conf.\ Ser}
 \newcommand{\aap}{A\&A}
 \newcommand{\aaps}{A\&AS}
@@ -351,10 +352,10 @@ There are other popular file formats among the
 radio and (sub-)millimeter astronomy community such as the Continuum and
 Line Analysis Single-dish Software (CLASS) data format associated with
 the Grenoble Image and Line Data Analysis Software (GILDAS) tools
-({\href{http://ascl.net/1305.010}{ascl:1305.010}). Although this file
+(\ascl{1305.010}). Although this file
 format does not have a public specification,  there are open-source
 spectroscopic software packages like \texttt{PySpecKit}
-({\href{http://ascl.net/1109.001}{ascl:1109.001}) that support certain
+(\ascl{1109.001}) that support certain
 versions of the data format.  Given the large amount of available
 storage formats, there is certainly a possibility that the use of FITS
 will fall in favor of other scientific data formats should it not adapt
@@ -395,10 +396,10 @@ analysis of any deeper causes or ``lessons learned'' (section~\ref{sec:discussio
 
 FITS originated as a delivery format for observatory data. It was the format
 of choice when transporting data between different data reduction
-environments such as IRAF (\href{http://ascl.net/9911.002}{ascl:9911.002}),
-Starlink (\href{http://ascl.net/1110.012}{ascl:1110.012}), AIPS
-(\href{http://ascl.net/9911.003}{ascl:9911.003}) and MIDAS
-(\href{http://ascl.net/1302.017}{ascl:1302.017}).
+environments such as IRAF (\ascl{9911.002}),
+Starlink (\ascl{1110.012}), AIPS
+(\ascl{9911.003}) and MIDAS
+(\ascl{1302.017}).
 
 
 In principle, FITS promotes interchange through its simple and easily
@@ -1233,7 +1234,7 @@ Sometimes the byte order needs to be checked and swapped to the opposite
 byte ordering (little endian format) in systems that do not support
 non-native data formats.  This is the case in some implementations of FITS
 readers that do not use the \textsc{cfitsio} library
-(\href{http://ascl.net/1010.001}{ascl:1010.001}) and which use C routines
+(\ascl{1010.001}) and which use C routines
 to implement other scientific capabilities.  Programmers on little endian
 platforms who work with large data volumes may find that this limitation
 results in a performance penalty as marshaling data to and from
@@ -1473,7 +1474,7 @@ collection of related files or perhaps something more exotic
 As we have already seen, FITS lacks semantic validation and its
 syntactic validation is very limited, achieved only by the creation
 of hard-coded rules in software utilities such as \textsc{fitsverify}
-(part of the \textsc{ftools} package; \href{http://ascl.net/9912.002}{ascl:9912.002})
+(part of the \textsc{ftools} package; \ascl{9912.002})
 Furthermore, the limitation on
 keyword length to 8 characters all but guarantees that semantic
 information within the header is obfuscated. As we have shown,
